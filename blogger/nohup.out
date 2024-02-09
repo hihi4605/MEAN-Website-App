@@ -1,0 +1,63 @@
+[0mGET /.env [33m404 [0m15.549 ms - 913[0m
+[0mPOST / [33m404 [0m17.847 ms - 913[0m
+[0mGET / [36m304 [0m2.641 ms - -[0m
+[0mGET /css/style.css [36m304 [0m0.578 ms - -[0m
+
+> blogger@0.0.0 start
+> node ./bin/www
+
+Port 80 requires elevated privileges
+
+> blogger@0.0.0 start
+> node ./bin/www
+
+
+> blogger@0.0.0 start
+> node ./bin/www
+
+[0mGET / [36m304 [0m8.667 ms - -[0m
+[0mGET /css/style.css [36m304 [0m2.045 ms - -[0m
+[0mGET / [36m304 [0m1.239 ms - -[0m
+[0mGET /css/style.css [36m304 [0m0.313 ms - -[0m
+[0mGET / [36m304 [0m1.150 ms - -[0m
+[0mGET /css/style.css [36m304 [0m0.341 ms - -[0m
+[0mGET / [36m304 [0m1.106 ms - -[0m
+[0mGET /css/style.css [36m304 [0m0.267 ms - -[0m
+[0mGET / [32m200 [0m1.243 ms - 479[0m
+[0mGET / [32m200 [0m1.025 ms - 479[0m
+[0mGET / [36m304 [0m52.351 ms - -[0m
+[0mGET /css/style.css [36m304 [0m2.132 ms - -[0m
+[0mGET / [36m304 [0m3.330 ms - -[0m
+[0mGET /css/style.css [36m304 [0m2.307 ms - -[0m
+[0mGET / [36m304 [0m1.815 ms - -[0m
+[0mGET /css/style.css [36m304 [0m0.311 ms - -[0m
+[0mGET / [36m304 [0m0.951 ms - -[0m
+[0mGET /css/style.css [36m304 [0m0.254 ms - -[0m
+[0mGET / [36m304 [0m0.886 ms - -[0m
+[0mGET /css/style.css [36m304 [0m0.350 ms - -[0m
+[0mGET /blogList [36m304 [0m1.826 ms - -[0m
+[0mGET /css/style.css [36m304 [0m0.271 ms - -[0m
+[0mGET /blogAdd [36m304 [0m1.744 ms - -[0m
+[0mGET /css/style.css [36m304 [0m0.279 ms - -[0m
+[0mGET /blogList [36m304 [0m0.977 ms - -[0m
+[0mGET /css/style.css [36m304 [0m0.433 ms - -[0m
+[0mGET / [36m304 [0m0.644 ms - -[0m
+[0mGET /css/style.css [36m304 [0m0.249 ms - -[0m
+[0mGET / [36m304 [0m0.717 ms - -[0m
+[0mGET /css/style.css [36m304 [0m0.245 ms - -[0m
+[0mGET / [36m304 [0m0.585 ms - -[0m
+[0mGET /css/style.css [36m304 [0m0.256 ms - -[0m
+[0mGET /blogList [36m304 [0m0.717 ms - -[0m
+[0mGET /css/style.css [36m304 [0m0.227 ms - -[0m
+[0mGET /blogAdd [36m304 [0m1.013 ms - -[0m
+[0mGET /css/style.css [36m304 [0m0.376 ms - -[0m
+[0mGET / [36m304 [0m0.653 ms - -[0m
+[0mGET /css/style.css [36m304 [0m0.288 ms - -[0m
+[0mGET /blogList [36m304 [0m0.611 ms - -[0m
+[0mGET /css/style.css [36m304 [0m0.260 ms - -[0m
+[0mGET /blogAdd [36m304 [0m0.604 ms - -[0m
+[0mGET /css/style.css [36m304 [0m0.390 ms - -[0m
+[0mGET / [36m304 [0m0.728 ms - -[0m
+[0mGET /css/style.css [36m304 [0m0.233 ms - -[0m
+[0mGET / [36m304 [0m0.829 ms - -[0m
+[0mGET /css/style.css [36m304 [0m0.247 ms - -[0m

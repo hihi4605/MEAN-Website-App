@@ -1,0 +1,17 @@
+body {
+ 
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #eaff00;
+}
+
+/* change the background color */
+.navbar
+{
+  padding: 0px;
+  background-color: rgb(0, 0, 0)
+
+}
+
