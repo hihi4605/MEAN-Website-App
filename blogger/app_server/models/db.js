@@ -1,4 +1,3 @@
-
 var mongoose = require( 'mongoose' );
 var gracefulShutdown;
 var dbURI = 'mongodb://localhost/myapp';

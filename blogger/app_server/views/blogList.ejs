@@ -1,12 +1,32 @@
 <!DOCTYPE html>
+<title>Blog List </title>
 <link rel="stylesheet" href="/css/bootstrap.min.css" />
-<html>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="/css/style.css"/>
-
+<body>
 <nav class="navbar">
     <a class="navbar-brand" href="/">My Blog</a>
     <a class="navbar-brand" href="/blogList">List Blogs</a>
     <a class="navbar-brand" href="/blogAdd">Add Blogs</a>
 </nav>
-<h1>Blog List Currently Under Construction</h1>
+<div class = 'container'
+    <div class = 'row'>
+        <div class = 'col-md-12'>
+            <h1>Blog List</h1>
+            <ul class = 'list-group'>
+                <%blogs.forEach((blog) => {blog%>
+                    <li class = 'list-group-item'>
+                    <h2> <%=blog.blogTitle%></h2>
+                    <p><%=blog.blogText%> </p> 
+                            <a href = 'blogs/edit/<%= blog.id %>'>
+                                <i class="fas fa-edit"></i></a>
+                            <a href = 'blogs/delete/<%= blog.id %>'><i class="fas fa-trash-alt"></i></a>
+                        </li>
+                <%})%>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+
 </html>

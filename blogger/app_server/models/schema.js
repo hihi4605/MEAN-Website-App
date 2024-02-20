@@ -2,10 +2,11 @@ const { default: mongoose } = require("mongoose");
 
 var blogSchema = new mongoose.Schema({
     blogEntry: {
-        "blog-title": String,
-        "blog-text": String,
+        "blogTitle": String,
+        "blogText": String,
         createdOn: { type: Date, default: Date.now }
     }
 });
 
-mongoose.model('Blog', blogSchema).console.log('Blog schema created');
+mongoose.model('Blog', blogSchema);
+console.log('Blog schema created');
