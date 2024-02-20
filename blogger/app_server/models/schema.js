@@ -7,6 +7,6 @@ var blogSchema = new mongoose.Schema({
         createdOn: { type: Date, default: Date.now }
     }
 });
-
+ 
 mongoose.model('Blog', blogSchema);
 console.log('Blog schema created');

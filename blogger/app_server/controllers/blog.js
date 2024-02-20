@@ -27,4 +27,4 @@ module.exports.blogList = async (req, res) => {
           { id: uuidv4(), blogTitle: "Third Blog", blogText: "More Text!!!!", createdOn: new Date() },
       ]
   });
-};
+}; 

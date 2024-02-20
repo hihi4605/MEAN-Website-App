@@ -10,3 +10,4 @@ router.get('/blogs/edit/:id', ctrlBlog.blogEdit);
 router.get('/blogs/delete/:id', ctrlBlog.blogDelete);
 
 module.exports = router;
+ 
