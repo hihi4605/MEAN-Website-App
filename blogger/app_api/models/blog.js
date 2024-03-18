@@ -1,4 +1,11 @@
-var mongoose = require( 'mongoose' );
+var mongoose = require('mongoose');
+var blog = mongoose.model('blogSchema');
+
+
+var sendJSONresponse = function(res, status, content) {
+    res.status(status);
+    res.json(content);
+};
 
 var blogSchema = new mongoose.Schema({
     blogTitle: {type: String, required: true},
@@ -9,4 +16,8 @@ var blogSchema = new mongoose.Schema({
     }
 });
 
-mongoose.model('Blog', blogSchema);
+
+
+
+
+mongoose.model('blogs', blog);

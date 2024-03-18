@@ -18,7 +18,7 @@ router.post('api/blogs/', ctrlBlog.blogAdd);
 router.put('api/blogs:id', ctrlBlog.blogEdit);
 
 /* Delete a blog given an id */
-router.get('api/blogs:id', ctrlBlog.blogDelete);
+router.delete('api/blogs:id', ctrlBlog.blogDelete);
 
 
 module.exports = router;

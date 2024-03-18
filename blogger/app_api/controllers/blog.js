@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-var blogSchema = mongoose.model('blogSchema');
 
 var sendJSONresponse = function(res, status, content) {	
 	res.status(status);
@@ -9,4 +8,12 @@ var sendJSONresponse = function(res, status, content) {
 module.exports.blogList = function(req, res) {
 sendJSONresponse(res, 200, {"status" : "success"});
 }
+
+module.exports.blogReadOne = function(req, res) {
+blogScema.findById(req.params.blogid).exec(function(err, blog) {
+    sendJSONresponse(res, 200, blog);});
+};
+
+
+
 
