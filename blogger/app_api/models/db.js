@@ -1,11 +1,9 @@
 var mongoose = require('mongoose');
 var gracefulShutdown;
-var dbURI = 'mongodb://localhost:27017'; 
+var dbURI = 'mongodb://localhost/Blogs'; 
+
 
 mongoose.connect(dbURI);
-// Bring in Schemas and Models
-require('./blog');
-
 // Monitor and report when database is connected                      
 mongoose.connection.on('connected', function () {
   console.log('Mongoose connected to ' + dbURI);
@@ -45,3 +43,6 @@ process.on('SIGTERM', function() {
   gracefulShutdown('Heroku app shutdown', function () {
     process.exit(0);
 }); });
+
+// Bring in Schemas and Models
+require('./blog');
