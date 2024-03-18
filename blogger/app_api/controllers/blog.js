@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
-var Blog = mongoose.model('Blog');
+
+const Blog = mongoose.model('Blog');
 
 var sendJSONresponse = function(res, status, content) {
     res.status(status);
