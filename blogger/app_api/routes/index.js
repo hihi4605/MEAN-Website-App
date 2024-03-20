@@ -8,19 +8,19 @@ router.get('/', function(req, res, next) {
 });
 
 /* Return a list of blogs */
-router.get('/blogs/', ctrlBlog.blogList);
+router.get('/blogs', ctrlBlog.blogList);
 
 /* Return a single blog given an id */
 router.get('/blogs/:id',ctrlBlog.blogReadOne);
 
 /* Add a blog */
-router.post('/blogs/', ctrlBlog.blogList);
+router.post('/blogs', ctrlBlog.blogCreate);
 
 /* Update a blog given an id*/
-//router.put('/api/blogs/:id', ctrlBlog.blogEdit);
+router.put('/blogs/:id', ctrlBlog.blogUpdateOnet);
 
 /* Delete a blog given an id */
-//router.delete('/api/blogs/:id', ctrlBlog.blogDelete);
+router.delete('/blogs/:id', ctrlBlog.blogDelete);
 
 
 module.exports = router;
