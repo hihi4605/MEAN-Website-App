@@ -1,9 +1,13 @@
 var mongoose = require('mongoose');
 var gracefulShutdown;
-var dbURI = 'mongodb://localhost/Blogs'; 
 
+var dbURI = 'mongodb+srv://Chris:DrakeFan58949$@mydb.srmedx4.mongodb.net/';
 
 mongoose.connect(dbURI);
+
+console.log(mongoose.connection.readyState);  // 0 = disconnected, 1 = connected, 2 = connecting, 3 = disconnecting
+
+
 // Monitor and report when database is connected                      
 mongoose.connection.on('connected', function () {
   console.log('Mongoose connected to ' + dbURI);
