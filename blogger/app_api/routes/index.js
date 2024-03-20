@@ -17,7 +17,7 @@ router.get('/blogs/:id',ctrlBlog.blogReadOne);
 router.post('/blogs', ctrlBlog.blogCreate);
 
 /* Update a blog given an id*/
-router.put('/blogs/:id', ctrlBlog.blogUpdateOnet);
+router.put('/blogs/:id', ctrlBlog.blogUpdateOne);
 
 /* Delete a blog given an id */
 router.delete('/blogs/:id', ctrlBlog.blogDelete);
