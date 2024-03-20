@@ -30,9 +30,6 @@ module.exports.blogReadOne = function(req, res) {
 
 // a put function that updates blog when given an ID //
 
-
-
-
 module.exports.blogReadOne = function(req, res) {
 	console.log("in blogReadOne");
     Blog.findById(req.params.blogid).exec(function(err, blog) {

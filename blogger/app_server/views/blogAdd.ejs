@@ -8,5 +8,17 @@
     <a class="navbar-brand" href="/blogList">List Blogs</a>
     <a class="navbar-brand" href="/blogAdd">Add Blogs</a>
 </nav>
-<h1>Add Blog Currently Under Construction Sorry!</h1>
+<div class="container">
+    <h1>Add Blog</h1>
+    <form action="/blogAdd" method="post">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="title" name="title" placeholder="Enter title">
+        </div>
+        <div class="form-group">
+            <label for="content">Content</label>
+            <textarea class="form-control" id="content" name="content" placeholder="Enter content"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 </html>
