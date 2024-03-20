@@ -1,3 +1,12 @@
+var express = require('express');
+var request = require('request');
+const {render } = require('../../app');
+const Blog = require('../../app_api/models/blog');
+
+var apiOptions = {
+  server: "http://localhost"
+};
+
 module.exports.home = function(req, res) {
   res.render('home', {title: 'Home Page'});
 };
