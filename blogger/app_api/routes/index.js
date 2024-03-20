@@ -8,13 +8,13 @@ router.get('/', function(req, res, next) {
 });
 
 /* Return a list of blogs */
-router.get('/api/', ctrlBlog.blogList);
+router.get('/blogs/', ctrlBlog.blogList);
 
 /* Return a single blog given an id */
-router.get('/api/:id',ctrlBlog.blogReadOne);
+router.get('/blogs/:id',ctrlBlog.blogReadOne);
 
 /* Add a blog */
-//router.post('/api/', ctrlBlog.blogList);
+router.post('/blogs/', ctrlBlog.blogList);
 
 /* Update a blog given an id*/
 //router.put('/api/blogs/:id', ctrlBlog.blogEdit);
