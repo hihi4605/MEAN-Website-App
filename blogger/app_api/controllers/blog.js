@@ -43,21 +43,21 @@ var buildBlogList = function(req, res, results) {
     return Blogs;
   };
 
-module.exports.blogCreate = function(req, res) {
-    console.log(req.body);
-    Blog.create({
-        blogTitle: req.body.blogTitle,
-        blogEntry: req.body.blogEntry,
-    }, function(err, blog) {
-        if (err) {
-            console.log(err);
-            sendJSONresponse(res, 400, err);
-        } else {
-            console.log(blog);
-            sendJSONresponse(res, 201, blog);
-        }
-    });
-}
+  module.exports.blogCreate = async function(req, res) {
+    try {
+        console.log(req.body);
+        const blog = await Blog.create({
+            blogTitle: req.body.blogTitle,
+            blogEntry: req.body.blogEntry,
+        });
+        console.log(blog);
+        sendJSONresponse(res, 201, blog);
+    } catch (err) {
+        console.log(err);
+        sendJSONresponse(res, 400, err);
+    }
+};
+
 
 //returns a single blog when given an id //
 module.exports.blogReadOne = function(req, res) {
