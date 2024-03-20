@@ -1,52 +1,49 @@
-var mongoose = require('mongoose');
-var gracefulShutdown;
+const mongoose = require('mongoose');
+let gracefulShutdown;
 
-var dbURI = 'mongodb+srv://Chris:DrakeFan58949$@mydb.srmedx4.mongodb.net/';
+const dbURI = 'mongodb+srv://Chris:DrakeFan58949$@mydb.srmedx4.mongodb.net/';
 
-mongoose.connect(dbURI);
+(async () => {
+  try {
+    await mongoose.connect(dbURI);
+    console.log('Mongoose connected to ' + dbURI);
 
-console.log(mongoose.connection.readyState);  // 0 = disconnected, 1 = connected, 2 = connecting, 3 = disconnecting
+    // Monitor and report error connecting to database
+    mongoose.connection.on('error', function (err) {
+      console.log('Mongoose connection error: ' + err);
+    });
 
+    // Monitor and report when database is disconnected
+    mongoose.connection.on('disconnected', function () {
+      console.log('Mongoose disconnected');
+    });
 
-// Monitor and report when database is connected                      
-mongoose.connection.on('connected', function () {
-  console.log('Mongoose connected to ' + dbURI);
-});
+    // Closes (disconnects) from Mongoose DB upon shutdown
+    gracefulShutdown = async function (msg) {
+      await mongoose.connection.close();
+      console.log('Mongoose disconnected through ' + msg);
+      process.exit(0);
+    };
 
-// Monitor and report error connecting to database
-mongoose.connection.on('error',function (err) {
-  console.log('Mongoose connection error: ' + err);
-});
+    // For nodemon restarts
+    process.once('SIGUSR2', async function () {
+      await gracefulShutdown('nodemon restart');
+      process.kill(process.pid, 'SIGUSR2');
+    });
 
-// Monitor and report when database is disconnected
-mongoose.connection.on('disconnected', function () {
-  console.log('Mongoose disconnected');
-}); 
-// Closes (disconnects) from Mongoose DB upon shutdown    
-gracefulShutdown = function (msg, callback) {
-  mongoose.connection.close(function () {
-    console.log('Mongoose disconnected through ' + msg);
-    callback();
-  });
-};
+    // For app termination
+    process.on('SIGINT', async function () {
+      await gracefulShutdown('app termination');
+    });
 
-// For nodemon restarts
-process.once('SIGUSR2', function () {
-  gracefulShutdown('nodemon restart', function () {
-    process.kill(process.pid, 'SIGUSR2');
-}); });
+    // For Heroku app termination
+    process.on('SIGTERM', async function () {
+      await gracefulShutdown('Heroku app shutdown');
+    });
 
-// For app termination
-process.on('SIGINT', function() {
-  gracefulShutdown('app termination', function () {
-    process.exit(0);
-}); });
-
-// For Heroku app termination
-process.on('SIGTERM', function() {
-  gracefulShutdown('Heroku app shutdown', function () {
-    process.exit(0);
-}); });
-
-// Bring in Schemas and Models
-require('./blog');
+    // Bring in Schemas and Models
+    require('./blog');
+  } catch (err) {
+    console.error('Error connecting to MongoDB:', err);
+  }
+})();
