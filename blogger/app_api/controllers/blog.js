@@ -9,16 +9,39 @@ var sendJSONresponse = function(res, status, content) {
     res.json(content);
 };
 
+/* GET a list of all locations */
 module.exports.blogList = function(req, res) {
-    console.log("in blogList");
-    Blog.find({}).exec(function(err, blogs) {
-        if (err) {
-            sendJSONresponse(res, 500, err);
+    console.log('Getting blog list');
+    Blog
+        .find()
+        .exec(function(err, results) {
+          if (!results) {
+            sendJSONresponse(res, 404, {
+              "message": "no blogs found"
+            });
             return;
-        }
-        sendJSONresponse(res, 200, blogs);
+          } else if (err) {
+            console.log(err);
+            sendJSONresponse(res, 404, err);
+            return;
+          }
+          console.log(results);
+          sendJSONresponse(res, 200, buildBlogList(req, res, results));
+        }); 
+  };
+
+var buildBlogList = function(req, res, results) {
+    var Blogs = [];
+    results.forEach(function(obj) {
+      Blogs.push({
+        blogTitle: obj.blogTitle,
+        blogEntry: obj.blogEntry,
+        createdOn: obj.createdOn,
+        _id: obj._id
+      });
     });
-};
+    return Blogs;
+  };
 
 //returns a single blog when given an id //
 module.exports.blogReadOne = function(req, res) {
@@ -36,3 +59,4 @@ module.exports.blogReadOne = function(req, res) {
         sendJSONresponse(res, 200, blog);
     });
 };
+
