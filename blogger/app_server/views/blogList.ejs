@@ -9,24 +9,27 @@
     <a class="navbar-brand" href="/blog-list">List Blogs</a>
     <a class="navbar-brand" href="/blog-add">Add Blogs</a>
 </nav>
-<div class = 'container'
-    <div class = 'row'>
-        <div class = 'col-md-12'>
-            <h1>Blog List</h1>
-            <ul class = 'list-group'>
-                <%blogs.forEach((blog) => {blog%>
-                    <li class = 'list-group-item'>
-                    <h2> <%=blog.blogTitle%></h2>
-                    <p><%=blog.blogText%> </p> 
-                            <a href = 'blogs/edit/<%= blog.id %>'>
-                                <i class="fas fa-edit"></i></a>
-                            <a href = 'blogs/delete/<%= blog.id %>'><i class="fas fa-trash-alt"></i></a>
-                        </li>
-                <%})%>
-            </ul>
-        </div>
-    </div>
-</div>
-</body>
-
+<div class="container">
+    <h1>Blog List</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Entry</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% blogList.forEach(function(blog) { %>
+                <tr>
+                    <td><%= blog.blogTitle %></td>
+                    <td><%= blog.blogEntry %></td>
+                    <td>
+                        <a href="/blog-edit/<%= blog._id %>"><i class="fas fa-edit"></i></a>
+                        <a href="/blog-delete/<%= blog._id %>"><i class="fas fa-trash"></i></a>
+                    </td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
 </html>
