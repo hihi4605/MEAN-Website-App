@@ -54,36 +54,21 @@ module.exports.editBlog = function(req, res) {
 };
 
 module.exports.doBlogEdit = function(req, res) {
-  var requestOptions, path, postdata;
-  path = '/api/blogs/' + req.params.id;
-  postdata = {
-    blogTitle: req.body.blogTitle,
-    blogEntry: req.body.blogEntry
-  };
-  requestOptions = {
-    url: apiOptions.server + path,
-    method: "PUT",
-    json: postdata
-  };
-
-  // Make a PUT request to update the blog
-  request(requestOptions, function(err, response, body) {
-    if (err) {
-      // Handle error from the request
-      console.error('Error updating blog:', err);
-      return res.status(500).send("Error updating blog: " + err);
+  console.log("Updating a blog entry with id of " + req.params.id);
+  console.log(req.body);
+  Blog.findOneAndUpdate(
+     { _id: req.params.id },
+      { $set: {"blogEntry": req.body.blogEntry, "blogTitle": req.body.blogTitle}},
+     function(err, response) {
+         if (err) {
+             sendJSONresponse(res, 400, err);
+         } else {
+          sendJSONresponse(res, 201, response);
+        }
     }
+  );
+};                    
     
-    if (response.statusCode === 200) {
-      // Redirect to the blog list page upon successful update
-      res.redirect('/blog-list');
-    } else {
-      // Handle errors if any
-      res.status(response.statusCode).send("Error updating blog: " + body);
-    }
-  });
-};
-
 module.exports.getDeleteBlog = function(req, res) {
   var requestOptions, path;
   path = '/api/blogs/' + req.params.id;
