@@ -62,18 +62,22 @@ module.exports.doBlogEdit = function(req, res) {
   console.log("Updating a blog entry with id of " + req.params.id);
   console.log(req.body);
   Blog.findByIdAndUpdate(
-     { _id: req.params.id },
+     req.params.id, // Corrected to use only the ID
      { $set: { "blogEntry": req.body.blogEntry, "blogTitle": req.body.blogTitle } },
      { new: true } // to return the updated document
   )
   .then(response => {
+      // Send a response with status 201
       sendJSONresponse(res, 201, response);
+      // Redirect to /blog-list after sending the response
       res.redirect('/blog-list');
   })
   .catch(err => {
+    // Send an error response with status 400
     sendJSONresponse(res, 400, err);
   });
-};     
+};
+
     
 module.exports.getDeleteBlog = function(req, res) {
   var requestOptions, path;
