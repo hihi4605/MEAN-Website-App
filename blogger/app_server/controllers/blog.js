@@ -78,6 +78,7 @@ module.exports.doBlogEdit = function(req, res) {
       res.status(response.statusCode).send("Error updating blog: " + body);
     }
   });
+  res.redirect('/blog-list');
 };
 
 
