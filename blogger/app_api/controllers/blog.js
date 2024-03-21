@@ -44,6 +44,7 @@ const buildBlogList = function(req, res, results) {
     } catch (err) {
         console.log(err);
         sendJSONresponse(res, 400, err);
+        
     }
 };
 
