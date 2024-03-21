@@ -67,9 +67,8 @@ module.exports.doBlogEdit = function(req, res) {
         }
     }
   );
-  module.exports.blogList(req, res);
 };                    
-    
+        
 module.exports.getDeleteBlog = function(req, res) {
   var requestOptions, path;
   path = '/api/blogs/' + req.params.id;
