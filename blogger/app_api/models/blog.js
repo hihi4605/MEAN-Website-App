@@ -6,11 +6,12 @@ var sendJSONresponse = function(res, status, content) {
 };
 
 var BlogSchema = new mongoose.Schema({
-    blogTitle: {type: String, required: true},
-    blogEntry: {type: String, required: true},
+    blogTitle: {type: String},
+    blogEntry: {type: String,},
     createdOn: {
         type: Date,
         default: Date.now
     }
 });
-mongoose.model('Blog', BlogSchema);
+console.log('BlogSchema created');
+module.exports =  mongoose.model('Blog', BlogSchema);
