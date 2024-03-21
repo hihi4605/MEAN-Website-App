@@ -48,7 +48,7 @@ module.exports.editBlog = function(req, res) {
   };
   request(requestOptions, function(err, response, body) {
     if (response.statusCode === 200) {
-      renderEditBlog(req, res, body);
+      module.exports.renderEditBlog(req, res, body);
     }
   });
 }

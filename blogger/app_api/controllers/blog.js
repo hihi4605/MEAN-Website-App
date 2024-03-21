@@ -112,6 +112,8 @@ module.exports.blogDelete = function(req, res) {
                 if (!blog) {
                     return res.status(404).json({ message: "Blog not found" });
                 }
+                // Redirect to the blog list page
+                module.exports.blogList(req, res);
             })
             .catch(err => {
                 console.error(err);
@@ -120,8 +122,6 @@ module.exports.blogDelete = function(req, res) {
     } else {
         res.status(400).json({ message: "Missing blog ID" }); // Send 400 Bad Request if ID is missing
     }
- // Redirect to the blog list page
- res.redirect('/blog-list');
 };
 
 // a put function that updates blog when given an ID //
