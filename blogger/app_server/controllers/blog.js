@@ -109,14 +109,17 @@ module.exports.blogDelete = function(req, res) {
   res.render('blogDelete', {title: 'Delete Blog'});
 }
 
-const { v4: uuidv4 } = require('uuid');
-module.exports.blogList = async (req, res) => {
-  res.render('blogList', { 
-      title: 'Blog List', 
-      blogs: [
-          { id: uuidv4(), blogTitle: "First Blog", blogText: "First Post!", createdOn: new Date() },
-          { id: uuidv4(), blogTitle: "Second Blog", blogText: "Second Text.", createdOn: new Date() },
-          { id: uuidv4(), blogTitle: "Third Blog", blogText: "More Text!!!!", createdOn: new Date() },
-      ]
+module.exports.blogList = function(req, res) {
+  var requestOptions, path;
+  path = '/api/blogs';
+  requestOptions = {
+    url: apiOptions.server + path,
+    method: "GET",
+    json: {}
+  };
+  request(requestOptions, function(err, response, body) {
+    if (response.statusCode === 200) {
+      res.render('blogList', {title: 'Blog List', blogs: body});
+    }
   });
-};
+}
