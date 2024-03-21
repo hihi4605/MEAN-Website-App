@@ -68,6 +68,12 @@ module.exports.doBlogEdit = function(req, res) {
 
   // Make a PUT request to update the blog
   request(requestOptions, function(err, response, body) {
+    if (err) {
+      // Handle error from the request
+      console.error('Error updating blog:', err);
+      return res.status(500).send("Error updating blog: " + err);
+    }
+    
     if (response.statusCode === 200) {
       // Redirect to the blog list page upon successful update
       res.redirect('/blog-list');
@@ -76,9 +82,7 @@ module.exports.doBlogEdit = function(req, res) {
       res.status(response.statusCode).send("Error updating blog: " + body);
     }
   });
-  res.redirect('/blog-list');
 };
-
 
 module.exports.getDeleteBlog = function(req, res) {
   var requestOptions, path;
