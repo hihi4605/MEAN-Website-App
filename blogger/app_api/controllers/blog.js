@@ -44,6 +44,7 @@ const buildBlogList = function(req, res, results) {
     } catch (err) {
         console.log(err);
         sendJSONresponse(res, 400, err);
+        
     }
 };
 
@@ -90,27 +91,12 @@ module.exports.blogUpdateOne = function(req, res) {
 };
 
 module.exports.blogDelete = function(req, res) {
-  var blogid = req.params.blogid;
-  if (blogid) {
-    Blog
-      .findByIdAndDelete(blogid)
-      .exec(
-        function(err, blog) {
-          if (err) {
-            console.log(err);
-            sendJSONresponse(res, 404, err);
-            return;
-          }
-          console.log("Blog id " + blogid + " deleted");
-          sendJSONresponse(res, 204, null);
-        }
-    );
-  } else {
-    sendJSONresponse(res, 404, {
-      "message": "No blogid"
-    });
-  }
-};
+    var blogid = req.params.blogid;
+    if (blogid) {
+        Blog
+            .findByIdAndRemove(blogid)
+    }
+}
 
 // a put function that updates blog when given an ID //
 

@@ -1,13 +1,37 @@
 <!DOCTYPE html>
-<title>Delete Blog </title>
-<link rel="stylesheet" href="/css/bootstrap.min.css" />
 <html>
-    <link rel="stylesheet" href="/css/style.css"/>
-
-<nav class="navbar">
-    <a class="navbar-brand" href="/">My Blog</a>
-    <a class="navbar-brand" href="/blog-list">List Blogs</a>
-    <a class="navbar-brand" href="/blog-add">Add Blogs</a>
-</nav>
-<h1>Add Blog Currently Under Construction Sorry!</h1>
+<head>
+    <title>Delete Blog</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a class="navbar-brand" href="/">My Blog</a>
+        <a class="navbar-brand" href="/blog-list">List Blogs</a>
+        <a class="navbar-brand" href="/blog-add">Add Blogs</a>
+    </nav>
+    <div class="container">
+        <h1>Delete Blog</h1>
+        <div class="row">
+            <% if (Array.isArray(blogs) && blogs.length > 0) { %>
+                <% blogs.forEach(function(blog) { %>
+                    <div class="col-md-6">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= blog.blogTitle %></h5>
+                                <p class="card-text"><%= blog.blogEntry %></p>
+                                <form action="/blog-delete/<%= blog._id %>" method="POST">
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                <% }); %>
+            <% } else { %>
+                <p>No blogs found</p>
+            <% } %>
+        </div>
+    </div>
+</body>
 </html>
