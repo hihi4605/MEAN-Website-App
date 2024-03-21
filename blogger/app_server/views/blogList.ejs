@@ -5,6 +5,17 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="/css/style.css"/>
+    <style>
+        .posted-date {
+            font-size: smaller;
+        }
+        .blog-box {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -18,13 +29,9 @@
             <% if (Array.isArray(blogs) && blogs.length > 0) { %>
                 <% blogs.forEach(function(blog) { %>
                     <div class="col-md-4 mb-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title"><%= blog.blogTitle %></h5>
-                            </div>
-                            <div class="card-text">
-                                <p><%= blog.blogEntry %></p>
-                            </div>
+                        <div class="blog-box">
+                            <h5 class="card-title"><%= blog.blogTitle %></h5>
+                            <p><%= blog.blogEntry %></p>
                             <div class="card-footer d-flex justify-content-between align-items-center">
                                 <span class="posted-date">Created On <%= new Date(blog.createdOn).toDateString() %></span>
                                 <div>
