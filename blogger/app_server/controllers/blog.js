@@ -70,6 +70,7 @@ module.exports.doBlogEdit = function(req, res) {
       res.redirect('/blog-list');
     } 
   });
+  res.redirect('/blog-list');
 }
 
 module.exports.getDeleteBlog = function(req, res) {
