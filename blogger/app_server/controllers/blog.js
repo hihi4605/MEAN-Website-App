@@ -7,6 +7,11 @@ var apiOptions = {
   server: "http://localhost"
 };
 
+var sendJSONresponse = function(res, status, content) {
+  res.status(status);
+  res.json(content);
+};
+
 module.exports.home = function(req, res) {
   res.render('home', {title: 'Home Page'});
 };
@@ -62,10 +67,10 @@ module.exports.doBlogEdit = function(req, res) {
      { new: true } // to return the updated document
   )
   .then(response => {
-      module.exports.sendJSONresponse(res, 201, response);
+      sendJSONresponse(res, 201, response);
   })
   .catch(err => {
-    module.exports.sendJSONresponse(res, 400, err);
+    sendJSONresponse(res, 400, err);
   });
 };     
     
