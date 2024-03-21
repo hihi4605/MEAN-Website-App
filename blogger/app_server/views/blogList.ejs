@@ -11,25 +11,21 @@
 </nav>
 <div class="container">
     <h1>Blog List</h1>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Title</th>
-                <th scope="col">Entry</th>
-                <th scope="col">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% blogList.forEach(function(blog) { %>
-                <tr>
-                    <td><%= blog.blogTitle %></td>
-                    <td><%= blog.blogEntry %></td>
-                    <td>
-                        <a href="/blog-edit/<%= blog._id %>"><i class="fas fa-edit"></i></a>
-                        <a href="/blog-delete/<%= blog._id %>"><i class="fas fa-trash"></i></a>
-                    </td>
-                </tr>
-            <% }); %>
-        </tbody>
-    </table>
+   <div class = "row">
+    <% if Array.isArray(blogList) && blogList.length > 0 %>
+        <% blogList.forEach(function(blog) { %>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= blog.blogTitle %></h5>
+                    </div>
+                    <div class= "card-text">
+                        <p><%= blog.blogEntry %></p>
+                    <div class="card-footer d-flex justify-content-between align-items-center">
+                        <span class = "posted-date">Created On <%= new Date(blog.createdOn)</span>
+                        <div>
+                            <a href="/blog-edit/<%= blog._id %>" class="btn btn-primary">Edit</a>
+                            <a href="/blog-delete/<%= blog._id %>" class="btn btn-danger">Delete</a>
+                        </div>
+   </div>
 </html>
