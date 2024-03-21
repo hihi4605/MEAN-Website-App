@@ -93,10 +93,25 @@ module.exports.blogUpdateOne = function(req, res) {
 module.exports.blogDelete = function(req, res) {
     var blogid = req.params.blogid;
     if (blogid) {
-        Blog
-            .findByIdAndRemove(blogid)
+        Blog.findByIdAndRemove(blogid)
+            .then(deletedBlog => {
+                if (!deletedBlog) {
+                    // If no blog is found with the given ID
+                    return res.status(404).json({ message: "Blog not found" });
+                }
+                // Blog successfully deleted
+                res.status(200).json({ message: "Blog deleted successfully" });
+            })
+            .catch(error => {
+                // Error occurred during deletion
+                console.error("Error deleting blog:", error);
+                res.status(500).json({ error: "Internal server error" });
+            });
+    } else {
+        // No blog ID provided in the request
+        res.status(400).json({ message: "Blog ID is required" });
     }
-}
+};
 
 // a put function that updates blog when given an ID //
 
