@@ -72,10 +72,6 @@ module.exports.doBlogEdit = function(req, res) {
   });
 }
 
-module.exports.renderDeleteBlog = function(req, res, blogdata) {
-  res.render('blogDelete', {title: 'Delete Blog', blog: blogdata});
-};
-
 module.exports.getDeleteBlog = function(req, res) {
   var requestOptions, path;
   path = '/api/blogs/' + req.params.id;
@@ -84,12 +80,18 @@ module.exports.getDeleteBlog = function(req, res) {
     method: "GET",
     json: {}
   };
+
   request(requestOptions, function(err, response, body) {
     if (response.statusCode === 200) {
-      renderDeleteBlog(req, res, body);
+      // Correct reference to the renderDeleteBlog function
+      module.exports.renderDeleteBlog(req, res, body);
     }
   });
 }
+
+module.exports.renderDeleteBlog = function(req, res, blogdata) {
+  res.render('blogDelete', {title: 'Delete Blog', blog: blogdata});
+};
 
 module.exports.doDeleteBlog = function(req, res) {
   var requestOptions, path;
