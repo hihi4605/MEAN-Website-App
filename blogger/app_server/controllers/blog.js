@@ -29,7 +29,7 @@ module.exports.doAddBlog = function(req, res) {
   };
   request(requestOptions, function(err, response, body) {
     if (response.statusCode === 201) {
-      res.redirect('/blogList');
+      res.redirect('/blog-list');
     }
   });
 }
@@ -67,7 +67,7 @@ module.exports.doBlogEdit = function(req, res) {
   };
   request(requestOptions, function(err, response, body) {
     if (response.statusCode === 200) {
-      res.redirect('/blogList');
+      res.redirect('/blog-list');
     } 
   });
 }
@@ -101,7 +101,7 @@ module.exports.doDeleteBlog = function(req, res) {
   };
   request(requestOptions, function(err, response, body) {
     if (response.statusCode === 204) {
-      res.redirect('/blogList');
+      res.redirect('/blog-list');
     }
   });
 }
