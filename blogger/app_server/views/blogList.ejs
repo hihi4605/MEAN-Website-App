@@ -17,7 +17,7 @@
         <div class="row">
             <% if (Array.isArray(blogs) && blogs.length > 0) { %>
                 <% blogs.forEach(function(blog) { %>
-                    <div class="col-md-4">
+                    <div class="col-md-4 mb-4">
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title"><%= blog.blogTitle %></h5>
@@ -26,7 +26,7 @@
                                 <p><%= blog.blogEntry %></p>
                             </div>
                             <div class="card-footer d-flex justify-content-between align-items-center">
-                                <span class="posted-date">Created On <%= new Date(blog.createdOn) %></span>
+                                <span class="posted-date">Created On <%= new Date(blog.createdOn).toDateString() %></span>
                                 <div>
                                     <a href="/blog-edit/<%= blog._id %>" class="btn btn-primary">Edit</a>
                                     <a href="/blog-delete/<%= blog._id %>" class="btn btn-danger">Delete</a>
