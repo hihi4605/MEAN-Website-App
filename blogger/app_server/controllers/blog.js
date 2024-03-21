@@ -56,19 +56,19 @@ module.exports.editBlog = function(req, res) {
 module.exports.doBlogEdit = function(req, res) {
   console.log("Updating a blog entry with id of " + req.params.id);
   console.log(req.body);
-  Blog.findOneAndUpdate(
+  Blog.findByIdAndUpdate(
      { _id: req.params.id },
-      { $set: {"blogEntry": req.body.blogEntry, "blogTitle": req.body.blogTitle}},
-     function(err, response) {
-         if (err) {
-             sendJSONresponse(res, 400, err);
-         } else {
-          sendJSONresponse(res, 201, response);
-        }
-    }
-  );
-};                    
-        
+     { $set: { "blogEntry": req.body.blogEntry, "blogTitle": req.body.blogTitle } },
+     { new: true } // to return the updated document
+  )
+  .then(response => {
+      sendJSONresponse(res, 201, response);
+  })
+  .catch(err => {
+      sendJSONresponse(res, 400, err);
+  });
+};     
+    
 module.exports.getDeleteBlog = function(req, res) {
   var requestOptions, path;
   path = '/api/blogs/' + req.params.id;
