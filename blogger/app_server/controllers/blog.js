@@ -68,6 +68,7 @@ module.exports.doBlogEdit = function(req, res) {
   )
   .then(response => {
       sendJSONresponse(res, 201, response);
+      res.redirect('/blog-list');
   })
   .catch(err => {
     sendJSONresponse(res, 400, err);
@@ -108,7 +109,7 @@ module.exports.doDeleteBlog = function(req, res) {
       res.redirect('/blog-list');
     }
   });
-
+  res.redirect('/blog-list');
 }
 module.exports.blogDelete = function(req, res) {
   res.render('blogDelete', {title: 'Blog Delete'});
