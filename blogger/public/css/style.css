@@ -1,8 +1,8 @@
 body {
  
     font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
-    background-color: #000033;
-    color:  #ffcd03;
+    background-color: #d2e1cb;
+    color:  black;
     
   }
   
@@ -21,7 +21,7 @@ body {
 
   a:hover
   {
-    color: #b75d09;
+    color: #8cb709;
   }
   
   

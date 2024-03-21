@@ -53,30 +53,22 @@ module.exports.editBlog = function(req, res) {
   });
 };
 
-const Blog = require('../models/blog');
-
 module.exports.doBlogEdit = function(req, res) {
-    console.log("Updating a blog entry with id of " + req.params.id);
-    console.log(req.body);
-
-    // Find the blog by its ID and update its title and entry
-    Blog.findByIdAndUpdate(
-        req.params.id,
-        { $set: { "blogTitle": req.body.blogTitle, "blogEntry": req.body.blogEntry } },
-        { new: true } // To return the updated document
-    )
-    .then(updatedBlog => {
-        // Send back the updated blog
-        console.log("Blog updated:", updatedBlog);
-        res.status(200).json(updatedBlog);
-    })
-    .catch(err => {
-        // Handle error
-        console.error("Error updating blog:", err);
-        res.status(400).json({ error: "Error updating blog" });
-    });
-};
-              
+  console.log("Updating a blog entry with id of " + req.params.id);
+  console.log(req.body);
+  Blog.findOneAndUpdate(
+     { _id: req.params.id },
+      { $set: {"blogEntry": req.body.blogEntry, "blogTitle": req.body.blogTitle}},
+     function(err, response) {
+         if (err) {
+             sendJSONresponse(res, 400, err);
+         } else {
+          sendJSONresponse(res, 201, response);
+        }
+    }
+  );
+  res.redirect('/blog-list');
+};                    
     
 module.exports.getDeleteBlog = function(req, res) {
   var requestOptions, path;
