@@ -14,23 +14,17 @@
     <div class="container">
         <h1>Delete Blog</h1>
         <div class="row">
-            <% if (Array.isArray(blogs) && blogs.length > 0) { %>
-                <% blogs.forEach(function(blog) { %>
-                    <div class="col-md-6">
-                        <div class="card mb-3">
-                            <div class="card-body">
-                                <h5 class="card-title"><%= blog.blogTitle %></h5>
-                                <p class="card-text"><%= blog.blogEntry %></p>
-                                <form action="/blog-delete/<%= blog._id %>" method="POST">
-                                    <button type="submit" class="btn btn-danger">Delete</button>
-                                </form>
-                            </div>
-                        </div>
+            <div class="col-md-6">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= blog.blogTitle %></h5>
+                        <p class="card-text"><%= blog.blogEntry %></p>
+                        <form action="/blog-delete/<%= blog._id %>" method="POST">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
                     </div>
-                <% }); %>
-            <% } else { %>
-                <p>No blogs found</p>
-            <% } %>
+                </div>
+            </div>
         </div>
     </div>
 </body>
