@@ -19,7 +19,7 @@
                     <div class="card-body">
                         <h5 class="card-title"><%= blog.blogTitle %></h5>
                         <p class="card-text"><%= blog.blogEntry %></p>
-                        <form action="/blog-delete/<%= blog._id %>" method="POST">
+                        <form action="/blog-delete/<%= blog._id %>" method="DELETE">
                             <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
                     </div>
