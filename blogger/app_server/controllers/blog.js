@@ -53,6 +53,8 @@ module.exports.editBlog = function(req, res) {
   });
 }
 
+const request = require('request');
+
 module.exports.doBlogEdit = function(req, res) {
   var requestOptions, path, postdata;
   path = '/api/blogs/' + req.params.id;
@@ -65,13 +67,19 @@ module.exports.doBlogEdit = function(req, res) {
     method: "PUT",
     json: postdata
   };
+
+  // Make a PUT request to update the blog
   request(requestOptions, function(err, response, body) {
     if (response.statusCode === 200) {
+      // Redirect to the blog list page upon successful update
       res.redirect('/blog-list');
-    } 
+    } else {
+      // Handle errors if any
+      res.status(response.statusCode).send("Error updating blog: " + body);
+    }
   });
-  res.redirect('/blog-list');
-}
+};
+
 
 module.exports.getDeleteBlog = function(req, res) {
   var requestOptions, path;
@@ -107,7 +115,7 @@ module.exports.doDeleteBlog = function(req, res) {
       res.redirect('/blog-list');
     }
   });
-  res.redirect('/blog-list');
+
 }
 module.exports.blogDelete = function(req, res) {
   res.render('blogDelete', {title: 'Blog Delete'});

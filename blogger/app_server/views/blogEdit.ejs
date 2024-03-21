@@ -15,7 +15,7 @@
         <h1>Edit Blog</h1>
         <div class="row">
             <div class="col-md-6">
-                <form action="/blog-edit/<%= blog._id %>" method="GET">
+                <form action="/blog-edit/<%= blog._id %>" method="PUT">
                     <div class="form-group">
                         <label for="blogTitle">Blog Title</label>
                         <input type="text" class="form-control" id="blogTitle" name="blogTitle" value="<%= blog.blogTitle %>">
