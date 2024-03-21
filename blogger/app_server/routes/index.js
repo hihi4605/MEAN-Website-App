@@ -10,7 +10,7 @@ router.get('/blog-add', ctrlBlog.blogAdd);
 router.post('/blog-add', ctrlBlog.doAddBlog);
 router.get('/blog-edit/:id', ctrlBlog.editBlog);
 router.post('/blog-edit/:id', ctrlBlog.doBlogEdit);
-router.get('/blog-delete/:id', ctrlBlog.renderDeleteBlog);
+router.get('/blog-delete/:id', ctrlBlog.getDeleteBlog);
 router.post('/blog-delete/:id', ctrlBlog.doDeleteBlog);
 
 module.exports = router;

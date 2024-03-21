@@ -91,12 +91,24 @@ module.exports.blogUpdateOne = function(req, res) {
 };
 
 module.exports.blogDelete = function(req, res) {
-    var blogid = req.params.blogid;
+    var blogid = req.params.id; // Use req.params.id to get the blog ID
     if (blogid) {
-        Blog
-            .findByIdAndDelete(blogid)
+        Blog.findByIdAndDelete(blogid)
+            .then(blog => {
+                if (!blog) {
+                    return res.status(404).json({ message: "Blog not found" });
+                }
+                // Redirect to the blog list page
+                res.redirect('/blog-list');
+            })
+            .catch(err => {
+                console.error(err);
+                res.status(500).json({ message: "Internal server error" });
+            });
+    } else {
+        res.status(400).json({ message: "Missing blog ID" }); // Send 400 Bad Request if ID is missing
     }
-}
+};
 
 // a put function that updates blog when given an ID //
 
