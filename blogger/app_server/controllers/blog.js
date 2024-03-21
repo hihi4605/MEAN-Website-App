@@ -106,6 +106,7 @@ module.exports.doDeleteBlog = function(req, res) {
       res.redirect('/blog-list');
     }
   });
+  res.redirect('/blog-list');
 }
 module.exports.blogDelete = function(req, res) {
   res.render('blogDelete', {title: 'Blog Delete'});
