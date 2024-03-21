@@ -51,9 +51,7 @@ module.exports.editBlog = function(req, res) {
       module.exports.renderEditBlog(req, res, body);
     }
   });
-}
-
-const request = require('request');
+};
 
 module.exports.doBlogEdit = function(req, res) {
   var requestOptions, path, postdata;
