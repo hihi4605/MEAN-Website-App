@@ -6,40 +6,31 @@ var sendJSONresponse = function(res, status, content) {
     res.status(status);
     res.json(content);
 };
-
 /* GET a list of all locations */
-module.exports.blogList = function(req, res) {
+module.exports.blogList = async function(req, res) {
     console.log('Getting blog list');
-    Blog
-        .find()
-        .exec(function(err, results) {
-          if (!results) {
-            sendJSONresponse(res, 404, {
-              "message": "no blogs found"
-            });
+    try {
+        const results = await Blog.find().exec();
+        if (!results || results.length === 0) {
+            sendJSONresponse(res, 404, { "message": "No blogs found" });
             return;
-          } else if (err) {
-            console.log(err);
-            sendJSONresponse(res, 404, err);
-            return;
-          }
-          console.log(results);
-          sendJSONresponse(res, 200, buildBlogList(req, res, results));
-        }); 
-  };
+        }
+        console.log(results);
+        sendJSONresponse(res, 200, buildBlogList(req, res, results));
+    } catch (err) {
+        console.log(err);
+        sendJSONresponse(res, 404, err);
+    }
+};
 
-var buildBlogList = function(req, res, results) {
-    var Blogs = [];
-    results.forEach(function(obj) {
-      Blogs.push({
+const buildBlogList = function(req, res, results) {
+    return results.map(obj => ({
         blogTitle: obj.blogTitle,
         blogEntry: obj.blogEntry,
         createdOn: obj.createdOn,
         _id: obj._id
-      });
-    });
-    return Blogs;
-  };
+    }));
+};
 
   module.exports.blogCreate = async function(req, res) {
     try {
