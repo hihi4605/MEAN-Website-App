@@ -62,10 +62,10 @@ module.exports.doBlogEdit = function(req, res) {
      { new: true } // to return the updated document
   )
   .then(response => {
-      sendJSONresponse(res, 201, response);
+      module.exports.sendJSONresponse(res, 201, response);
   })
   .catch(err => {
-      sendJSONresponse(res, 400, err);
+    module.exports.sendJSONresponse(res, 400, err);
   });
 };     
     
