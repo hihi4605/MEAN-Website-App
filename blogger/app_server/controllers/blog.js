@@ -16,6 +16,8 @@ module.exports.home = function(req, res) {
   res.render('home', {title: 'Home Page'});
 };
 
+
+
 module.exports.blogAdd = function(req, res) {
   res.render('blogAdd', {title: 'Add Blog'});
 };
