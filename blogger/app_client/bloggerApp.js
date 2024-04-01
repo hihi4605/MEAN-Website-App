@@ -33,8 +33,8 @@ app.config(function($routeProvider) {
 app.controllers('homeController', function HomeController() {
     var vm = this;
     vm.pageHeader = {
-        title: 'Blogger',
-        strapline: 'Welcome to Blogger'
+        title: 'A to Z blogs',
+        strapline: 'A to Z blogs'
     };
 });
 
