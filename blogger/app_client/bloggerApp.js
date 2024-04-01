@@ -33,9 +33,9 @@ app.config(function($routeProvider) {
 app.controllers('homeController', function HomeController() {
     var vm = this;
     vm.pageHeader = {
-        title: 'A to Z blogs',
-    };
-    vm.message = 'Welcome to my blog!';
+        title: "Christians Blog"
+      };
+    vm.message = "Welcome to my blog!";
 });
 
 //*** REST Web API functions ***/
