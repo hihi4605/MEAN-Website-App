@@ -5,7 +5,7 @@ app.config(function($routeProvider) {
   $routeProvider
     .when('/', {
       templateUrl: 'pages/home.html',
-      controller: 'HomeController',
+      controller: 'homeController',
       controllerAs: 'vm'
     })
     .when('/blog-add', {
@@ -28,8 +28,6 @@ app.config(function($routeProvider) {
     });
 });
 
-
-
 //*** REST Web API functions ***/
 
 function getAllBlogs($http) {
@@ -45,12 +43,9 @@ function updateBlogById($http, id, data) {
 }
 
 /* Home Controller */
-app.controller('HomeController', function HomeController() {
-  var vm = this;
-  vm.pageHeader = {
-      title: 'Christians Blog',
-    };
-  vm.message = 'Welcome to my blog!';
+app.controller('homeController', function($scope) {
+  $scope.title = "Christian's Blog Page";
+  $scope.message = "Welcome to my blog!";
 });
 
 /* Blog Add Controller */
@@ -75,6 +70,7 @@ app.controller('blogListController', function BlogListController() {
     };
     vm.blogs = getBlogs().query();
 });
+
 /* Blog Edit Controller */
 app.controller('blogEditController', function BlogEditController($location, $routeParams) {
     var vm = this;
