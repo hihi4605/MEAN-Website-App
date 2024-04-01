@@ -1,53 +1,19 @@
 <!DOCTYPE html>
 <html ng-app="bloggerApp">
 <head>
-    <title>Add Blog</title>
+    <script src="/blogger/app_client/lib/angular.min.js"></script>
+    <script src="/blogger/app_client/lib/angular-route.min.js"></script>
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/style.css" />
 </head>
-<body ng-controller="MainController">
+<body>
+     <!-- Navigation -->  
     <nav class="navbar">
         <a class="navbar-brand" href="/">My Blog</a>
         <a class="navbar-brand" href="/blog-list">List Blogs</a>
         <a class="navbar-brand" href="/blog-add">Add Blogs</a>
     </nav>
     
-    <div class="container">
-        <h1>Add Blog</h1>
-        <form ng-submit="submitBlog()">
-            <div class="form-group">
-                <label for="blogTitle">Blog Title</label>
-                <input type="text" class="form-control" ng-model="blogTitle" placeholder="Enter title" required>
-            </div>
-            <div class="form-group">
-                <label for="blogEntry">Blog Text</label>
-                <textarea class="form-control" ng-model="blogEntry" placeholder="Enter content"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-    </div>
-
-    <!-- Include AngularJS libraries -->
-    <script src="/blogger/app_client/lib/angular.min.js"></script>
-    <script src="/blogger/app_client/lib/angular-route.min.js"></script>
-
-    <script>
-        // Define AngularJS module
-        var app = angular.module('bloggerApp', []);
-
-        // Define AngularJS controller
-        app.controller('MainController', function($scope) {
-            // Initialize scope variables
-            $scope.title = 'Add Blog';
-            $scope.submitBlog = function() {
-                // You can implement the functionality to send the blog data to the server here
-                console.log('Blog Title:', $scope.blogTitle);
-                console.log('Blog Entry:', $scope.blogEntry);
-                // After sending the data, you can redirect the user if needed
-                // For example:
-                // window.location.href = '/blog-list';
-            };
-        });
-    </script>
 </body>
+
 </html>
