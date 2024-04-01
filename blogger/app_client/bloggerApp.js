@@ -1,6 +1,5 @@
 var app = angular.module('bloggerApp', ['ngRoute', 'ngSanitize', 'ui.bootstrap', 'ngResource']);                
 
-console.log('bloggerApp.js loaded');
 /* Route Provider */
 app.config(function($routeProvider) {
   $routeProvider
@@ -46,7 +45,7 @@ function updateBlogById($http, id, data) {
 }
 
 /* Home Controller */
-app.controllers('HomeController', function HomeController() {
+app.controller('HomeController', function HomeController() {
   var vm = this;
   vm.pageHeader = {
       title: 'Christians Blog',
@@ -55,7 +54,7 @@ app.controllers('HomeController', function HomeController() {
 });
 
 /* Blog Add Controller */
-app.controllers('blogAddController', function BlogAddController($location) {
+app.controller('blogAddController', function BlogAddController($location) {
     var vm = this;
     vm.pageHeader = {
         title: 'Add Blog'
@@ -69,7 +68,7 @@ app.controllers('blogAddController', function BlogAddController($location) {
 });
 
 /* Blog List Controller */
-app.controllers('blogListController', function BlogListController() {
+app.controller('blogListController', function BlogListController() {
     var vm = this;
     vm.pageHeader = {
         title: 'Blog List'
@@ -78,7 +77,7 @@ app.controllers('blogListController', function BlogListController() {
 });
 
 /* Blog Edit Controller */
-app.controllers('blogEditController', function BlogEditController($location, $routeParams) {
+app.controller('blogEditController', function BlogEditController($location, $routeParams) {
     var vm = this;
     vm.pageHeader = {
         title: 'Edit Blog'
