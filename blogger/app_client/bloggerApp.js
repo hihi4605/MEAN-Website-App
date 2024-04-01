@@ -29,14 +29,7 @@ app.config(function($routeProvider) {
     });
 });
 
-/* Home Controller */
-app.controllers('HomeController', function HomeController() {
-    var vm = this;
-    vm.pageHeader = {
-        title: "Christians Blog"
-      };
-    vm.message = "Welcome to my blog!";
-});
+
 
 //*** REST Web API functions ***/
 
@@ -52,6 +45,14 @@ function updateBlogById($http, id, data) {
     return $http.put('/api/blogs/' + id, data);
 }
 
+/* Home Controller */
+app.controllers('HomeController', function HomeController() {
+  var vm = this;
+  vm.pageHeader = {
+      title: 'Christians Blog',
+    };
+  vm.message = 'Welcome to my blog!';
+});
 
 /* Blog Add Controller */
 app.controllers('blogAddController', function BlogAddController($location) {
