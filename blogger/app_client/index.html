@@ -1,58 +1,56 @@
 <!DOCTYPE html>
 <html ng-app="bloggerApp">
-<head>
-    <script src="/blogger/app_client/lib/angular.min.js"></script>
-    <script src="/blogger/app_client/lib/angular-route.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="/css/style.css"/>
-</head>
-<body ng-controller="HomeController">
 
-     <!-- Navigation -->  
-        <nav>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
         <a class="navbar-brand" href="/">My Blog</a>
         <a class="navbar-brand" href="/blog-list">List Blogs</a>
         <a class="navbar-brand" href="/blog-add">Add Blogs</a>
-      </nav>
+    </nav>
 
-    <!-- Angular Templates-->
+    <!-- Angular View Dynamic -->
+    <div ng-view></div>
 
-    <!-- Home Page -->
+    <!-- Angular Templates -->
     <script type="text/ng-template" id="home.html">
         <div class="container">
-            <h1>{{vm.pageHeader.title}}</h1>
-            <p>{{vm.message}}</p>
+            <h1>{{pageHeader.title}}</h1>
+            <p>{{message}}</p>
         </div>
+    </script>
 
     <!-- Include AngularJS libraries -->
     <script>
-      var app = angular.module('bloggerApp', ['ngRoute']);
-      app.controller('MainController', function() {
-          var vm = this;
-          vm.pageHeader = {
-              title: 'Welcome to My Blog'
-          };
-          vm.message = 'This is a sample message.';
-      });
+        var app = angular.module('bloggerApp', ['ngRoute']);
+        
+        app.controller('MainController', function() {
+            var vm = this;
+            vm.pageHeader = {
+                title: 'Christian Michels Blog'
+            };
+            vm.message = 'Welcome to my blog.';
+        });
 
-      app.config(['$routeProvider', function($routeProvider) {
-          $routeProvider
-              .when('/', {
-                  templateUrl: 'home.html',
-                  controller: 'MainController',
-                  controllerAs: 'vm'
-              })
-              .otherwise({
-                  redirectTo: '/'
-              });
-      }]);
-  </script>
-    
-</div>
-  <!-- Angular View Dynamic-->
-  <div ng-view></div>
-  <script src="/blogger/app_client/bloggerApp.js"></script>
+        app.config(['$routeProvider', function($routeProvider) {
+            $routeProvider
+                .when('/', {
+                    templateUrl: 'home.html',
+                    controller: 'MainController'
+                })
+                .otherwise({
+                    redirectTo: '/'
+                });
+        }]);
+    </script>
+
 </body>
 
 </html>
