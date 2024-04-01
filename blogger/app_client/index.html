@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/css/style.css"/>
 </head>
-<body>
+<body ng-controller="HomeController">
+
      <!-- Navigation -->  
         <nav>
         <a class="navbar-brand" href="/">My Blog</a>
@@ -19,7 +20,7 @@
 
     <!-- Home Page -->
   <script type="text/ng-template" id="home.html">
-    <div ng-view>
+    <d1iv ng-view>
     <h2>{{ vm.pageHeader.title }}</h2>
     <h4>{{ vm.pageHeader.message }}</h4>
   </script>
