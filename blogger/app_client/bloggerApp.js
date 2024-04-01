@@ -49,8 +49,9 @@ app.controller('HomeController', function HomeController() {
   var vm = this;
   vm.pageHeader = {
       title: 'Christians Blog',
+      message: 'Welcome to my blog!'
     };
-  vm.message = 'Welcome to my blog!';
+  
 });
 
 /* Blog Add Controller */
