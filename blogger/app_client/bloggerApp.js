@@ -76,6 +76,7 @@ app.controller('blogListController', function BlogListController() {
     vm.blogs = getBlogs().query();
 });
 
+
 /* Blog Edit Controller */
 app.controller('blogEditController', function BlogEditController($location, $routeParams) {
     var vm = this;
