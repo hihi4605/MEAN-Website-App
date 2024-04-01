@@ -1,56 +1,52 @@
 <!DOCTYPE html>
 <html ng-app="bloggerApp">
-
 <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script>
+    <script src="/blogger/app_client/lib/angular.min.js"></script>
+    <script src="/blogger/app_client/lib/angular-route.min.js"></script>
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/style.css" />
 </head>
-
-<body>
-    <!-- Navigation -->
-    <nav>
-        <a class="navbar-brand" href="/">My Blog</a>
-        <a class="navbar-brand" href="/blog-list">List Blogs</a>
-        <a class="navbar-brand" href="/blog-add">Add Blogs</a>
+<body ng-controller="MainController as vm">
+     <!-- Navigation -->  
+     <nav>
+        <div class="navbar-nav">
+            <a class="navbar-brand" href="/">My Blog</a>
+            <a class="navbar-brand" href="/blog-list">List Blogs</a>
+            <a class="navbar-brand" href="/blog-add">Add Blogs</a>
+        </div>
     </nav>
 
-    <!-- Angular View Dynamic -->
-    <div ng-view></div>
+    <!-- Angular Templates-->
 
-    <!-- Angular Templates -->
+    <!-- Home Page -->
     <script type="text/ng-template" id="home.html">
-        <div class="container">
-            <h1>{{pageHeader.title}}</h1>
-            <p>{{message}}</p>
-        </div>
+        <h2>{{vm.pageHeader.title}}</h2>
+        <h4>{{vm.message}}</h4>
     </script>
 
     <!-- Include AngularJS libraries -->
     <script>
         var app = angular.module('bloggerApp', ['ngRoute']);
-        
+
         app.controller('MainController', function() {
             var vm = this;
             vm.pageHeader = {
-                title: 'Christian Michels Blog'
+                title: 'Welcome to My Blog'
             };
-            vm.message = 'Welcome to my blog.';
+            vm.message = 'This is a sample message.';
         });
 
         app.config(['$routeProvider', function($routeProvider) {
             $routeProvider
                 .when('/', {
                     templateUrl: 'home.html',
-                    controller: 'MainController'
+                    controller: 'MainController',
+                    controllerAs: 'vm'
                 })
                 .otherwise({
                     redirectTo: '/'
                 });
         }]);
     </script>
-
 </body>
-
 </html>
