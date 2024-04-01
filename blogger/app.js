@@ -28,7 +28,7 @@ app.use('/api',routesApi);
 // Added per Lab 5 - Angular
 app.use(function(req, res) {
   res.sendFile(path.join(__dirname, 'app_client', 'index.html'));
-});                
+});
      
 
 // catch 404 and forward to error handler
