@@ -5,12 +5,12 @@ console.log('bloggerApp.js loaded');
 app.config(function($routeProvider) {
   $routeProvider
     .when('/', {
-      templateUrl: '/home.html',
+      templateUrl: 'pages/home.html',
       controller: 'HomeController',
       controllerAs: 'vm'
     })
     .when('/blog-add', {
-      templateUrl: '/blogAdd.html',
+      templateUrl: 'pages/blogAdd.html',
       controller: 'blogAddController',
       controllerAs: 'vm'
     })
