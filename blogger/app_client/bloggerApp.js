@@ -5,22 +5,22 @@ console.log('bloggerApp.js loaded');
 app.config(function($routeProvider) {
   $routeProvider
     .when('/', {
-      templateUrl: 'pages/home.html',
-      controller: 'homeController',
+      templateUrl: '/home.html',
+      controller: 'HomeController',
       controllerAs: 'vm'
     })
     .when('/blog-add', {
-      templateUrl: 'pages/blogAdd.html',
+      templateUrl: '/blogAdd.html',
       controller: 'blogAddController',
       controllerAs: 'vm'
     })
     .when('/blog-list', {
-      templateUrl: 'pages/blogList.html',
+      templateUrl: '/blogList.html',
       controller: 'blogListController',
       controllerAs: 'vm'
     })
     .when('/blog-edit/:id', {
-      templateUrl: 'pages/blogEdit.html',
+      templateUrl: '/blogEdit.html',
       controller: 'blogEditController',
       controllerAs: 'vm'
     })
@@ -30,7 +30,7 @@ app.config(function($routeProvider) {
 });
 
 /* Home Controller */
-app.controllers('homeController', function HomeController() {
+app.controllers('HomeController', function HomeController() {
     var vm = this;
     vm.pageHeader = {
         title: "Christians Blog"
