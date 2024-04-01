@@ -4,12 +4,12 @@ var app = angular.module('bloggerApp', ['ngRoute', 'ngSanitize', 'ui.bootstrap',
 app.config(function($routeProvider) {
   $routeProvider
     .when('/', {
-      templateUrl: 'pages/home.html',
+      templateUrl: '/home.html',
       controller: 'HomeController',
       controllerAs: 'vm'
     })
     .when('/blog-add', {
-      templateUrl: 'pages/blogAdd.html',
+      templateUrl: '/blogAdd.html',
       controller: 'blogAddController',
       controllerAs: 'vm'
     })
