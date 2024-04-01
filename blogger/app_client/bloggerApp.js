@@ -4,12 +4,12 @@ var app = angular.module('bloggerApp', ['ngRoute', 'ngSanitize', 'ui.bootstrap',
 app.config(function($routeProvider) {
   $routeProvider
     .when('/', {
-      templateUrl: '/home.html',
+      templateUrl: 'pages/home.html',
       controller: 'HomeController',
       controllerAs: 'vm'
     })
     .when('/blog-add', {
-      templateUrl: '/blogAdd.html',
+      templateUrl: 'pages/blogAdd.html',
       controller: 'blogAddController',
       controllerAs: 'vm'
     })
@@ -49,9 +49,8 @@ app.controller('HomeController', function HomeController() {
   var vm = this;
   vm.pageHeader = {
       title: 'Christians Blog',
-      message: 'Welcome to my blog!'
     };
-  
+  vm.message = 'Welcome to my blog!';
 });
 
 /* Blog Add Controller */
@@ -76,8 +75,6 @@ app.controller('blogListController', function BlogListController() {
     };
     vm.blogs = getBlogs().query();
 });
-
-
 /* Blog Edit Controller */
 app.controller('blogEditController', function BlogEditController($location, $routeParams) {
     var vm = this;
