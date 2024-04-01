@@ -5,22 +5,22 @@ console.log('bloggerApp.js loaded');
 app.config(function($routeProvider) {
   $routeProvider
     .when('/', {
-      templateUrl: 'home.html',
+      templateUrl: 'pages/home.html',
       controller: 'homeController',
       controllerAs: 'vm'
     })
     .when('/blog-add', {
-      templateUrl: 'blogAdd.html',
+      templateUrl: 'pages/blogAdd.html',
       controller: 'blogAddController',
       controllerAs: 'vm'
     })
     .when('/blog-list', {
-      templateUrl: 'blogList.html',
+      templateUrl: 'pages/blogList.html',
       controller: 'blogListController',
       controllerAs: 'vm'
     })
     .when('/blog-edit/:id', {
-      templateUrl: 'blogEdit.html',
+      templateUrl: 'pages/blogEdit.html',
       controller: 'blogEditController',
       controllerAs: 'vm'
     })
@@ -34,8 +34,8 @@ app.controllers('homeController', function HomeController() {
     var vm = this;
     vm.pageHeader = {
         title: 'A to Z blogs',
-        strapline: 'A to Z blogs'
     };
+    vm.message = 'Welcome to my blog!';
 });
 
 //*** REST Web API functions ***/

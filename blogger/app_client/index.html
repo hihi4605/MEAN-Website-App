@@ -8,14 +8,21 @@
 </head>
 <body>
      <!-- Navigation -->  
-    <nav class="navbar">
-        <a class="navbar-brand" href="/">My Blog</a>
-        <a class="navbar-brand" href="/blog-list">List Blogs</a>
-        <a class="navbar-brand" href="/blog-add">Add Blogs</a>
+    <div class="navbar-nav">
+        <a class="navbar-brand" href="#/">My Blog</a>
+        <a class="navbar-brand" href="#/blog-list">List Blogs</a>
+        <a class="navbar-brand" href="#/blog-add">Add Blogs</a>
     </nav>
-    <h2>Christian Michel Blog Site</h2>
-    <h3>Welcome to my blog site.</h3>
+    </div>
 
+    <!-- Angular Templates-->
+
+    <!-- Home Page -->
+  <script type="text/ng-template" id="pages/home.html">
+    <p></p>
+    <h2>{{vm.pageHeader.title}}</h2>
+    <h4>{{vm.pageHeader.message}}</h4>
+  </script>
 </body>
 
 </html>
