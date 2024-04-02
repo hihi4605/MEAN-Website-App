@@ -29,30 +29,29 @@ app.config(function($routeProvider, $locationProvider) {
     $locationProvider.html5Mode(true);
 });
 
-//*** REST Web API functions ***/
-
+/*** REST Web API functions ***/
 function getAllBlogs($http) {
   return $http.get('/api/blogs');
 }
 
 function getBlogbyId($http, id) {
-    return $http.get('/api/blogs/' + id);
+  return $http.get('/api/blogs/' + id);
 }
 
 function listBlogs($http) {
-    return $http.get('/api/blogs');
+  return $http.get('/api/blogs');
 }
 
 function addBlog($http, data) {
-    return $http.post('/api/blogs', data);
+  return $http.post('/api/blogs', data);
 }
 
 function deleteBlog($http, id) {
-    return $http.delete('/api/blogs/' + id);
+  return $http.delete('/api/blogs/' + id);
 }
 
 function updateBlogById($http, id, data) {
-    return $http.put('/api/blogs/' + id, data);
+  return $http.put('/api/blogs/' + id, data);
 }
 
 /* Home Controller */
