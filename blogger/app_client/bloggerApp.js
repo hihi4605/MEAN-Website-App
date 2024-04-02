@@ -1,11 +1,11 @@
-var app = angular.module('bloggerApp', ['ngRoute', 'ngSanitize', 'ui.bootstrap', 'ngResource']);                
+var app = angular.module('bloggerApp', ['ngRoute']);                
 
 /* Route Provider */
-app.config(function($routeProvider) {
+app.config(function($routeProvider, $locationProvider) {
   $routeProvider
     .when('/', {
-      templateUrl: 'pages/home.html',
-      controller: 'HomeController',
+      templateUrl: '/home.html',
+      controller: 'homeController',
       controllerAs: 'vm'
     })
     .when('/blog-add', {
@@ -25,10 +25,9 @@ app.config(function($routeProvider) {
     })
     .otherwise({
       redirectTo: '/'
-    });
+    })
+    $locationProvider.html5Mode(true);
 });
-
-
 
 //*** REST Web API functions ***/
 
@@ -40,16 +39,26 @@ function getBlogbyId($http, id) {
     return $http.get('/api/blogs/' + id);
 }
 
+function listBlogs($http) {
+    return $http.get('/api/blogs');
+}
+
+function addBlog($http, data) {
+    return $http.post('/api/blogs', data);
+}
+
+function deleteBlog($http, id) {
+    return $http.delete('/api/blogs/' + id);
+}
+
 function updateBlogById($http, id, data) {
     return $http.put('/api/blogs/' + id, data);
 }
 
 /* Home Controller */
-app.controller('HomeController', function HomeController() {
+app.controller('homeController', function() {
   var vm = this;
-  vm.pageHeader = {
-      title: 'Christians Blog',
-    };
+  vm.title = "Christians Blog Site"
   vm.message = 'Welcome to my blog!';
 });
 
