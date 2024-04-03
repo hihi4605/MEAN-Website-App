@@ -1,33 +1,29 @@
-`<!DOCTYPE html>
+<!doctype html>
 <html ng-app="bloggerApp">
 <head>
     <base href="/">
-    <script src="lib/angular.min.js"></script>
-    <script src="lib/angular-route.min.js"></script>
+    <script src="blogger/app_client/lib/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
     <script src="bloggerApp.js"></script>
     <link rel="stylesheet" href="/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/css/style.css"/>
 </head>
 <body>
-     <!-- Navigation -->  
-    <div class="navbar">
-        <a class="navbar-brand" href="/">My Blog</a>
-        <a class="navbar-brand" href="/blog-list">List Blogs</a>
-        <a class="navbar-brand" href="/blog-add">Add Blogs</a>
-    </div>
-    <div ng-view></div>
-    <!-- Angular Templates-->
+    <!-- Navigation -->  
+   <div class="navbar">
+       <a class="navbar-brand" href="/">My Blog</a>
+       <a class="navbar-brand" href="#/blog-list">List Blogs</a>
+       <a class="navbar-brand" href="#/blog-add">Add Blogs</a>
+   </div>
 
-    
-    <!-- Home Page -->
- 
-  <div>
-    <h1>Christian Michels Website</h1>
-    <h4>Welcome to my blog</h4>
-  </div>
- 
-  <!-- Angular View Dynamic-->
- 
-  <script src="bloggerApp.js"></script>
+   <!-- Angular Templates-->
+
+   <!-- Home Page -->
+ <div ng-controller="homeController">
+   <h1>{{ title }}</h1>
+   <h4>{{ message }}</h4>
+</div>
+
+ <!-- Angular View Dynamic-->
 </body>
 </html>

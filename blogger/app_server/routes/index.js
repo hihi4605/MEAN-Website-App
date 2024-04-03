@@ -4,7 +4,7 @@ var router = express.Router();
 
 var ctrlBlog = require('../controllers/blog');
 /* Routes to blog and home */
-router.get('/', ctrlBlog.home); 
+ 
 router.get('/blog-list', ctrlBlog.blogList);
 router.get('/blog-add', ctrlBlog.blogAdd);
 router.post('/blog-add', ctrlBlog.doAddBlog);

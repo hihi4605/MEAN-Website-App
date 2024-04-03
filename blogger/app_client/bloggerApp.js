@@ -1,32 +1,32 @@
 var app = angular.module('bloggerApp', ['ngRoute']);                
 
 /* Route Provider */
-app.config(function($routeProvider, $locationProvider) {
+app.config(function($routeProvider) {
   $routeProvider
     .when('/', {
-      templateUrl: '/home.html',
+      templateUrl: 'home.htm',
       controller: 'homeController',
       controllerAs: 'vm'
     })
     .when('/blog-add', {
-      templateUrl: 'pages/blogAdd.html',
+      templateUrl: 'pages/blogAdd.htm',
       controller: 'blogAddController',
       controllerAs: 'vm'
     })
     .when('/blog-list', {
-      templateUrl: '/blogList.html',
+      templateUrl: '/blogList.htm',
       controller: 'blogListController',
       controllerAs: 'vm'
     })
     .when('/blog-edit/:id', {
-      templateUrl: '/blogEdit.html',
+      templateUrl: '/blogEdit.htm',
       controller: 'blogEditController',
       controllerAs: 'vm'
     })
     .otherwise({
       redirectTo: '/'
     })
-    $locationProvider.html5Mode(true);
+    
 });
 
 /*** REST Web API functions ***/

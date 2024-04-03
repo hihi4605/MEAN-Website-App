@@ -13,7 +13,8 @@ app.set('views', path.join(__dirname, '/app_server/views'));
 app.set('view engine', 'ejs');
 
 
-var routes = require('./app_server/routes/index');  // This is the route for the web pages
+  // This is the route for the web pages
+var routes = require('./app_server/routes/index');
 var routesApi = require('./app_api/routes/index');
 
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
