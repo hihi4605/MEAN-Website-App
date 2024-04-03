@@ -28,18 +28,12 @@ app.config(function($routeProvider) {
     })
     
 });
+/*Home Controller */
 app.controller("myHomeController", function($scope) {
   $scope.title = "Christians Website!";
   $scope.message = "Welcome to Christians Website"
 });                 
       
-/* Home Controller */
-app.controller('homeController', function($vm) {
-  $vm.title = "Christians Blog";
-  $vm.message = "Welcome to Christians Blog";
-
-});
-
 /*** REST Web API functions ***/
 function getAllBlogs($http) {
   return $http.get('/api/blogs');
@@ -82,12 +76,15 @@ app.controller('blogAddController', function BlogAddController($location) {
 });
 
 /* Blog List Controller */
-app.controller('blogListController', function BlogListController() {
-    var vm = this;
-    vm.pageHeader = {
-        title: 'Blog List'
-    };
-    vm.blogs = getBlogs().query();
+app.controller('blogListController', function BlogListController($http, $scope) {
+    $scope.title = "Blog List";
+    getAllBlogs($http).success(function(data) {
+        $scope.blogs = data;
+        $scope.message = "Recieved Blog Data";
+    }).error(function(data, status) {
+        $scope.data = data || "Request failed";
+        $scope.status = status;
+    });
 });
 
 /* Blog Edit Controller */
