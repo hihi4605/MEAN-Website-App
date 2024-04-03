@@ -4,22 +4,22 @@ var app = angular.module('bloggerApp', ['ngRoute'])
 app.config(function($routeProvider) {
   $routeProvider
     .when('/', {
-      templateUrl: 'home.htm',
+      templateUrl: 'home.html',
       controller: 'homeController',
       controllerAs: 'vm'
     })
     .when('/blog-add', {
-      templateUrl: 'pages/blogAdd.htm',
+      templateUrl: 'pages/blogAdd.html',
       controller: 'blogAddController',
       controllerAs: 'vm'
     })
     .when('/blog-list', {
-      templateUrl: '/blogList.htm',
+      templateUrl: '/blogList.html',
       controller: 'blogListController',
       controllerAs: 'vm'
     })
     .when('/blog-edit/:id', {
-      templateUrl: '/blogEdit.htm',
+      templateUrl: '/blogEdit.html',
       controller: 'blogEditController',
       controllerAs: 'vm'
     })
@@ -57,8 +57,8 @@ function updateBlogById($http, id, data) {
 /* Home Controller */
 app.controller('homeController', function() {
   var vm = this;
-  vm.title = "Christians Blog Site"
-  vm.message = 'Welcome to my blog!';
+  this.title = "Christians Blog Site"
+  this.message = 'Welcome to my blog!';
 });
 
 /* Blog Add Controller */
