@@ -3,7 +3,7 @@ var app = angular.module('bloggerApp', ['ngRoute'])
 /* Route Provider */
 app.config(function($routeProvider) {
   $routeProvider
-    .when('/', {
+    .when('/home', {
       templateUrl: 'home.html',
       controller: 'homeController',
       controllerAs: 'vm'
@@ -27,6 +27,17 @@ app.config(function($routeProvider) {
       redirectTo: '/'
     })
     
+});
+app.controller("myHomeController", function($scope) {
+  $scope.title = "Christians Website!";
+  $scope.message = "Welcome to Christians Website"
+});                 
+      
+/* Home Controller */
+app.controller('homeController', function($vm) {
+  $vm.title = "Christians Blog";
+  $vm.message = "Welcome to Christians Blog";
+
 });
 
 /*** REST Web API functions ***/
@@ -54,12 +65,7 @@ function updateBlogById($http, id, data) {
   return $http.put('/api/blogs/' + id, data);
 }
 
-/* Home Controller */
-app.controller('homeController', function() {
-  var vm = this;
-  this.title = "Christians Blog Site"
-  this.message = 'Welcome to my blog!';
-});
+
 
 /* Blog Add Controller */
 app.controller('blogAddController', function BlogAddController($location) {

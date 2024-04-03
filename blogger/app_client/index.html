@@ -1,5 +1,6 @@
 <html ng-app="bloggerApp">
     <title>Christians Blog</title>
+         <meta charset="utf-8">
 <head>
     <base href="/">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
@@ -13,19 +14,22 @@
 <body>
     <!-- Navigation -->  
    <div class="navbar">
-       <a class="navbar-brand" href="#/">My Blog</a>
-       <a class="navbar-brand" href="#/blog-list">List Blogs</a>
-       <a class="navbar-brand" href="#/blog-add">Add Blogs</a>
+       <a class="navbar-brand" href="/">My Blog</a>
+       <a class="navbar-brand" href="/blog-list">List Blogs</a>
+       <a class="navbar-brand" href="/blog-add">Add Blogs</a>
    </div>
 
    <!-- Angular Templates-->
 
    <!-- Home Page -->
- <div ng-controller="homeController">
-   <h1>{{ vm.title }}</h1>
-   <h4>{{ vm.message }}</h4>
-</div>
+     <meta charset="utf-8">
+    <body ng-controller="myHomeController">
+        <h1>Hello {{title}}</h1>
+        <h4>{{ message }}</h4>
+   </body>
+
 
  <!-- Angular View Dynamic-->
 </body>
 </html>
+
