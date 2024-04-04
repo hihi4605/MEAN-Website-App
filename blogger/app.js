@@ -23,12 +23,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'app_client/pages'))); 
+app.use(express.static(path.join(__dirname, 'app_client'))); 
 app.use('/', routes);
 app.use('/api',routesApi);
 // Added per Lab 5 - Angular
 app.use(function(req, res) {
-  res.sendFile(path.join(__dirname, 'pages', 'index.html'));
+  res.sendFile(path.join(__dirname, 'app_client', 'index.html'));
 });
      
 
