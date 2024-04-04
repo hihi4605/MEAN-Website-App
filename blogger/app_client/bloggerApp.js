@@ -4,22 +4,22 @@ var app = angular.module('bloggerApp', ['ngRoute'])
 app.config(function($routeProvider) {
   $routeProvider
     .when('/home', {
-      templateUrl: 'pages/home.html',
+      templateUrl: 'home.html',
       controller: 'homeController',
       controllerAs: 'vm'
     })
     .when('/blog-add', {
-      templateUrl: 'pages/blog-add.html',
+      templateUrl: 'blog-add.html',
       controller: 'blogAddController',
       controllerAs: 'vm'
     })
     .when('/blog-list', {
-      templateUrl: 'pages/blog-list.html',
+      templateUrl: 'blog-list.html',
       controller: 'blogListController',
       controllerAs: 'vm'
     })
     .when('/blog-edit/:id', {
-      templateUrl: 'pages/blog-edit.html',
+      templateUrl: 'blog-edit.html',
       controller: 'blogEditController',
       controllerAs: 'vm'
     })
