@@ -1,5 +1,3 @@
-const { $where } = require("../app_api/models/blog");
-
 var app = angular.module('bloggerApp', ['ngRoute'])           
 
 /* Route Provider */
