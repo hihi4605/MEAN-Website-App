@@ -87,6 +87,7 @@ app.controller('blogListController', function BlogListController($http, $scope) 
 }, function(error)
 {
   vm.message = "Error Listing Blogs"
+  console.log("Controller Accessed")
 });});
 
 /* Blog Edit Controller */

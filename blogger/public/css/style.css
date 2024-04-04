@@ -2,7 +2,7 @@ body {
  
     font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
     background-color: black;
-    color:  black;
+    color:  rgb(255, 255, 255);
     background-image: url("./pexels-adrien-olichon-2387793.jpg");
     background-size: cover;
   }
