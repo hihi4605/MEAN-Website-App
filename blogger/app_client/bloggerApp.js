@@ -54,7 +54,7 @@ function updateBlogById($http, id, data) {
 }
 
 /*Home Controller */
-app.controller("myHomeController", [function(){
+app.controller("HomeController", [function(){
   var vm = this;
   vm.title = 'Christians Website';
   vm.message = 'Welcome to Christians Blog Site!';
