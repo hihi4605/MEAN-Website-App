@@ -4,7 +4,7 @@ var app = angular.module('bloggerApp', ['ngRoute'])
 app.config(function($routeProvider) {
   $routeProvider
     .when('/home', {
-      templateUrl: 'home.html',
+      templateUrl: 'pages/home.html',
       controller: 'homeController',
       controllerAs: 'vm'
     })
@@ -14,12 +14,12 @@ app.config(function($routeProvider) {
       controllerAs: 'vm'
     })
     .when('/blog-list', {
-      templateUrl: '/blog-list.html',
+      templateUrl: 'pages/blog-list.html',
       controller: 'blogListController',
       controllerAs: 'vm'
     })
     .when('/blog-edit/:id', {
-      templateUrl: '/blog-edit.html',
+      templateUrl: 'pages/blog-edit.html',
       controller: 'blogEditController',
       controllerAs: 'vm'
     })
