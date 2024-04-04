@@ -28,11 +28,7 @@ app.config(function($routeProvider) {
     })
     
 });
-/*Home Controller */
-app.controller("myHomeController", function($scope) {
-  $scope.title = "Christians Website!";
-  $scope.message = "Welcome to Christians Website"
-});                 
+          
       
 /*** REST Web API functions ***/
 function getAllBlogs($http) {
@@ -59,21 +55,11 @@ function updateBlogById($http, id, data) {
   return $http.put('/api/blogs/' + id, data);
 }
 
-
-
-/* Blog Add Controller */
-app.controller('blogAddController', function BlogAddController($location) {
-    var vm = this;
-    vm.pageHeader = {
-        title: 'Add Blog'
-    };
-    vm.blog = {};
-    vm.save = function() {
-        getBlogs().save(vm.blog, function() {
-            $location.path('/blog-list');
-        });
-    };
-});
+/*Home Controller */
+app.controller("myHomeController", function($scope) {
+  $scope.title = "Christians Website!";
+  $scope.message = "Welcome to Christians Website"
+});       
 
 /* Blog List Controller */
 app.controller('blogListController', function BlogListController($http, $scope) {
@@ -89,6 +75,20 @@ app.controller('blogListController', function BlogListController($http, $scope) 
   vm.message = "Error Listing Blogs"
   console.log("Controller Accessed")
 });});
+
+/* Blog Add Controller */
+app.controller('blogAddController', function BlogAddController($location) {
+    var vm = this;
+    vm.pageHeader = {
+        title: 'Add Blog'
+    };
+    vm.blog = {};
+    vm.save = function() {
+        getBlogs().save(vm.blog, function() {
+            $location.path('/blog-list');
+        });
+    };
+});
 
 /* Blog Edit Controller */
 app.controller('blogEditController', function BlogEditController($location, $routeParams) {
