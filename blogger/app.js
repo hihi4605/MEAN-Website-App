@@ -30,7 +30,7 @@ app.use('blogger/app_client/pages', indexRoute);
 
 // Added per Lab 5 - Angular
 app.use(function(req, res) {
-  res.sendFile(path.join(__dirname, 'app_client', 'index.html'));
+  res.sendFile(path.join(__dirname, 'app_client', 'app_client/index.html'));
 });                
       
 
