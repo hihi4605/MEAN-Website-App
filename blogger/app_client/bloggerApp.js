@@ -14,7 +14,7 @@ app.config(function($routeProvider) {
       controllerAs: 'vm'
     })
     .when('/blog-list', {
-      templateUrl: '/blog-list.html',
+      templateUrl: '#/blog-list.html',
       controller: 'blogListController',
       controllerAs: 'vm'
     })
@@ -31,9 +31,6 @@ app.config(function($routeProvider) {
           
       
 /*** REST Web API functions ***/
-function getAllBlogs($http) {
-  return $http.get('/api/blogs');
-}
 
 function getBlogbyId($http, id) {
   return $http.get('/api/blogs/' + id);
@@ -62,11 +59,11 @@ app.controller("myHomeController", function($scope) {
 });       
 
 /* Blog List Controller */
-app.controller('blogListController', function BlogListController($http, $scope) {
+app.controller('blogListController', function($http, $scope) {
   var vm = this;
   
     vm.title = "Blog List";
-    getAllBlogs($http).then(function callback(response)
+    listBlogs($http).then(function callback(response)
     {
     vm.blogs = response.data;
     vm.message = "getting data";
