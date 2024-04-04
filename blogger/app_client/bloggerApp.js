@@ -9,17 +9,17 @@ app.config(function($routeProvider) {
       controllerAs: 'vm'
     })
     .when('/blog-add', {
-      templateUrl: 'pages/blogAdd.html',
+      templateUrl: '/blog-add.html',
       controller: 'blogAddController',
       controllerAs: 'vm'
     })
     .when('/blog-list', {
-      templateUrl: '/blogList.html',
+      templateUrl: '/blog-list.html',
       controller: 'blogListController',
       controllerAs: 'vm'
     })
     .when('/blog-edit/:id', {
-      templateUrl: '/blogEdit.html',
+      templateUrl: '/blog-edit.html',
       controller: 'blogEditController',
       controllerAs: 'vm'
     })
@@ -77,15 +77,17 @@ app.controller('blogAddController', function BlogAddController($location) {
 
 /* Blog List Controller */
 app.controller('blogListController', function BlogListController($http, $scope) {
-    $scope.title = "Blog List";
-    getAllBlogs($http).success(function(data) {
-        $scope.blogs = data;
-        $scope.message = "Recieved Blog Data";
-    }).error(function(data, status) {
-        $scope.data = data || "Request failed";
-        $scope.status = status;
-    });
-});
+  var vm = this;
+  
+    vm.title = "Blog List";
+    getAllBlogs($http).then(function callback(response)
+    {
+    vm.blogs = response.data;
+    vm.message = "getting data";
+}, function(error)
+{
+  vm.message = "Error Listing Blogs"
+});});
 
 /* Blog Edit Controller */
 app.controller('blogEditController', function BlogEditController($location, $routeParams) {

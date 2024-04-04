@@ -1,6 +1,6 @@
 <html ng-app="bloggerApp">
     <title>Christians Blog</title>
-         <meta charset="utf-8">
+    <meta charset="utf-8">
 <head>
     <base href="/">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/css/style.css"/>
 </head>
+
 <body>
     <!-- Navigation -->  
    <div class="navbar">
@@ -23,14 +24,37 @@
 
    <!-- Home Page -->
  
-    <body ng-controller="myHomeController">
+    <body ng-controller="myHomeController" >
         <h1>Hello {{title}}</h1>
         <h4>{{ message }}</h4>
    </body>
- 
-
   <!-- Blog List Page-->
- <!-- Angular View Dynamic-->
+
+  <script type="text/ng-template" id=""></script>
+      
+      <div ng-repeat="book in vm.books">
+      <div class="card border-primary" style="width: 50%"> 
+            <div class="card-header">
+            </div>
+            <div class="card-body">
+                <h5 class ="card-title">{{blog.blogTitle}}</h5>
+            </div>
+            <div class="card-footer">
+                <div class = "col-sm">
+                   <ul class="nav justify-content-end nav-pills card-header-pills">
+                     <li class="nav-item">
+                         <a class="nav-link" href="/blog-edit/{{blog._id}}" <i class="fas fa-edit"</i></a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link" href="#/blog-delete/{{blog._id}}" <i class="fas fa-trash-alt"></i></a>
+                     </li>
+                   </ul>
+            </div>	
+            </div>
+      </div>
+      <p>               
+      </div>           
+    </div>
 </body>
 </html>
 
