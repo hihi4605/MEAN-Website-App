@@ -1,35 +1,36 @@
+const { $where } = require("../app_api/models/blog");
+
 var app = angular.module('bloggerApp', ['ngRoute'])           
 
 /* Route Provider */
 app.config(function($routeProvider) {
   $routeProvider
-    .when('/home', {
+    .when('/', {
       templateUrl: 'home.html',
-      controller: 'homeController',
+      controller: 'HomeController',
       controllerAs: 'vm'
     })
     .when('/blog-add', {
       templateUrl: 'blog-add.html',
-      controller: 'blogAddController',
+      controller: 'AddController',
       controllerAs: 'vm'
     })
     .when('/blog-list', {
       templateUrl: 'blog-list.html',
-      controller: 'blogListController',
+      controller: 'ListController',
       controllerAs: 'vm'
     })
     .when('/blog-edit/:id', {
       templateUrl: 'blog-edit.html',
-      controller: 'blogEditController',
+      controller: 'EditController',
       controllerAs: 'vm'
     })
     .otherwise({
       redirectTo: '/'
     })
-    
-});
-          
-      
+  $routeProvider.html5Mode({enabled: true, requireBase: false});  
+});         
+
 /*** REST Web API functions ***/
 
 function getBlogbyId($http, id) {
@@ -53,10 +54,11 @@ function updateBlogById($http, id, data) {
 }
 
 /*Home Controller */
-app.controller("myHomeController", function($scope) {
-  $scope.title = "Christians Website!";
-  $scope.message = "Welcome to Christians Website"
-});       
+app.controller("myHomeController", [function(){
+  var vm = this;
+  vm.title = 'Christians Website';
+  vm.message = 'Welcome to Christians Blog Site!';
+}]);
 
 /* Blog List Controller */
 app.controller('blogListController', function($http, $scope) {

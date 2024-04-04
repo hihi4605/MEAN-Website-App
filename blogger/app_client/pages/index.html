@@ -1,30 +1,32 @@
 <html ng-app="bloggerApp">
-    <title>Christians Blog</title>
-    <meta charset="utf-8">
 <head>
+    <meta charset="utf-8">
+    <title>Christians Blog</title>
+ 
     <base href="/">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script>
 
-    <script src="bloggerApp.js"></script>
     <link rel="stylesheet" href="/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/css/style.css"/>
 </head>
 
 <body>
-    <!-- Navigation -->  
-   <div class="navbar">
-       <a class="navbar-brand" href="/">My Blog</a>
-       <a class="navbar-brand" href="/blog-list">List Blogs</a>
-       <a class="navbar-brand" href="/blog-add">Add Blogs</a>
+    <div ng-controller="HomeController"></div>
+   <div class="navbar">'
+    
+ 
    </div>
    <!-- Home Page -->
-    <body ng-controller="myHomeController">
-        <h1>Hello {{title}}</h1>
-        <h4>{{ message }}</h4>
+   <script type="text/ng-template" id="/home.html">
+    <a class="navbar-brand" href="/">My Blog</a>
+    <a class="navbar-brand" href="/blog-list">List Blogs</a>
+    <a class="navbar-brand" href="/blog-add">Add Blogs</a>
+    <h1>{{ vm.title }}</h1>
+    <p>{{ vm.message }}</p>
+   </script>
    </body>
  
-<div ng-view="" class="ng-scope"></div>
+   <script src="bloggerApp.js"></script>
 </html>
 
