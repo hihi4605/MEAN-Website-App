@@ -26,7 +26,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'app_client'))); 
 app.use('/', routes);
 app.use('/api',routesApi);
-app.use('blogger/app_client/pages', indexRoute);
 
 // Added per Lab 5 - Angular
 app.use(function(req, res) {
