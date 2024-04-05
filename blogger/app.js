@@ -24,7 +24,6 @@ app.set('view engine', 'ejs');
 
   // This is the route for the web pages
 
-app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -32,7 +31,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'app_client')));
  
-app.use('/api',routesApi);
+app.use('/', routes);
+app.use('/api', routesApi);
 
 
  
