@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "nodemon": "^3.0.3",
-    "uuid": "^9.0.1"
-  }
-}

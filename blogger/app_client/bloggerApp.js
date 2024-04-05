@@ -5,7 +5,7 @@ var app = angular.module('bloggerApp', ['ngRoute']);
 app.config(function($routeProvider) {
   $routeProvider
       .when('/', {
-	      templateUrl: 'home.html',
+	      templateUrl: 'pages/home.html',
 		  controller: 'HomeController',
 		  controllerAs: 'vm'
 		  })
