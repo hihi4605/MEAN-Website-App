@@ -51,11 +51,11 @@ function updateBlogById($http, id, data) {
   return $http.put('/api/blogs/' + id, data);
 }
 
-/*Home Controller */
-app.controller("HomeController", [function(){
+//Controllers
+app.controller('HomeController', [function() {
   var vm = this;
-  vm.title = 'Christians Website';
-  vm.message = 'Welcome to Christians Blog Site!';
+  vm.title = 'Christians Blogsite';
+  vm.message = 'Blogsite for Web Development class';
 }]);
 
 /* Blog List Controller */
