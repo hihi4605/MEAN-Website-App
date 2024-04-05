@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html ng-app="bloggerApp">
 <head>
-    <base href="/">
+ 
     <meta charset="utf-8">
     <script src="/blogger/app_client/lib/angular.min.js"></script>
     <script src="/blogger/app_client/lib/angular-route.min.js"></script>
     <script src="/blogger/app_client/bloggerApp.js"></script>
     <link rel="stylesheet" href="/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/css/style.css"/>
+    <base href="/">
 </head>
 <body>
      <!-- Navigation -->  
@@ -21,8 +22,8 @@
 
     <!-- Home Page -->
   <div ng-controller="HomeController">
-    <h1>{{ title }}</h1>
-    <h4>{{ message }}</h4>
+    <h1>{{ vm.title }}</h1>
+    <h4>{{ vm.message }}</h4>
 </div>
 
   <!-- Angular View Dynamic-->
