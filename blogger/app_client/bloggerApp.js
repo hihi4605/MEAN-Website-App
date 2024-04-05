@@ -1,7 +1,6 @@
-var app = angular.module('bloggerApp', ['ngRoute'])           
+var app = angular.module("bloggerApp", ["ngRoute"]);
 
-/* Route Provider */
-app.config(function($routeProvider) {
+app.config(function($routeProvider, $locationProvider) {
   $routeProvider
     .when('/', {
       templateUrl: 'home.html',
@@ -25,9 +24,14 @@ app.config(function($routeProvider) {
     })
     .otherwise({
       redirectTo: '/'
-    })
-  $routeProvider.html5Mode({enabled: true, requireBase: false});  
-});         
+    });
+
+  $locationProvider.html5Mode({
+    enabled: true,
+    requireBase: false
+  });
+});
+      
 
 /*** REST Web API functions ***/
 

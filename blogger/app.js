@@ -1,6 +1,7 @@
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
+require('./app_api/models/db');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
@@ -21,7 +22,7 @@ app.set('view engine', 'ejs');
   // This is the route for the web pages
 var routes = require('./app_server/routes/index');
 var routesApi = require('./app_api/routes/index');
-require('./app_api/models/db');
+app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 app.use(logger('dev'));
 app.use(express.json());
