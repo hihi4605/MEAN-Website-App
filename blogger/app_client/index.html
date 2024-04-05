@@ -2,13 +2,13 @@
 <html ng-app="app">
 <head>
     <meta charset="utf-8">
+    <base href="/">
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/style.css"/>
     <script src="/blogger/app_client/lib/angular.min.js"></script>
     <script src="/blogger/app_client/lib/angular-route.min.js"></script>
-    <base href="/">
 </head>
 <body>
-  <link rel="stylesheet" href="../public/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="../public/css/style.css"/>
      <!-- Navigation -->  
     <div class="navbar">
         <a class="navbar-brand" href="#/">My Blog</a>
@@ -16,22 +16,17 @@
         <a class="navbar-brand" href="#/blog-add">Add Blogs</a>
     </div>
 
- 
-
     <!-- Home Page -->
     <script type="text/ng-template" id="/home.html">
-          <div class="navbar">
-              <h1>{{ vm.title }}</h1>
-              <p>{{ vm.message }}</p>
-              <hr>
-              <p>Click below to view/edit/delete blog posts</p>
-          </div>
-  </script>
+        <div class="navbar">
+            <h1>{{ vm.title }}</h1>
+            <p>{{ vm.message }}</p>
+            <hr>
+            <p>Click below to view/edit/delete blog posts</p>
+        </div>
+    </script>
 
-
-  <!-- Angular View Dynamic-->
+    <!-- Angular View Dynamic-->
+    <script src="app.js"></script>
 </body>
-<script src="app.js"></script>
-<link rel="stylesheet" href="/css/style.css"/>
-<link rel="stylesheet" href="/css/bootstrap.min.css" />
 </html>

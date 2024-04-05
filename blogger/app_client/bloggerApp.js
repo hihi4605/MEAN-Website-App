@@ -1,47 +1,38 @@
 var app = angular.module('app', ['ngRoute']);
 
 //Router provider
-app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
-  $stateProvider
-      .state('home', {
-          url: '/',
-          templateUrl: '/home.html',
-          controller: 'HomeController',
-          controllerAs: 'vm'
-      })
-      .state('blogList', {
-          url: '/blogList',
-          templateUrl: '/blogList.html',
-          controller: 'ListController',
-          controllerAs: 'vm'
-      })
-      .state('blogAdd', {
-          url: '/blogAdd',
-          templateUrl: '/blogAdd.html',
-          controller: 'AddController',
-          controllerAs: 'vm'
-      })
-      .state('blogEdit', {
-          url: '/blogEdit/:blogid',
-          templateUrl: '/blogEdit.html',
-          controller: 'EditController',
-          controllerAs: 'vm'
-      })
-      .state('blogDelete', {
-          url: '/blogDelete/:blogid',
-          templateUrl: '/blogDelete.html',
-          controller: 'DeleteController',
-          controllerAs: 'vm'
-      });
 
-  // Default fallback for unmatched urls
-  $urlRouterProvider.otherwise('/');
+var app = angular.module('bookApp', ['ngRoute']);
 
-  $locationProvider.html5Mode({
-      enabled: true,
-      requireBase: false
-  });
-}]);
+//*** Router Provider ***
+app.config(function($routeProvider) {
+  $routeProvider
+      .when('/', {
+	      templateUrl: 'home.html',
+		  controller: 'HomeController',
+		  controllerAs: 'vm'
+		  })
+
+      .when('/blog-list', {
+	      templateUrl: 'pages/blog-list.html',
+		  controller : 'ListController',
+		  controllerAs: 'vm'
+		  })
+
+      .when('/blog-add', {
+	      templateUrl: 'pages/blog-add.html',
+		  controller: 'AddController',
+		  controllerAs: 'vm'
+		  })
+        .when('/blog-edit/:id', {
+	      templateUrl: 'pages/blog-edit.html',
+		  controller: 'EditController',
+		  controllerAs: 'vm'
+		  })
+
+      .otherwise({redirectTo: '/'});
+    });
+         
 
       
 
@@ -66,12 +57,15 @@ function deleteBlog($http, id) {
 function updateBlogById($http, id, data) {
   return $http.put('/api/blogs/' + id, data);
 }
-//Controllers
-app.controller('HomeController', [function() {
+
+app.controller('HomeController', function HomeController() {
   var vm = this;
-  vm.title = 'Christian Blogsite';
-  vm.message = 'Blogsite for Web Development class';
-}]);
+  vm.pageHeader = {
+      title: "My Books"
+  };
+  vm.message = "Welcome to my book site!";
+});
+
 
 /* Blog List Controller */
 app.controller('blogListController', function($http, $scope) {
