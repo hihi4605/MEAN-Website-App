@@ -1,5 +1,5 @@
 
-var app = angular.module('bookApp', ['ngRoute']);
+var app = angular.module('bloggerApp', ['ngRoute']);
 
 
 //*** Router Provider ***
