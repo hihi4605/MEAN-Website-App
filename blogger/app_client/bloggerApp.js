@@ -11,13 +11,13 @@ app.config(function($routeProvider) {
 		  })
 
       .when('/blog-list', {
-	      templateUrl: 'pages/blog-list.html',
+	      templateUrl: 'blog-list.html',
 		  controller : 'ListController',
 		  controllerAs: 'vm'
 		  })
 
       .when('/blog-add', {
-	      templateUrl: 'pages/blog-add.html',
+	      templateUrl: 'blog-add.html',
 		  controller: 'AddController',
 		  controllerAs: 'vm'
 		  })
@@ -25,9 +25,8 @@ app.config(function($routeProvider) {
 	      templateUrl: 'pages/blog-edit.html',
 		  controller: 'EditController',
 		  controllerAs: 'vm'
-		  })
-
-      .otherwise({redirectTo: '/'});
+		  }).otherwise({redirectTo: '/'});
+      $routeProvider.otherwise({redirectTo: '/'});
     });
          
 
@@ -55,7 +54,7 @@ function updateBlogById($http, id, data) {
   return $http.put('/api/blogs/' + id, data);
 }
 
-app.controller('HomeController', function HomeController() {
+app.controller('HomeController', function () {
   var vm = this;
   vm.pageHeader = {
       title: "My Books"
