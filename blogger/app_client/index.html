@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html ng-app="bloggerApp">
+<link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/style.css">
+
 <head>
     <title>Christian Michels Blog Site</title>
-    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/style.css">
+
 </head>
-<body>
-    <nav class="navbar">
-        <a class="navbar-brand" href="/">My Blog</a>
+<body> 
+        <a class="navbar-brand" ref="/">My Blog</a>
         <a class="navbar-brand" href="/blog-list">List Blogs</a>
         <a class="navbar-brand" href="/blog-add">Add Blogs</a>
-    </nav>
+ 
 
     <div ng-controller="HomeController">
         <!-- Content controlled by HomeController goes here -->
