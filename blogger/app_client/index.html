@@ -6,98 +6,12 @@
     <base href="/">
     <script src= "./lib/angular.min.js"></script>
     <script src= "./lib/angular-route.min.js"></script>
-    <style> 
-        body {
- 
-            font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
-            background-color: black;
-            color:  rgb(255, 255, 255);
-            background-image: url("../public/css/pexels-adrien-olichon-2387793.jpg");
-            background-size: cover;
-          }
-          
-          a {
-            color: #ffffff;
-          }
-          
-          /* change the background color */
-          .navbar
-          {
-            padding: 0px;
-            background-color: #000000;
-          }
-        
-        h1 {
-            color: #ffffff;
-            font-size: 50px;
-            text-align: center;
-            margin-top: 100px;
-          }
-          
-          h2 {
-            color: #ffffff;
-            font-size: 30px;
-            text-align: center;
-            margin-top: 100px;
-          }
-          
-          h4 {
-            color: #ffffff;
-            font-size: 20px;
-            text-align: center;
-            margin-top: 50px;
-          }
-          
-          .container {
-            margin-top: 100px;
-            margin-bottom: 100px;
-          }
-          
-          .btn {
-            background-color: #7ca208;
-            color: #ffffff;
-            padding: 10px 20px;
-            margin-top: 20px;
-            border-radius: 5px;
-            text-align: center;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-          }
-          
-          .btn:hover {
-            background-color: #000000;
-          }
-          
-          .footer {
-            background-color: #000000;
-            color: #ffffff;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-          }
-          
-          .footer a
-          {
-            color: #7ca208;
-        }
-          a:hover
-          {
-            color: #7ca208;
-          }
-          
-          
-    </style>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
   </head>
 
   <body>
     <div ng-controller="HomeController"></div>
-    
-
-
     <nav class="navbar">
         <a class="navbar-brand" href="/">My Blog</a>
         <a class="navbar-brand" href="/blogList">List Blogs</a>
@@ -107,6 +21,5 @@
     <h1>Christian Michel Blog Site</h1>
 
     <p>Welcome to my really cool blog site!</p>
-    </script>
 
 </body>
