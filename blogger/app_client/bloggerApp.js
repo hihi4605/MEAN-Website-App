@@ -1,35 +1,62 @@
 
-var app = angular.module('bloggerApp', ['ngRoute']);
+var app = angular.module('bloggerApp', ['ui.router']);
 
 
-//*** Router Provider ***
-app.config(function($routeProvider) {
-  $routeProvider
-      .when('/', {
-	      templateUrl: 'home.html',
-		  controller: 'HomeController',
-		  controllerAs: 'vm'
-		  })
+//Router provider
+app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
+  $stateProvider
+      .state('home', {
+          url: '/',
+          templateUrl: '/home.html',
+          controller: 'HomeController',
+          controllerAs: 'vm'
+      })
+      .state('blogList', {
+          url: '/blogList',
+          templateUrl: '/blogList.html',
+          controller: 'ListController',
+          controllerAs: 'vm'
+      })
+      .state('blogAdd', {
+          url: '/blogAdd',
+          templateUrl: '/blogAdd.html',
+          controller: 'AddController',
+          controllerAs: 'vm'
+      })
+      .state('blogEdit', {
+          url: '/blogEdit/:blogid',
+          templateUrl: '/blogEdit.html',
+          controller: 'EditController',
+          controllerAs: 'vm'
+      })
+      .state('blogDelete', {
+          url: '/blogDelete/:blogid',
+          templateUrl: '/blogDelete.html',
+          controller: 'DeleteController',
+          controllerAs: 'vm'
+      })
+      .state('register', {
+          url: '/register',
+          templateUrl: '/register.html',
+          controller: 'RegisterController',
+          controllerAs: 'vm'
+      })
+      .state('login', {
+          url: '/login',
+          templateUrl: '/login.html',
+          controller: 'LoginController',
+          controllerAs: 'vm'
+      });
 
-      .when('/blog-list', {
-	      templateUrl: 'blog-list.html',
-		  controller : 'ListController',
-		  controllerAs: 'vm'
-		  })
+  // Default fallback for unmatched urls
+  $urlRouterProvider.otherwise('/');
 
-      .when('/blog-add', {
-	      templateUrl: 'blog-add.html',
-		  controller: 'AddController',
-		  controllerAs: 'vm'
-		  })
-        .when('/blog-edit/:id', {
-	      templateUrl: 'pages/blog-edit.html',
-		  controller: 'EditController',
-		  controllerAs: 'vm'
-		  }).otherwise({redirectTo: '/'})
-   
-    });
-         
+  $locationProvider.html5Mode({
+      enabled: true,
+      requireBase: false
+  });
+}]);
+       
 
       
 
@@ -55,13 +82,13 @@ function updateBlogById($http, id, data) {
   return $http.put('/api/blogs/' + id, data);
 }
 
-app.controller('HomeController', function HomeController() {
+app.controller('HomeController', [function HomeController() {
   var vm = this;
   vm.pageHeader = {
       title: "My Books"
   };
   vm.message = "Welcome to my book site!";
-});
+}]);
 
 
 /* Blog List Controller */

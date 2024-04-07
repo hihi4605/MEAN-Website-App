@@ -1,18 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="bloggerApp" class="ng-scope">
+    <style @charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}></style>
   <head>
     <meta charset="utf-8">
     <title>Christian Michels Blog Site</title>
-    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <base href="/">
+    <script src= "./lib/angular.min.js"></script>
+    <script src= "./lib/angular-route.min.js"></script>
+    <link rel="stylesheet" href="/css/stylesheets/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/style.css"/>
   </head>
+
   <body>
+    <div ng-controller="HomeController"></div>
+    <script type="text/ng-template" id="/home.html">
+
     <nav class="navbar">
         <a class="navbar-brand" href="/">My Blog</a>
         <a class="navbar-brand" href="/blog-list">List Blogs</a>
         <a class="navbar-brand" href="/blog-add">Add Blogs</a>
     </nav>
-        
+
     <h1>Christian Michel Blog Site</h1>
+
     <p>Welcome to my really cool blog site!</p>
-  </body>
+    </script>
+
+</body>
