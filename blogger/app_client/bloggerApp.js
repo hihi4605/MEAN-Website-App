@@ -1,12 +1,12 @@
 
-var app = angular.module('bookApp', ['ngRoute']);
+var app = angular.module('bloggerApp', ['ngRoute']);
 
 
 //*** Router Provider ***
 app.config(function($routeProvider) {
   $routeProvider
       .when('/', {
-	      templateUrl: 'pages/home.html',
+	      templateUrl: 'home.html',
 		  controller: 'HomeController',
 		  controllerAs: 'vm'
 		  })
@@ -55,7 +55,7 @@ function updateBlogById($http, id, data) {
   return $http.put('/api/blogs/' + id, data);
 }
 
-app.controller('HomeController', function () {
+app.controller('HomeController', function HomeController() {
   var vm = this;
   vm.pageHeader = {
       title: "My Books"

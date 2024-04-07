@@ -1,18 +1,25 @@
 <!DOCTYPE html>
 <html ng-app="bloggerApp">
-<link rel="stylesheet" href="/css/bootstrap.min.css" />
+<head>
+    <title>Christian Michels Blog Site</title>
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a class="navbar-brand" href="/">My Blog</a>
+        <a class="navbar-brand" href="/blog-list">List Blogs</a>
+        <a class="navbar-brand" href="/blog-add">Add Blogs</a>
+    </nav>
 
-<html>
-  <link rel="stylesheet" href="/css/style.css"/>
+    <div ng-controller="HomeController">
+        <!-- Content controlled by HomeController goes here -->
+    </div>
 
-  <nav class="navbar">
-      <a class="navbar-brand" href="/">My Blog</a>
-      <a class="navbar-brand" href="/blog-list">List Blogs</a>
-      <a class="navbar-brand" href="/blog-add">Add Blogs</a>
-  </nav>
-     
-  <title>Christian Michels Blog Site</title>
-  <h1>Christian Michel Blog Site</h1>
-  <p>Welcome to my really cool blog site!</p>
+    <h1>Christian Michel Blog Site</h1>
+    <p>Welcome to my really cool blog site!</p>
 
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Include any other JavaScript files here -->
+</body>
 </html>
