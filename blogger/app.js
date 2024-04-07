@@ -16,12 +16,6 @@ app.set('view engine', 'ejs');
 var routes = require('./app_server/routes/index');  // This is the route for the web pages
 var routesApi = require('./app_api/routes/index');
 
-
-// Added per Lab 5 - Angular
-app.use(function(req, res) {
-  res.sendFile(path.join(__dirname, 'app_client', 'index.html'));
-});                
-                
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 app.use(logger('dev'));
 app.use(express.json());
