@@ -22,7 +22,6 @@ app.use(function(req, res) {
   res.sendFile(path.join(__dirname, 'app_client', 'index.html'));
 });                
                 
-app.use(express.static(path.join(__dirname, 'app_client')));          
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 app.use(logger('dev'));
 app.use(express.json());

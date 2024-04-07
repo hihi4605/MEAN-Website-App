@@ -26,7 +26,7 @@ app.config(function($routeProvider) {
 	      templateUrl: 'pages/blog-edit.html',
 		  controller: 'EditController',
 		  controllerAs: 'vm'
-		  }).otherwise({redirectTo: '/'});
+		  }).otherwise({redirectTo: '/'})
    
     });
          
