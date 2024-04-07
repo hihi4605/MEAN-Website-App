@@ -1,5 +1,5 @@
 
-var app = angular.module('bloggerApp', ['ui.router']);
+var app = angular.module('bloggerApp', ['ngRoute', 'ngSanitize', 'ui.router', 'ngResource']);
 
 
 //Router provider
