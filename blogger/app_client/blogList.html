@@ -10,38 +10,24 @@
     
  
 </head>
-<body ng-controller="homeController">
+<body ng-controller="blogListController" ng-init="vm.getBlogs()">
     <nav class="navbar">
         <a class="navbar-brand" href="/">My Blog</a>
         <a class="navbar-brand" href="/blogList">List Blogs</a>
         <a class="navbar-brand" href="/blog-add">Add Blogs</a>
     </nav>
   
-    <h1>{{ title }}</h1>
+    <h1>{{ titlevm.title }}</h1>
     <p>{{ message }}</p>
-
-    <script src="bloggerApp.js"></script>
-</body>
-  
- 
-    <script type="text/ng-template" id="/blogList.html">
-        <h1> vm.title </h1>
-        <small> </small>
-        <div class="row">
-            <div class="col-md-4" ng-repeat="blogs in vm.blogs">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ blog.title }}</h5>
-                        <p class="card-text">{{ blog.content }}</p>
-                        </div>
-                </div>
+    <div class="row">
+        <div class="col-md-4" ng-repeat="blog in $scope.blogs">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ blog.title }}</h5>
+                    <p class="card-text">{{ blog.content }}</p>
+                    </div>
             </div>
         </div>
-    </script>
-
-  
- 
-    <script src="bloggerApp.js"></script>
-  
- 
+    </div>
+</body>
 </html>
