@@ -32,7 +32,7 @@ app.config(function($routeProvider) {
 app.config = angular.module('bloggerApp').config(['$routeProvider', config]);
 
 /* Home Controller */
-app.controllers('homeController', function HomeController() {
+app.controller('homeController', function HomeController() {
     var vm = this;
     vm.pageHeader = {
         title: 'A to Z blogs',
@@ -61,7 +61,7 @@ function addBlog($http, data) {
 
 
 /* Blog Add Controller */
-app.controllers('blogAddController', function BlogAddController($location) {
+app.controller('blogAddController', function BlogAddController($location) {
     var vm = this;
     vm.pageHeader = {
         title: 'Add Blog'
@@ -75,7 +75,7 @@ app.controllers('blogAddController', function BlogAddController($location) {
 });
 
 /* Blog List Controller */
-app.controllers('blogListController', function BlogListController() {
+app.controller('blogListController', function BlogListController() {
     var vm = this;
     vm.pageHeader = {
         title: 'Blog List'
@@ -84,7 +84,7 @@ app.controllers('blogListController', function BlogListController() {
 });
 
 /* Blog Edit Controller */
-app.controllers('blogEditController', function BlogEditController($location, $routeParams) {
+app.controller('blogEditController', function BlogEditController($location, $routeParams) {
     var vm = this;
     vm.pageHeader = {
         title: 'Edit Blog'
