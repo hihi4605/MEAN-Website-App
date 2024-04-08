@@ -14,7 +14,7 @@ app.config(function($routeProvider) {
         controller: 'blogAddController',
         controllerAs: 'scope'
       })
-      .when('/blog-list', {
+      .when('/blogList', {
         templateUrl: 'blogList.html',
         controller: 'blogListController',
         controllerAs: 'scope'
