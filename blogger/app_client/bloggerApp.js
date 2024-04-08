@@ -55,26 +55,35 @@ app.controller('HomeController', [function() {
 }]);
 
 
-app.controller('HomeController', [function() {
-    var vm = this;
-    vm.title = 'Christian Michels Blogsite';
-    vm.message = 'Blogsite for Web Development class';
+//Controller for listing blogs
+app.controller('ListController', ['BlogService','authentication', 
+    function ListController(BlogService, authentication) {
+        var vm = this;
+        vm.title = 'Blog List';
+
+        vm.isLoggedIn = function() {
+            return authentication.isLoggedIn();
+        };
+
+        vm.logout = function() {
+            authentication.logout();
+        };
+
+        vm.currentUser = function() {
+            return authentication.currentUser();
+        };
+
+        console.log('Is Logged In:', vm.isLoggedIn());
+        console.log('Current User:', vm.currentUser());
+
+        BlogService.listBlogs().then(function(response) {
+            vm.blogs = response.data;
+            vm.message = "Blogs found";
+        }, function(error) {
+            vm.message = 'Error fetching blog ';
+        });
 }]);
 
-//Controller for listing blogs
-app.controller('ListController',
-    function ListController($http, $scope) {
-        $scope.blogs = [];
-        $scope.title = "Blog List";
-
-        getAllBlogs($http)
-            .then(function(response) {
-                $scope.blogs = response.data;
-            })
-            .catch(function(error) {
-                console.error('Error retrieving blogs:', error);
-            });
-});
 
 
 
