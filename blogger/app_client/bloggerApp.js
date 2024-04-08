@@ -1,56 +1,60 @@
-angular.module('bloggerApp', ['ngRoute', 'ngSanitize', 'ui.router', 'ngResource']);
+var app = angular.module('bloggerApp', ['ngRoute', 'ngSanitize', 'ui.bootstrap', 'ngResource']);                
 
+console.log('bloggerApp.js loaded');
+/* Route Provider */
+app.config(function($routeProvider) {
+  $routeProvider
+    .when('/', {
+      templateUrl: 'home.html',
+      controller: 'homeController',
+      controllerAs: 'vm'
+    })
+    .when('/blog-add', {
+      templateUrl: 'blogAdd.html',
+      controller: 'blogAddController',
+      controllerAs: 'vm'
+    })
+    .when('/blog-list', {
+      templateUrl: 'blogList.html',
+      controller: 'blogListController',
+      controllerAs: 'vm'
+    })
+    .when('/blog-edit/:id', {
+      templateUrl: 'blogEdit.html',
+      controller: 'blogEditController',
+      controllerAs: 'vm'
+    })
+    .otherwise({
+      redirectTo: '/'
+    });
+});
 
-      
+/* Home Controller */
+app.controllers('homeController', function HomeController() {
+    var vm = this;
+    vm.pageHeader = {
+        title: 'A to Z blogs',
+        strapline: 'A to Z blogs'
+    };
+});
 
-/*** REST Web API functions ***/
+//*** REST Web API functions ***/
 
-function getBlogbyId($http, id) {
-  return $http.get('/api/blogs/' + id);
-}
-
-function listBlogs($http) {
+function getAllBlogs($http) {
   return $http.get('/api/blogs');
 }
 
-function addBlog($http, data) {
-  return $http.post('/api/blogs', data);
-}
-
-function deleteBlog($http, id) {
-  return $http.delete('/api/blogs/' + id);
+function getBlogbyId($http, id) {
+    return $http.get('/api/blogs/' + id);
 }
 
 function updateBlogById($http, id, data) {
-  return $http.put('/api/blogs/' + id, data);
+    return $http.put('/api/blogs/' + id, data);
 }
 
-app.controller('HomeController', [function HomeController() {
-  var vm = this;
-  vm.pageHeader = {
-      title: "My Books"
-  };
-  vm.message = "Welcome to my book site!";
-}]);
-
-
-/* Blog List Controller */
-app.controller('blogListController', function($http, $scope) {
-  var vm = this;
-  
-    vm.title = "Blog List";
-    listBlogs($http).then(function callback(response)
-    {
-    vm.blogs = response.data;
-    vm.message = "getting data";
-}, function(error)
-{
-  vm.message = "Error Listing Blogs"
-  console.log("Controller Accessed")
-});});
 
 /* Blog Add Controller */
-app.controller('blogAddController', function BlogAddController($location) {
+app.controllers('blogAddController', function BlogAddController($location) {
     var vm = this;
     vm.pageHeader = {
         title: 'Add Blog'
@@ -63,8 +67,17 @@ app.controller('blogAddController', function BlogAddController($location) {
     };
 });
 
+/* Blog List Controller */
+app.controllers('blogListController', function BlogListController() {
+    var vm = this;
+    vm.pageHeader = {
+        title: 'Blog List'
+    };
+    vm.blogs = getBlogs().query();
+});
+
 /* Blog Edit Controller */
-app.controller('blogEditController', function BlogEditController($location, $routeParams) {
+app.controllers('blogEditController', function BlogEditController($location, $routeParams) {
     var vm = this;
     vm.pageHeader = {
         title: 'Edit Blog'
