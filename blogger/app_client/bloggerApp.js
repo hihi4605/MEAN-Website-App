@@ -61,16 +61,11 @@ app.controller('ListController', function ListController($http) {
     vm.pageHeader = {
         title: 'Book List'
     };
-
     getAllBlogs($http)
         .then(function(response) {
             vm.books = response.data;
             vm.message = "Blog data found!";
         })
-        .catch(function(error) {
-            vm.message = "Could not get list of Blogs";
-        });
-    console.log(vm.books);
 });
 
 

@@ -31,13 +31,12 @@
     <body ng-controller="BlogListController">
     <script type="text/ng-template" id="/blogList.html">
         <h1> {{ vm.pageHeader.title }}</h1>
-        <small> </small>
         <div class="row">
             <div class="col-md-4" ng-repeat="blogs in vm.blogs">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">{{ blogs.title }}</h5>
-                        <p class="card-text">{{ blogs.content }}</p>
+                        <h5 class="card-title">{{ vm.books }}</h5>
+                        <p class="card-text">{{ vm.books }}</p>
                         </div>
                 </div>
             </div>
