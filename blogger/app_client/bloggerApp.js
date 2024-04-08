@@ -55,34 +55,22 @@ app.controller('HomeController', [function() {
 }]);
 
 
-//Controller for listing blogs
-app.controller('ListController', ['BlogService','authentication', 
-    function ListController(BlogService, authentication) {
-        var vm = this;
-        vm.title = 'Blog List';
-
-        vm.isLoggedIn = function() {
-            return authentication.isLoggedIn();
-        };
-
-        vm.logout = function() {
-            authentication.logout();
-        };
-
-        vm.currentUser = function() {
-            return authentication.currentUser();
-        };
-
-        console.log('Is Logged In:', vm.isLoggedIn());
-        console.log('Current User:', vm.currentUser());
-
-        BlogService.listBlogs().then(function(response) {
-            vm.blogs = response.data;
-            vm.message = "Blogs found";
-        }, function(error) {
-            vm.message = 'Error fetching blog ';
-        });
-}]);
+//*** Controllers ***
+app.controller('ListController', function ListController($http) {
+    var vm = this;
+    vm.pageHeader = {
+        title: 'Book List'
+    };
+    
+    getAllBlogs($http)
+      .success(function(data) {
+        vm.books = data;
+        vm.message = "Blog data found!";
+      })
+      .error(function (e) {
+        vm.message = "Could not get list of Blogs";
+      });
+});
 
 
 
