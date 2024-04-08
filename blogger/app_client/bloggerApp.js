@@ -50,8 +50,8 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', functio
 //Controllers
 app.controller('HomeController', [function() {
     var vm = this;
-    vm.title = 'Christian Blogsite';
-    vm.message = 'Blogsite for Web Development class';
+    vm.title = 'Christians Blogsite';
+    vm.message = 'Welcome to my blogsite!';
 }]);
 
 
