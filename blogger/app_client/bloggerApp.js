@@ -43,6 +43,21 @@ app.controller('homeController', function () {
     vm.message = 'Welcome to my blog';
 });
 
+//Controller for listing blogs
+app.controller('ListController',
+    function ListController(blogs, authentication) {
+        var vm = this;
+        vm.title = 'Blog List';
+
+        blogs.listBlogs().then(function(response) {
+            vm.blogs = response.data;
+            vm.message = "Blogs found";
+        }, function(error) {
+            vm.message = 'Error fetching blog ';
+        });
+});
+
+
 //*** REST Web API functions ***/
 
 function getAllBlogs($http) {

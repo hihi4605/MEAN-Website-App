@@ -16,11 +16,25 @@
         <a class="navbar-brand" href="/blog-list">List Blogs</a>
         <a class="navbar-brand" href="/blog-add">Add Blogs</a>
     </nav>
+    <div ui-view></div>
     <script type="text/ng-template" id="/home.html">
-    <div class="container">
+   
         <h1> {{ vm.message }}</h1>
         <small> {{ vm.pageHeader.title }} </small>
-    </div>
+    </script>
+    <script type="text/ng-template" id="/blogList.html">
+        <h1> {{ vm.message }}</h1>
+        <small> {{ vm.pageHeader.title }} </small>
+        <div class="row">
+            <div class="col-md-4" ng-repeat="blogs in vm.blogs">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ blog.title }}</h5>
+                        <p class="card-text">{{ blog.content }}</p>
+                        </div>
+                </div>
+            </div>
+        </div>
     </script>
 
     <!-- Include AngularJS libraries -->
