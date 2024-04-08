@@ -23,8 +23,6 @@ app.config(['$routeProvider', function($routeProvider) {
         controller: 'blogEditController',
         controllerAs: 'vm'
       })
-
-      $routeProvider.otherwise({redirectTo: '/'});
  
 
   }]);
