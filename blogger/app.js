@@ -33,6 +33,12 @@ app.use(function(req, res) {
  
   res.sendFile(path.join(__dirname, 'app_client', 'index.html'));
 });
+
+
+app.use(function(req, res) {
+ 
+  res.sendFile(path.join(__dirname, 'app_client', 'blogList.html'));
+});
      
 console.log('app.js loaded');
 // catch 404 and forward to error handler
