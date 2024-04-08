@@ -23,12 +23,12 @@ app.config(function($routeProvider) {
         templateUrl: 'blogEdit.html',
         controller: 'blogEditController',
         controllerAs: 'vm'
-      })
-      .otherwise({
-        redirectTo: '/'
-     
       });
       $routeProvider.otherwise({redirectTo: '/'});
+      $routeProvider.html5Mode({
+        enabled: true,
+        requireBase: false
+    });
 
   });
   
