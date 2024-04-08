@@ -13,14 +13,15 @@
 <body ng-controller="HomeController">
     <div ui-view></div>
     <script type="text/ng-template" id="/home.html">
-    <nav class="navbar">
-        <a class="navbar-brand" href="/">My Blog</a>
-        <a class="navbar-brand" href="/blogList">List Blogs</a>
-        <a class="navbar-brand" href="/blog-add">Add Blogs</a>
-    </nav>
-  
-    <h1>{{ title }}</h1>
-    <p>{{ message }}</p>
+        <div class="container mt-5">
+            <div class="jumbotron">
+                <h1 class="display-4">{{ vm.title }}</h1>
+                <p class="lead">{{ vm.message }}</p>
+                <hr class="my-4">
+                <p>Click below to view/edit/delete blog posts</p>
+                <a class="btn btn-primary btn-lg" ui-sref="blogList" role="button">View Blogs</a>
+            </div>
+        </div>
 </script>
     <script src="bloggerApp.js"></script>
 </body>
