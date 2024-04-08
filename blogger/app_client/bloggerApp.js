@@ -34,13 +34,10 @@ app.config(function($routeProvider) {
   
  
 
-/* Home Controller */
-app.controller('homeController', ['$scope', function($scope) {
-    var vm = this;
-    $scope.message = 'Welcome to my Blogger App';
-    vm.title = 'Blogger App';
-}]);
-
+  app.controller('homeController', function($scope) {
+    $scope.message = "Hello from AngularJS!";
+    $scope.title = "AngularJS Test";
+});
 
 //Controller for listing blogs
 app.controller('ListController',
