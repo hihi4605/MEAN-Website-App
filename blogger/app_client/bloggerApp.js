@@ -3,7 +3,7 @@ var app = angular.module('bloggerApp', ['ngRoute']);
 /* Route Provider */
 app.config(['$routeProvider', function($routeProvider) {
     $routeProvider
-      .when('/', {
+      .when('//', {
         templateUrl: 'home.html',
         controller: 'homeController',
         controllerAs: 'scope'
