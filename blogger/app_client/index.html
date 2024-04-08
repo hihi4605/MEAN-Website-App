@@ -16,16 +16,14 @@
         <a class="navbar-brand" href="/blog-list">List Blogs</a>
         <a class="navbar-brand" href="/blog-add">Add Blogs</a>
     </nav>
-    <div>
-    <script type="ng-container" id="/home.html">
-   
-        <h1> {{ vm.message }}</h1>
-        <small> {{ vm.pageHeader.title }} </small>
-    </script>
+    <div ng-controller="homeController">
+        <h1> {{ message }}</h1>
+        <small> {{ vm.title }} </small>
+  
     </div>
     <script type="text/ng-template" id="/blogList.html">
-        <h1> {{ vm.message }}</h1>
-        <small> {{ vm.pageHeader.title }} </small>
+        <h1> {{ message }}</h1>
+        <small> {{ vm.title }} </small>
         <div class="row">
             <div class="col-md-4" ng-repeat="blogs in vm.blogs">
                 <div class="card">

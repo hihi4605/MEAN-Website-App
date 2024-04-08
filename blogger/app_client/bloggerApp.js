@@ -29,20 +29,18 @@ app.config(function($routeProvider) {
      
       });
       $routeProvider.html5Mode(true);
-      
+
   });
   
  
 
 /* Home Controller */
-app.controller('homeController', function () {
+app.controller('homeController', ['$scope', function($scope) {
     var vm = this;
-    vm.pageHeader = {
-        title: 'A to Z blogs',
-        strapline: 'A to Z blogs'
-    };
-    vm.message = 'Welcome to my blog';
-});
+    $scope.message = 'Welcome to my Blogger App';
+    vm.title = 'Blogger App';
+}]);
+
 
 //Controller for listing blogs
 app.controller('ListController',
