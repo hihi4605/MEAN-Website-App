@@ -12,19 +12,18 @@
 </head>
 <body ng-controller="homeController">
     <nav class="navbar">
-        <a class="navbar-brand" href="">My Blog</a>
-        <a class="navbar-brand" href="blog-list">List Blogs</a>
-        <a class="navbar-brand" href="blog-add">Add Blogs</a>
+        <a class="navbar-brand" href="/">My Blog</a>
+        <a class="navbar-brand" href="/blog-list">List Blogs</a>
+        <a class="navbar-brand" href="/blog-add">Add Blogs</a>
     </nav>
   
         <h1> {{ scope.message }}</h1>
         <small> {{ vm.title }} </small>
   
  
-    <script type="text/ng-template" id="blogList.html">
+    <script type="text/ng-template" id="/blogList.html">
         <h1> {{ vm.title }}</h1>
         <small> {{ vm.title }} </small>
-        <h2>Blog List</h2>
         <div class="row">
             <div class="col-md-4" ng-repeat="blogs in vm.blogs">
                 <div class="card">
