@@ -1,4 +1,4 @@
-angular.module('bloggerApp', ['ngRoute', 'ngSanitize', 'ui.bootstrap', 'ngResource']);              
+var app = angular.module('bloggerApp', ['ngRoute', 'ngSanitize', 'ui.bootstrap', 'ngResource']);              
 
  
 /* Route Provider */
@@ -29,7 +29,7 @@ function config($routeProvider) {
     });
 };
 
-angular.module('bloggerApp').config(['$routeProvider', config]);
+app.config = angular.module('bloggerApp').config(['$routeProvider', config]);
 
 /* Home Controller */
 app.controllers('homeController', function HomeController() {
