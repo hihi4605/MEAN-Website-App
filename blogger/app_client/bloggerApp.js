@@ -2,33 +2,33 @@ var app = angular.module('bloggerApp', ['ngRoute', 'ngSanitize', 'ui.bootstrap',
 
  
 /* Route Provider */
-function config($routeProvider) {
-  $routeProvider
-    .when('/', {
-      templateUrl: 'home.html',
-      controller: 'homeController',
-      controllerAs: 'vm'
-    })
-    .when('/blog-add', {
-      templateUrl: 'blogAdd.html',
-      controller: 'blogAddController',
-      controllerAs: 'vm'
-    })
-    .when('/blog-list', {
-      templateUrl: 'blogList.html',
-      controller: 'blogListController',
-      controllerAs: 'vm'
-    })
-    .when('/blog-edit/:id', {
-      templateUrl: 'blogEdit.html',
-      controller: 'blogEditController',
-      controllerAs: 'vm'
-    })
-    .otherwise({
-      redirectTo: '/'
-    });
-};
-
+app.config(function($routeProvider) {
+    $routeProvider
+      .when('/', {
+        templateUrl: 'home.html',
+        controller: 'homeController',
+        controllerAs: 'vm'
+      })
+      .when('/blog-add', {
+        templateUrl: 'blogAdd.html',
+        controller: 'blogAddController',
+        controllerAs: 'vm'
+      })
+      .when('/blog-list', {
+        templateUrl: 'blogList.html',
+        controller: 'blogListController',
+        controllerAs: 'vm'
+      })
+      .when('/blog-edit/:id', {
+        templateUrl: 'blogEdit.html',
+        controller: 'blogEditController',
+        controllerAs: 'vm'
+      })
+      .otherwise({
+        redirectTo: '/'
+      });
+  });
+  
 app.config = angular.module('bloggerApp').config(['$routeProvider', config]);
 
 /* Home Controller */
