@@ -24,12 +24,13 @@
             </div>
         </div>
 </script>
-    <script src="bloggerApp.js"></script>
+ </body>
 
   
- 
+    <!-- Blog List -->
+    <body ng-controller="BlogListController">
     <script type="text/ng-template" id="/blogList.html">
-        <h1> {{ vm.title }}</h1>
+        <h1> {{ vm.pageHeader.title }}</h1>
         <small> </small>
         <div class="row">
             <div class="col-md-4" ng-repeat="blogs in vm.blogs">
@@ -42,6 +43,7 @@
             </div>
         </div>
     </script>
+</body>
 
   
  
