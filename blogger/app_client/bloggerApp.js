@@ -76,14 +76,14 @@ app.controller('ListController', function ListController($http) {
 
 
 /* Blog Add Controller */
-app.controller('blogAddController', function BlogAddController($location) {
+app.controller('AddController', function BlogAddController($location) {
     var vm = this;
     vm.pageHeader = {
         title: 'Add Blog'
     };
     vm.blog = {};
     vm.save = function() {
-        getBlogs().save(vm.blog, function() {
+        addBlog().save(vm.blog, function() {
             $location.path('/blog-list');
         });
     };
