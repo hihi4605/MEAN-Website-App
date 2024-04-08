@@ -1,8 +1,8 @@
-var app = angular.module('bloggerApp', ['ngRoute', 'ngSanitize', 'ui.bootstrap', 'ngResource']);                
+angular.module('bloggerApp', ['ngRoute', 'ngSanitize', 'ui.bootstrap', 'ngResource']).controller('homeController', HomeController);                
 
 console.log('bloggerApp.js loaded');
 /* Route Provider */
-app.config(function($routeProvider) {
+function config($routeProvider) {
   $routeProvider
     .when('/', {
       templateUrl: 'home.html',
@@ -27,7 +27,7 @@ app.config(function($routeProvider) {
     .otherwise({
       redirectTo: '/'
     });
-});
+};
 
 /* Home Controller */
 app.controllers('homeController', function HomeController() {

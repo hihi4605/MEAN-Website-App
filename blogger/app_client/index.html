@@ -31,23 +31,6 @@
     <script src="/blogger/app_client/lib/angular.min.js"></script>
     <script src="/blogger/app_client/lib/angular-route.min.js"></script>
 
-    <script>
-        // Define AngularJS module
-        var app = angular.module('bloggerApp', []);
-
-        // Define AngularJS controller
-        app.controller('MainController', function($scope) {
-            // Initialize scope variables
-            $scope.title = 'Add Blog';
-            $scope.submitBlog = function() {
-                // You can implement the functionality to send the blog data to the server here
-                console.log('Blog Title:', $scope.blogTitle);
-                console.log('Blog Entry:', $scope.blogEntry);
-                // After sending the data, you can redirect the user if needed
-                // For example:
-                // window.location.href = '/blog-list';
-            };
-        });
-    </script>
+  
 </body>
 </html>
