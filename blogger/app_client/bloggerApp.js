@@ -29,7 +29,7 @@ app.config(function($routeProvider) {
       });
   });
   
-app.config = angular.module('bloggerApp').config(['$routeProvider', config]);
+ 
 
 /* Home Controller */
 app.controller('homeController', function HomeController() {
