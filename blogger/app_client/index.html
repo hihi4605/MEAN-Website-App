@@ -15,18 +15,8 @@
     </nav>
     <script type="text/ng-template" id="/home.html">
     <div class="container">
-        <h1>Add Blog</h1>
-        <form ng-submit="addBlog()">
-            <div class="form-group">
-                <label for="blogTitle">Blog Title</label>
-                <input type="text" class="form-control" ng-model="blogTitle" placeholder="Enter title" required>
-            </div>
-            <div class="form-group">
-                <label for="blogEntry">Blog Text</label>
-                <textarea class="form-control" ng-model="blogEntry" placeholder="Enter content"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+        <h1> {{ vm.message }}</h1>
+        <small> {{ vm.pageHeader.title }} </small>
     </div>
     </script>
 

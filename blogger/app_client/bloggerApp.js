@@ -1,6 +1,6 @@
-angular.module('bloggerApp', ['ngRoute', 'ngSanitize', 'ui.bootstrap', 'ngResource']).controller('homeController', HomeController);                
+angular.module('bloggerApp', ['ngRoute', 'ngSanitize', 'ui.bootstrap', 'ngResource']);              
 
-console.log('bloggerApp.js loaded');
+ 
 /* Route Provider */
 function config($routeProvider) {
   $routeProvider
@@ -29,6 +29,8 @@ function config($routeProvider) {
     });
 };
 
+angular.module('bloggerApp').config(['$routeProvider', config]);
+
 /* Home Controller */
 app.controllers('homeController', function HomeController() {
     var vm = this;
@@ -36,6 +38,7 @@ app.controllers('homeController', function HomeController() {
         title: 'A to Z blogs',
         strapline: 'A to Z blogs'
     };
+    vm.message = 'Welcome to my blog';
 });
 
 //*** REST Web API functions ***/
