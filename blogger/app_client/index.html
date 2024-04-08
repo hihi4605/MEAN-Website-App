@@ -26,28 +26,29 @@
 </script>
  </body>
 
-  <body>
- <script type="text/ng-template" id="blogList.html">
-    <h1>{{ vm.pageHeader.title }}</h1>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4" ng-repeat="blog in vm.books">
-                <div class="blog-box">
-                    <h5 class="card-title">{{ blog.blogTitle }}</h5>
-                    <p>{{ blog.blogEntry }}</p>
-                    <div class="card-footer d-flex justify-content-between align-items-center">
-                        <span class="posted-date">Created On {{ blog.createdOn | date }}</span>
-                        <div>
-                            <a href="#/blog-edit/{{blog._id}}" class="btn btn-primary">Edit</a>
-                            <a href="#/blog-delete/{{blog._id}}" class="btn btn-danger">Delete</a>
+  
+    <!-- Blog List -->
+    <body ng-controller="BlogListController">
+        <script type="text/ng-template" id="/blogList.html">
+            <h1>{{ vm.pageHeader.title }}</h1>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4" ng-repeat="blog in vm.books">
+                        <div class="blog-box">
+                            <h5 class="card-title">{{ blog.blogTitle }}</h5>
+                            <p>{{ blog.blogEntry }}</p>
+                            <div class="card-footer d-flex justify-content-between align-items-center">
+                                <span class="posted-date">Created On {{ blog.createdOn | date }}</span>
+                                <div>
+                                    <a href="/blog-edit/{{blog._id}}" class="btn btn-primary">Edit</a>
+                                    <a href="/blog-delete/{{blog._id}}" class="btn btn-danger">Delete</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</script>
-</body>
+        </script>
 </body>
 
   
