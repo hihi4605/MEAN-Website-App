@@ -52,6 +52,10 @@ function updateBlogById($http, id, data) {
     return $http.put('/api/blogs/' + id, data);
 }
 
+function addBlog($http, data) {
+    return $http.post('/api/blogs', data);
+}
+
 
 /* Blog Add Controller */
 app.controllers('blogAddController', function BlogAddController($location) {
