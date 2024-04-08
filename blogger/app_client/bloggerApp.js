@@ -70,6 +70,7 @@ app.controller('ListController', function ListController($http) {
         .catch(function(error) {
             vm.message = "Could not get list of Blogs";
         });
+    console.log(vm.books);
 });
 
 
