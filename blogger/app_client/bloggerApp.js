@@ -7,17 +7,17 @@ app.config(function($routeProvider) {
       .when('/', {
         templateUrl: 'home.html',
         controller: 'homeController',
-        controllerAs: 'vm'
+        controllerAs: 'scope'
       })
       .when('/blog-add', {
         templateUrl: 'blogAdd.html',
         controller: 'blogAddController',
-        controllerAs: 'vm'
+        controllerAs: 'scope'
       })
       .when('/blog-list', {
         templateUrl: 'blogList.html',
         controller: 'blogListController',
-        controllerAs: 'vm'
+        controllerAs: 'scope'
       })
       .when('/blog-edit/:id', {
         templateUrl: 'blogEdit.html',
