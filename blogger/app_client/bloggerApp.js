@@ -1,38 +1,65 @@
-var app = angular.module('bloggerApp', ['ngRoute']);              
+var app = angular.module('bloggerApp', ['ui.router']);              
+//Router provider
+app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
+    $stateProvider
+        .state('home', {
+            url: '/',
+            templateUrl: '/home.html',
+            controller: 'HomeController',
+            controllerAs: 'vm'
+        })
+        .state('blogList', {
+            url: '/blogList',
+            templateUrl: '/blogList.html',
+            controller: 'ListController',
+            controllerAs: 'vm'
+        })
+        .state('blogAdd', {
+            url: '/blogAdd',
+            templateUrl: '/blogAdd.html',
+            controller: 'AddController',
+            controllerAs: 'vm'
+        })
+        .state('blogEdit', {
+            url: '/blogEdit/:blogid',
+            templateUrl: '/blogEdit.html',
+            controller: 'EditController',
+            controllerAs: 'vm'
+        })
+        .state('blogDelete', {
+            url: '/blogDelete/:blogid',
+            templateUrl: '/blogDelete.html',
+            controller: 'DeleteController',
+            controllerAs: 'vm'
+        })
+        .state('register', {
+            url: '/register',
+            templateUrl: '/register.html',
+            controller: 'RegisterController',
+            controllerAs: 'vm'
+        });
+    // Default fallback for unmatched urls
+    $urlRouterProvider.otherwise('/');
 
-/* Route Provider */
-app.config(['$routeProvider', function($routeProvider) {
-    $routeProvider
-      .when('//', {
-        templateUrl: 'home.html',
-        controller: 'homeController',
-        controllerAs: 'scope'
-      })
-      .when('/blog-add', {
-        templateUrl: 'blogAdd.html',
-        controller: 'blogAddController',
-        controllerAs: 'scope'
-      })
-      .when('/blogList', {
-        templateUrl: 'blogList.html',
-        controller: 'listController',
-        controllerAs: 'scope'
-      })
-      .when('/blog-edit/:id', {
-        templateUrl: 'blogEdit.html',
-        controller: 'blogEditController',
-        controllerAs: 'vm'
-      })
-      $routeProvider.html5Mode(true);
-  }]);
+    $locationProvider.html5Mode({
+        enabled: true,
+        requireBase: false
+    });
+}]);
+
+//Controllers
+app.controller('HomeController', [function() {
+    var vm = this;
+    vm.title = 'Christian Blogsite';
+    vm.message = 'Blogsite for Web Development class';
+}]);
 
 
-//Controller for home page
-app.controller('homeController', function($scope) {
-    $scope.message = "Hello from AngularJS!";
-    $scope.title = "AngularJS Test";
-});
-
+app.controller('HomeController', [function() {
+    var vm = this;
+    vm.title = 'Ganga Acharya Blogsite';
+    vm.message = 'Blogsite for Web Development class';
+}]);
 
 //Controller for listing blogs
 app.controller('ListController',
