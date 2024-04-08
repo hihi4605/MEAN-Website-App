@@ -3,6 +3,22 @@ body {
    background: linear-gradient(90deg,#e52e71,#ff8a00);
 
 }
+.navbar
+{
+  padding: 0px;
+  background-color: rgb(0, 0, 0)
+  
+}
+
+a:hover
+{
+  color: #b75d09;
+}
+
+  
+a {
+  color: #ffd000;
+}
 
 .slider-thumb::before {
 	position: absolute;
