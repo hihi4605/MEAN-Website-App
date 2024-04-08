@@ -26,7 +26,9 @@ app.config(function($routeProvider) {
       })
       .otherwise({
         redirectTo: '/'
+     
       });
+      console.log("Route Provider");
   });
   
  
