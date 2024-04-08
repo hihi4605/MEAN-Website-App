@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="bloggerApp">
 <head>
-    <base href=" "/>
+    <base href="/"/>
     <title>Christian Michels Website</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/style.css" />
@@ -10,17 +10,17 @@
     
  
 </head>
-<body>
+<body ng-controller="homeController">
     <nav class="navbar">
         <a class="navbar-brand" href="/">My Blog</a>
         <a class="navbar-brand" href="/blog-list">List Blogs</a>
         <a class="navbar-brand" href="/blog-add">Add Blogs</a>
     </nav>
-    <div ng-controller="homeController">
+  
         <h1> {{ message }}</h1>
         <small> {{ vm.title }} </small>
   
-    </div>
+ 
     <script type="text/ng-template" id="/blogList.html">
         <h1> {{ message }}</h1>
         <small> {{ vm.title }} </small>
@@ -36,7 +36,7 @@
         </div>
     </script>
 
-    <!-- Include AngularJS libraries -->
+  
  
     <script src="bloggerApp.js"></script>
   
