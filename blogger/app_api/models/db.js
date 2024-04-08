@@ -1,26 +1,26 @@
-const mongoose = require('mongoose');
+import { connect, connection } from 'mongoose';
 let gracefulShutdown;
 
 const dbURI = 'mongodb+srv://Chris:DrakeFan58949$@mydb.srmedx4.mongodb.net/';
 
 (async () => {
   try {
-    await mongoose.connect(dbURI);
+    await connect(dbURI);
     console.log('Mongoose connected to ' + dbURI);
 
     // Monitor and report error connecting to database
-    mongoose.connection.on('error', function (err) {
+    connection.on('error', function (err) {
       console.log('Mongoose connection error: ' + err);
     });
 
     // Monitor and report when database is disconnected
-    mongoose.connection.on('disconnected', function () {
+    connection.on('disconnected', function () {
       console.log('Mongoose disconnected');
     });
 
     // Closes (disconnects) from Mongoose DB upon shutdown
     gracefulShutdown = async function (msg) {
-      await mongoose.connection.close();
+      await connection.close();
       console.log('Mongoose disconnected through ' + msg);
       process.exit(0);
     };
@@ -45,7 +45,7 @@ const dbURI = 'mongodb+srv://Chris:DrakeFan58949$@mydb.srmedx4.mongodb.net/';
   } catch (err) {
     console.error('Error connecting to MongoDB:', err);
   }
-})();
+});
 
-    // Bring in Schemas and Models
-    require('./blog');
+// Bring in Schemas and Models
+import './blog';
