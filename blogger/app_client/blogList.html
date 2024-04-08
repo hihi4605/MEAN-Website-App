@@ -10,14 +10,14 @@
     
  
 </head>
-<body ng-controller="blogListController" ng-init="vm.getBlogs()">
+<body ng-controller="listController" ng-init="vm.getBlogs()">
     <nav class="navbar">
         <a class="navbar-brand" href="/">My Blog</a>
         <a class="navbar-brand" href="/blogList">List Blogs</a>
         <a class="navbar-brand" href="/blog-add">Add Blogs</a>
     </nav>
   
-    <h1>{{ titlevm.title }}</h1>
+    <h1>{{ scope.title }}</h1>
     <p>{{ message }}</p>
     <div class="row">
         <div class="col-md-4" ng-repeat="blog in $scope.blogs">
@@ -29,5 +29,7 @@
             </div>
         </div>
     </div>
+    <script src="bloggerApp.js"></script>
 </body>
+<script src="bloggerApp.js"></script>
 </html>
