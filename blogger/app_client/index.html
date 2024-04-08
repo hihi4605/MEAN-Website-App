@@ -12,16 +12,14 @@
 
 <body ng-controller="NavController">
     <!-- Navigation -->
-    <nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-primary">
+
         <a class="navbar-brand" ui-sref="home">My Books</a>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="collapse navbar-collapse">
             <div class="navbar-nav">
                 <a class="nav-item nav-link" ui-sref="blogList">List Books</a>
                 <a class="nav-item nav-link" ui-sref="blogAdd">Add Books</a>
             </div>
         </div>
-    </nav>
-
     <div ui-view></div>
 
     <script type="text/ng-template" id="/home.html">
