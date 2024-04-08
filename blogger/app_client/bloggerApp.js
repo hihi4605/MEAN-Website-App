@@ -32,7 +32,7 @@ app.config(function($routeProvider) {
  
 
 /* Home Controller */
-app.controller('homeController', function HomeController() {
+app.controller('homeController', function () {
     var vm = this;
     vm.pageHeader = {
         title: 'A to Z blogs',
