@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html ng-app="bloggerApp">
 <head>
-    <title>Add Blog</title>
+    <title>Christian Michels Website</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/style.css" />
+    <script src="../app_client/lib/angular-route.min.js"></script>
+    <script src="../app_client/lib/angular.min.js"></script>
 </head>
-<body ng-controller="MainController">
+<body>
     <nav class="navbar">
         <a class="navbar-brand" href="/">My Blog</a>
         <a class="navbar-brand" href="/blog-list">List Blogs</a>
         <a class="navbar-brand" href="/blog-add">Add Blogs</a>
     </nav>
-    
+    <script type="text/ng-template" id="/home.html">
     <div class="container">
         <h1>Add Blog</h1>
         <form ng-submit="addBlog()">
@@ -26,11 +28,11 @@
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
+    </script>
 
     <!-- Include AngularJS libraries -->
-    <script src="../app_client/lib/angular-route.min.js"></script>
-    <script src="../app_client/lib/angular.min.js"></script>
-
+ 
+    <script src="bloggerApp.js"></script>
   
 </body>
 </html>
