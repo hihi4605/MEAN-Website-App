@@ -57,7 +57,7 @@ app.controller('HomeController', [function() {
 
 app.controller('HomeController', [function() {
     var vm = this;
-    vm.title = 'Ganga Acharya Blogsite';
+    vm.title = 'Christian Michels Blogsite';
     vm.message = 'Blogsite for Web Development class';
 }]);
 
