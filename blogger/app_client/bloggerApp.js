@@ -1,5 +1,5 @@
 var app = angular.module('bloggerApp', ['ui.router']);              
-//Router provider
+
 app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
     $stateProvider
         .state('home', {
@@ -38,87 +38,49 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', functio
             controller: 'RegisterController',
             controllerAs: 'vm'
         });
-    // Default fallback for unmatched urls
-    $urlRouterProvider.otherwise('/');
 
+    $urlRouterProvider.otherwise('/');
     $locationProvider.html5Mode({
         enabled: true,
         requireBase: false
     });
 }]);
 
-//Controller for navigation
-app.controller('NavController', ['$location', 
-    function NavigationController($location){
-        var vm = this;
-        vm.currentPath = $location.path();
-}]);
-
-//Controllers
 app.controller('HomeController', [function() {
     var vm = this;
-    vm.title = 'Christians Blogsite';
+    vm.title = 'Christian\'s Blogsite';
     vm.message = 'Welcome to my blogsite!';
 }]);
 
-
-//*** Controllers ***
-app.controller('ListController', function ListController($http) {
+app.controller('ListController', ['$http', function($http) {
     var vm = this;
     vm.pageHeader = {
-        title: 'Book List'
+        title: 'Blog List'
     };
+    
+    // Fetch all blogs from the API
     getAllBlogs($http)
         .then(function(response) {
-            vm.books = response.data;
-            vm.message = "Blog data found!";
+            vm.blogs = response.data;
         })
-});
-
-
-
-/* Blog Add Controller */
-app.controller('AddController', function BlogAddController($location) {
-    var vm = this;
-    vm.pageHeader = {
-        title: 'Add Blog'
-    };
-    vm.blog = {};
-    vm.save = function() {
-        addBlog().save(vm.blog, function() {
-            $location.path('/blog-list');
+        .catch(function(error) {
+            console.error('Error fetching blogs:', error);
         });
-    };
-});
 
-/* Blog Edit Controller */
-app.controller('blogEditController', function BlogEditController($location, $routeParams) {
-    var vm = this;
-    vm.pageHeader = {
-        title: 'Edit Blog'
+    // Function to edit a blog
+    vm.editBlog = function(blogId) {
+        console.log('Editing blog with ID:', blogId);
+        // Redirect to the blog edit page
+        // Example: $state.go('blogEdit', { blogid: blogId });
     };
-    vm.blog = getBlogs().get({ id: $routeParams.id });
-    vm.save = function() {
-        getBlogs().update({ id: $routeParams.id }, vm.blog, function() {
-            $location.path('/blog-list');
-        });
-    };
-});
 
-//*** REST Web API functions ***/
+    // Function to delete a blog
+    vm.deleteBlog = function(blogId) {
+        console.log('Deleting blog with ID:', blogId);
+        // Implement logic to delete the blog
+    };
+}]);
 
 function getAllBlogs($http) {
-  return $http.get('/api/blogs');
-}
-
-function getBlogbyId($http, id) {
-    return $http.get('/api/blogs/' + id);
-}
-
-function updateBlogById($http, id, data) {
-    return $http.put('/api/blogs/' + id, data);
-}
-
-function addBlog($http, data) {
-    return $http.post('/api/blogs', data);
+    return $http.get('/api/blogs');
 }
