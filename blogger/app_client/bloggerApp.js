@@ -1,4 +1,4 @@
-var app = angular.module('bloggerApp', ['ngRoute', 'ngSanitize', 'ui.bootstrap', 'ngResource']);              
+var app = angular.module('bloggerApp', ['ngRoute']);              
 
  
 /* Route Provider */
