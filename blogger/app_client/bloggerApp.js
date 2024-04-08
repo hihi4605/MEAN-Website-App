@@ -23,8 +23,7 @@ app.config(['$routeProvider', function($routeProvider) {
         controller: 'blogEditController',
         controllerAs: 'vm'
       })
- 
-
+      $routeProvider.html5Mode(true);
   }]);
 
 
