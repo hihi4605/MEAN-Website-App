@@ -6,20 +6,24 @@ var sendJSONresponse = function(res, status, content) {
     res.status(status);
     res.json(content);
 };
-/* GET a list of all locations */
-module.exports.blogList = async function(req, res) {
-    console.log('Getting blog list');
+// GET /api/blogs
+module.exports.blogList = async function (req, res) {
+    console.log("Getting blogList");
+
     try {
-        const results = await Blog.find().exec();
-        if (!results || results.length === 0) {
-            sendJSONresponse(res, 404, { "message": "No blogs found" });
-            return;
+        const blogs = await Blog.find().exec();
+
+        if (!blogs || blogs.length === 0) {
+            // If no blogs are found, send a 404 response with a message.
+            return res.status(404).json({ "message": "blogs not found" });
         }
-        console.log(results);
-        sendJSONresponse(res, 200, buildBlogList(req, res, results));
+
+        // When blogs are found, send a 200 response with the blogs data.
+        res.status(200).json(blogs);
     } catch (err) {
-        console.log(err);
-        sendJSONresponse(res, 404, err);
+        console.error(err);
+        // If there's an error in the process, respond with a 500 status code and the error.
+        res.status(500).json({ "message": "Error listing blogs", error: err });
     }
 };
 
@@ -47,6 +51,18 @@ const buildBlogList = async function(req, res, results) {
         sendJSONresponse(res, 400, err);
         
     }
+};
+
+// Render blog list
+const renderBlogList = function(req, res, responseBody) {
+    // Use map to transform each blog into the desired format
+    const blogs = responseBody.map(blog => ({
+        blogTitle: blog.blogTitle,
+        blogText: blog.blogText,
+        _id: blog._id
+    }));
+
+    return blogs;
 };
 
 
