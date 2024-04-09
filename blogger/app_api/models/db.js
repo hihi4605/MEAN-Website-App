@@ -41,11 +41,11 @@ const dbURI = 'mongodb+srv://Chris:DrakeFan58949$@mydb.srmedx4.mongodb.net/';
       await gracefulShutdown('Heroku app shutdown');
     });
 
-
+    // Bring in Schemas and Models
+    require('./blog');
   } catch (err) {
     console.error('Error connecting to MongoDB:', err);
   }
-});
-
+})();
 // Bring in Schemas and Models
 require('./blog');
