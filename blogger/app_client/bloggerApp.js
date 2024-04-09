@@ -72,8 +72,6 @@ app.controller('ListController', function ListController($http) {
         .then(function(data) {
             vm.blogs = data;
             vm.message = "Blog data found!";
-        }).error(function(e) {
-            vm.message = "Sorry, something's gone wrong, please try again later";
         });
 });
 
