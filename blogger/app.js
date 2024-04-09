@@ -13,7 +13,7 @@ var app = express();
 app.set('views', path.join(__dirname, '/app_server/views'));
 app.set('view engine', 'ejs');
 
-var routes = require('./app_server/routes/index');  // This is the route for the web pages
+ 
 var routesApi = require('./app_api/routes/index');
  
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
@@ -23,7 +23,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'app_client'))); 
-app.use('/', routes);
+ 
 app.use('/api',routesApi);
  
 // Added per Lab 5 - Angular

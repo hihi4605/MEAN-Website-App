@@ -47,6 +47,32 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', functio
     });
 }]);
 
+// Service for interacting with the blog API
+app.service('BlogService', ['$http', function($http) {
+    var apiBaseUrl = '/api/blogs';
+
+    this.listBlogs = function() {
+        return $http.get(apiBaseUrl);
+    };
+
+    this.addBlog = function(blog) {
+        return $http.post(apiBaseUrl, blog);
+    };
+
+    this.getBlog = function(blogId) {
+        return $http.get(apiBaseUrl + '/' + blogId);
+    };
+
+    this.updateBlog = function(blogId, blog) {
+        return $http.put(apiBaseUrl + '/' + blogId, blog);
+    };
+
+    this.deleteBlog = function(blogId) {
+        return $http.delete(apiBaseUrl + '/' + blogId);
+    };
+}]);
+
+
 //Controller for navigation
 app.controller('NavController', ['$location', 
     function NavigationController($location){
@@ -62,23 +88,25 @@ app.controller('HomeController', [function() {
 }]);
 
 
-//*** Controllers ***
-app.controller('ListController', function ListController($http) {
+// BlogListController
+app.controller('BlogListController', ['BlogService', function(BlogService) {
     var vm = this;
-    vm.pageHeader = {
-        title: 'Book List'
-    };
-   
+    vm.message = ''; // Initialize an empty message
 
-    getAllBlogs($http)
-        .then(function(response) {
+    BlogService.listBlogs().then(function(response) {
+        if (!Array.isArray(response.data) || !response.data.length) {
+            // If the response does not contain an array or the array is empty,
+            // set a 'no blogs' message
+            vm.message = 'No blogs to display. Add one above.';
+        } else {
+            // If there are blogs, assign them to vm.blogs
             vm.blogs = response.data;
-        })
-        .catch(function(error) {
-            console.error('Error getting blogs:', error);
-        });
-});
-
+        }
+    }, function(error) {
+        // In case of an error, set an error message
+        vm.message = 'Error fetching blogs';
+    });
+}]);
 
 
 // Add a controller for the Add Blog page
@@ -120,21 +148,3 @@ app.controller('blogEditController', function BlogEditController($location, $rou
         });
     };
 });
-
-//*** REST Web API functions ***/
-var apiBaseUrl = '/api/blogs';
-function getAllBlogs($http) {
-  return $http.get(apiBaseUrl);
-}
-
-function getBlogbyId($http, id) {
-    return $http.get(apiBaseUrl + id);
-}
-
-function updateBlogById($http, id, data) {
-    return $http.put(apiBaseUrl + id, data);
-}
-
-function addBlog($http, data) {
-    return $http.post(apiBaseUrl, data);
-}

@@ -7,21 +7,11 @@ var sendJSONresponse = function(res, status, content) {
     res.json(content);
 };
 /* GET a list of all locations */
-module.exports.blogList = async function(req, res) {
-    console.log('Getting blog list');
-    try {
-        const results = await Blog.find().exec();
-        if (!results || results.length === 0) {
-            sendJSONresponse(res, 404, { "message": "No blogs found" });
-            return;
-        }
-        console.log(results);
-        sendJSONresponse(res, 200, buildBlogList(req, res, results));
-    } catch (err) {
-        console.log(err);
-        sendJSONresponse(res, 404, err);
-    }
-};
+module.exports.blogList = function(req, res) {
+    Blog.find().exec()
+      .then(results => sendJSONresponse(res, 200, results))
+      .catch(err => handleError(res, err));
+  };
 
 const buildBlogList = function(req, res, results) {
     return results.map(obj => ({

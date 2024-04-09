@@ -2,11 +2,6 @@ var express = require('express');
 var router = express.Router();
 var ctrlBlog = require('../controllers/blog');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Blogger' });
-});
-
 /* Return a list of blogs */
 router.get('api/blogs', ctrlBlog.blogList);
 
