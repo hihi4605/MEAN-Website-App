@@ -39,23 +39,7 @@
     <!-- Blog List -->
     <script type="text/ng-template" id="/blogList.html">
         <h1>{{ vm.pageHeader.title }}</h1>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4" ng-repeat="blog in vm.books track by $index">
-                    <div class="blog-box">
-                        <h5 class="card-title">{{ blog.blogTitle }}</h5>
-                        <p>{{ blog.blogEntry }}</p>
-                        <div class="card-footer d-flex justify-content-between align-items-center">
-                            <span class="posted-date">Created On {{ blog.createdOn | date }}</span>
-                            <div>
-                                <a ui-sref="blogEdit({blogid: blog._id})" class="btn btn-primary">Edit</a>
-                                <a ui-sref="blogDelete({blogid: blog._id})" class="btn btn-danger">Delete</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <h2> Hello World </h2>
     </script>
 
     <script src="bloggerApp.js"></script>
