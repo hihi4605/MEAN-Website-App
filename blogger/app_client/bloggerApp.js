@@ -69,9 +69,11 @@ app.controller('ListController', function ListController($http) {
         title: 'Book List'
     };
     getAllBlogs($http)
-        .then(function(response) {
-            vm.books = response.data;
+        .then(function(data) {
+            vm.blogs = data;
             vm.message = "Blog data found!";
+        }).error(function(e) {
+            vm.message = "Sorry, something's gone wrong, please try again later";
         });
 });
 
