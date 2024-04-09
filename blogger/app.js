@@ -28,7 +28,7 @@ app.use('/js', express.static(__dirname + '/node_modules/angular-ui-router/relea
 app.use('/js', express.static(__dirname + '/app_client'));
 
 app.use('/api', routesApi);
-app.use(methodOverride('_method'));
+ 
 
 app.use(function(req, res) {
     res.sendFile(path.join(__dirname, 'app_client', 'index.html'));
