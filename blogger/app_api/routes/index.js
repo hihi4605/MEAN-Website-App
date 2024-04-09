@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
 });
 
 /* Return a list of blogs */
-router.get('/api/blogs', ctrlBlog.blogList);
+router.get('api/blogs', ctrlBlog.blogList);
 
 /* Return a single blog given an id */
 router.get('api/blogs/:id',ctrlBlog.blogReadOne);
