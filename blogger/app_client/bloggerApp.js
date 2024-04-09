@@ -68,7 +68,7 @@ app.controller('ListController', function ListController($http) {
     vm.pageHeader = {
         title: 'Book List'
     };
-    vm.blogs = {};
+   
 
     getAllBlogs($http)
         .then(function(response) {
@@ -136,5 +136,5 @@ function updateBlogById($http, id, data) {
 }
 
 function addBlog($http, data) {
-    return $http.post('/api/blogs', data);
+    return $http.post(apiBaseUrl, data);
 }

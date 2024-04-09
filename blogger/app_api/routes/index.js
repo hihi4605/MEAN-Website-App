@@ -2,25 +2,23 @@ var express = require('express');
 var router = express.Router();
 var ctrlBlog = require('../controllers/blog');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Blogger' });
-});
+/* Router Pages */
+router.get('/',ctrlBlog.home);
 
 /* Return a list of blogs */
-router.get('/blogs', ctrlBlog.blogList);
+router.get('/api/blogs',ctrlBlog.blogList);
 
 /* Return a single blog given an id */
-router.get('/blogs/:id',ctrlBlog.blogReadOne);
+router.get('api/blogs:id',ctrlBlog.blogList);
 
 /* Add a blog */
-router.post('/blogs', ctrlBlog.blogCreate);
+router.post('api/blogs/', ctrlBlog.blogAdd);
 
 /* Update a blog given an id*/
-router.put('/blogs/:id', ctrlBlog.blogUpdateOne);
+router.put('api/blogs:id', ctrlBlog.blogEdit);
 
 /* Delete a blog given an id */
-router.delete('/blogs/:id', ctrlBlog.blogDelete);
+router.get('api/blogs:id', ctrlBlog.blogDelete);
 
 
 module.exports = router;
