@@ -70,7 +70,7 @@ app.controller('ListController', function ListController($http) {
     };
     vm.blogs = {};
 
-    getAllBlogs($http)
+    bloggerApp.getAllBlogs($http)
         .then(function(response) {
             vm.blogs = response.data;
         })
