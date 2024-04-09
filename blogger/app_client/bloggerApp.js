@@ -38,7 +38,8 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', functio
             controller: 'RegisterController',
             controllerAs: 'vm'
         });
- 
+    // Default fallback for unmatched urls
+    $urlRouterProvider.otherwise('/');
 
     $locationProvider.html5Mode({
         enabled: true,
@@ -123,7 +124,7 @@ app.controller('blogEditController', function BlogEditController($location, $rou
 //*** REST Web API functions ***/
 var apiBaseUrl = '/api/blogs';
 function getAllBlogs($http) {
-  return $http.get('/api/blogs');
+  return $http.get(apiBaseUrl);
 }
 
 function getBlogbyId($http, id) {
