@@ -41,6 +41,24 @@
         <h2> Hello World </h2>
     </script>
 
+    <!-- Blog Add -->
+    <script type="text/ng-template" id="/blogAdd.html">
+        <div class="container">
+            <h1>Add Blog</h1>
+            <form ng-submit="submitBlog()">
+                <div class="form-group">
+                    <label for="blogTitle">Blog Title</label>
+                    <input type="text" class="form-control" id="blogTitle" ng-model="blogTitle" placeholder="Enter title" required>
+                </div>
+                <div class="form-group">
+                    <label for="blogEntry">Blog Text</label>
+                    <textarea class="form-control" id="blogEntry" ng-model="blogEntry" placeholder="Enter content"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        </script>
+
     <script src="bloggerApp.js"></script>
 </body>
 </html>
