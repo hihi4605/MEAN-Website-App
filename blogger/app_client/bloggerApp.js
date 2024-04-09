@@ -11,7 +11,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', functio
         .state('blogList', {
             url: '/blogList',
             templateUrl: '/blogList.html',
-            controller: 'ListController',
+            controller: 'BlogListController',
             controllerAs: 'vm'
         })
         .state('blogAdd', {

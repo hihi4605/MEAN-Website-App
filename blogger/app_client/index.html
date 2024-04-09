@@ -51,8 +51,8 @@
                 <p class="card-text">
                     <small class="text-muted">Created on {{ blog.createdOn | date:'mediumDate' }}</small>
                 </p>
-                <a ng-href="#!/blogEdit/{{ blog._id }}" class="btn btn-primary">Edit</a>
-                <a ng-href="#!/blogDelete/{{ blog._id }}" class="btn btn-danger">Delete</a>
+                <a ng-href="/blogEdit/{{ blog._id }}" class="btn btn-primary">Edit</a>
+                <a ng-href="/blogDelete/{{ blog._id }}" class="btn btn-danger">Delete</a>
             </div>
         </div>
     </div>
