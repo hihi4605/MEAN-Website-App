@@ -39,7 +39,7 @@
 <script type="text/ng-template" id="/blogList.html">
     <p></p>
     <div class="container">
-        <div class="card mt-3" ng-repeat="blog in vm.blogs track by blog._id">
+        <div class="card mt-3" ng-repeat="blog in vm.blogs track by blog.blogTitle">
             <div class="card-body">
                 <h5 class="card-title">{{ blog.blogTitle }}</h5>
             </div>
