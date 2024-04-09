@@ -68,13 +68,14 @@ app.controller('ListController', function ListController($http) {
     vm.pageHeader = {
         title: 'Book List'
     };
+    vm.blogs = {};
+
     getAllBlogs($http)
-        .then(function(data) {
-            vm.blogs = data;
-            vm.message = "Blog data found!";
-            blogs.forEach(element => {
-                console.log(element);
-            });
+        .then(function(response) {
+            vm.blogs = response.data;
+        })
+        .catch(function(error) {
+            console.error('Error getting blogs:', error);
         });
 });
 
