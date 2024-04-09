@@ -122,17 +122,17 @@ app.controller('blogEditController', function BlogEditController($location, $rou
 });
 
 //*** REST Web API functions ***/
-
-function getAllBlogs($http) {
-  return $http.get('/api/blogs');
-}
+var apiBaseUrl = '/api/blogs';
+this.getAllBlogs = function() {
+    return $http.get(apiBaseUrl);
+};
 
 function getBlogbyId($http, id) {
-    return $http.get('/api/blogs/' + id);
+    return $http.get(apiBaseUrl + id);
 }
 
 function updateBlogById($http, id, data) {
-    return $http.put('/api/blogs/' + id, data);
+    return $http.put(apiBaseUrl + id, data);
 }
 
 function addBlog($http, data) {
