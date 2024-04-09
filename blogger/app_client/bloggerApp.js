@@ -72,6 +72,9 @@ app.controller('ListController', function ListController($http) {
         .then(function(data) {
             vm.blogs = data;
             vm.message = "Blog data found!";
+            vm.blogs.forEach(element => {
+                console.log(element);
+            });
         });
 });
 
