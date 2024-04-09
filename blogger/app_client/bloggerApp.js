@@ -124,7 +124,7 @@ app.controller('blogEditController', function BlogEditController($location, $rou
 //*** REST Web API functions ***/
 var apiBaseUrl = '/api/blogs';
 function getAllBlogs($http) {
-  return $http.get('api/blogs');
+  return $http.get('blogs');
 }
 
 function getBlogbyId($http, id) {
