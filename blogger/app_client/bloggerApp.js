@@ -2,40 +2,34 @@ var app = angular.module('bloggerApp', ['ui.router']);
 //Router provider
 app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
     $stateProvider
-        .state('home', {
+        .state('/', {
             url: '/',
             templateUrl: '/home.html',
             controller: 'HomeController',
             controllerAs: 'vm'
         })
-        .state('blogList', {
+        .state('/blogList', {
             url: '/blogList',
             templateUrl: '/blogList.html',
             controller: 'ListController',
             controllerAs: 'vm'
         })
-        .state('blogAdd', {
+        .state('/blogAdd', {
             url: '/blogAdd',
             templateUrl: '/blogAdd.html',
             controller: 'AddController',
             controllerAs: 'vm'
         })
-        .state('blogEdit', {
+        .state('/blogEdit/:blogid', {
             url: '/blogEdit/:blogid',
             templateUrl: '/blogEdit.html',
             controller: 'EditController',
             controllerAs: 'vm'
         })
-        .state('blogDelete', {
+        .state('blogDelete/:blogid', {
             url: '/blogDelete/:blogid',
             templateUrl: '/blogDelete.html',
             controller: 'DeleteController',
-            controllerAs: 'vm'
-        })
-        .state('register', {
-            url: '/register',
-            templateUrl: '/register.html',
-            controller: 'RegisterController',
             controllerAs: 'vm'
         });
     // Default fallback for unmatched urls
