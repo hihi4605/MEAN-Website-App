@@ -6,21 +6,35 @@ var sendJSONresponse = function(res, status, content) {
     res.status(status);
     res.json(content);
 };
-/* GET a list of all locations */
-module.exports.blogList = async function(req, res) {
-    console.log('Getting blog list');
+// GET /api/blogs
+module.exports.blogList = async function (req, res) {
+    console.log("Getting blogList");
+
     try {
-        const results = await Blog.find().exec();
-        if (!results || results.length === 0) {
-            sendJSONresponse(res, 404, { "message": "No blogs found" });
-            return;
+        const blogs = await Blog.find().exec();
+
+        if (!blogs || blogs.length === 0) {
+            // If no blogs are found, send a 404 response with a message.
+            return res.status(404).json({ "message": "blogs not found" });
         }
-        console.log(results);
-        sendJSONresponse(res, 200, buildBlogList(req, res, results));
+
+        // When blogs are found, send a 200 response with the blogs data.
+        res.status(200).json(blogs);
     } catch (err) {
-        console.log(err);
-        sendJSONresponse(res, 404, err);
+        console.error(err);
+        // If there's an error in the process, respond with a 500 status code and the error.
+        res.status(500).json({ "message": "Error listing blogs", error: err });
     }
+};
+
+
+const buildBlogList = async function(req, res, results) {
+    return results.map(obj => ({
+        blogTitle: obj.blogTitle,
+        blogEntry: obj.blogEntry,
+        createdOn: obj.createdOn,
+        _id: obj._id
+    }));
 };
 
   module.exports.blogCreate = async function(req, res) {
@@ -41,7 +55,7 @@ module.exports.blogList = async function(req, res) {
 
 
 //returns a single blog when given an id //
-module.exports.blogReadOne = function(req, res) {
+module.exports.blogReadOne = async function(req, res) {
     const blogid = req.params.id;
 
     if (!blogid) {
@@ -62,7 +76,7 @@ module.exports.blogReadOne = function(req, res) {
 };
 
 
-module.exports.blogUpdateOne = function(req, res) {
+module.exports.blogUpdateOne = async function(req, res) {
     if (!req.params.blogid) {
         sendJSONresponse(res, 404, {
             "message": "Not found, blogid is required"
@@ -95,7 +109,7 @@ module.exports.blogUpdateOne = function(req, res) {
         );
 };
 
-module.exports.blogDelete = function(req, res) {
+module.exports.blogDelete = async function(req, res) {
     var blogid = req.params.id; // Use req.params.id to get the blog ID
     if (blogid) {
         Blog.findByIdAndDelete(blogid)
