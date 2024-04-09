@@ -6,24 +6,20 @@ var sendJSONresponse = function(res, status, content) {
     res.status(status);
     res.json(content);
 };
-// GET /api/blogs
-module.exports.blogList = async function (req, res) {
-    console.log("Getting blogList");
-
+/* GET a list of all locations */
+module.exports.blogList = async function(req, res) {
+    console.log('Getting blog list');
     try {
-        const blogs = await Blog.find().exec();
-
-        if (!blogs || blogs.length === 0) {
-            // If no blogs are found, send a 404 response with a message.
-            return res.status(404).json({ "message": "blogs not found" });
+        const results = await Blog.find().exec();
+        if (!results || results.length === 0) {
+            sendJSONresponse(res, 404, { "message": "No blogs found" });
+            return;
         }
-
-        // When blogs are found, send a 200 response with the blogs data.
-        res.status(200).json(blogs);
+        console.log(results);
+        sendJSONresponse(res, 200, buildBlogList(req, res, results));
     } catch (err) {
-        console.error(err);
-        // If there's an error in the process, respond with a 500 status code and the error.
-        res.status(500).json({ "message": "Error listing blogs", error: err });
+        console.log(err);
+        sendJSONresponse(res, 404, err);
     }
 };
 
