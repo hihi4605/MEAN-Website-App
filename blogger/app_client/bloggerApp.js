@@ -38,8 +38,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', functio
             controller: 'RegisterController',
             controllerAs: 'vm'
         });
-    // Default fallback for unmatched urls
-    $urlRouterProvider.otherwise('/');
+ 
 
     $locationProvider.html5Mode({
         enabled: true,
