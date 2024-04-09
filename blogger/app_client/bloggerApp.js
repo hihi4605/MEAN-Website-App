@@ -46,7 +46,30 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', functio
         requireBase: false
     });
 }]);
+//Service for API calls
+app.service('BlogService', ['$http', function($http) {
+    var apiBaseUrl = '/api/blogs';
 
+    this.listBlogs = function() {
+        return $http.get(apiBaseUrl);
+    };
+
+    this.addBlog = function(blog) {
+        return $http.post(apiBaseUrl, blog);
+    };
+
+    this.getBlog = function(blogId) {
+        return $http.get(apiBaseUrl + '/' + blogId);
+    };
+
+    this.updateBlog = function(blogId, blog) {
+        return $http.put(apiBaseUrl + '/' + blogId, blog);
+    };
+
+    this.deleteBlog = function(blogId) {
+        return $http.delete(apiBaseUrl + '/' + blogId);
+    };
+}]);
 //Controller for navigation
 app.controller('NavController', ['$location', 
     function NavigationController($location){
@@ -61,23 +84,18 @@ app.controller('HomeController', [function() {
     vm.message = 'Welcome to my blogsite!';
 }]);
 
-
-//*** Controllers ***
-app.controller('ListController', function ListController($http) {
+//Controller for listing blogs
+app.controller('ListController', ['BlogService', function(BlogService) {
     var vm = this;
-    vm.pageHeader = {
-        title: 'Book List'
-    };
-   
+    vm.blogs = [];
+    vm.title = 'Blog List';
 
-    getAllBlogs($http)
-        .then(function(response) {
-            vm.blogs = response.data;
-        })
-        .catch(function(error) {
-            console.error('Error getting blogs:', error);
-        });
-});
+    BlogService.listBlogs().then(function(response) {
+        vm.blogs = response.data;
+    }, function(error) {
+        console.error('Error fetching blogs:', error);
+    });
+}]);
 
 
 
@@ -120,21 +138,3 @@ app.controller('blogEditController', function BlogEditController($location, $rou
         });
     };
 });
-
-//*** REST Web API functions ***/
-var apiBaseUrl = '/api/blogs';
-function getAllBlogs($http) {
-  return $http.get(apiBaseUrl);
-}
-
-function getBlogbyId($http, id) {
-    return $http.get(apiBaseUrl + id);
-}
-
-function updateBlogById($http, id, data) {
-    return $http.put(apiBaseUrl + id, data);
-}
-
-function addBlog($http, data) {
-    return $http.post(apiBaseUrl, data);
-}
