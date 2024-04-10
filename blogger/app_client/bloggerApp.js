@@ -94,7 +94,7 @@ app.controller('ListController', ['BlogService', function(BlogService) {
 
 
 // Add a controller for the Add Blog page
-app.controller('AddController', ['$http', '$location', function($http, $location) {
+app.controller('AddController', ['BlogService', '$location', function(BlogService, $location) {
     var vm = this;
     vm.blog = {};
     vm.title = 'Add Blog';
