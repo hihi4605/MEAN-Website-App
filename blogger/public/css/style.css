@@ -3,15 +3,17 @@ body {
   background-image: linear-gradient(to left bottom, #051937, #004d7a, #008793, #00bf72, #a8eb12);
   color: #fff; /* Default text color */
   font-family: 'Courier New', monospace;
+  font-size: 16px; /* Increased font size for body text */
 }
 
 .navbar {
-  padding: 10px; /* Add padding to navbar */
+  padding: 15px; /* Increased padding to navbar */
   background-color: #000; /* Dark background color for navbar */
 }
 
 .navbar a {
   color: #00bf72; /* Navbar link color */
+  font-size: 18px; /* Increased font size for navbar links */
 }
 
 .navbar a:hover {
@@ -30,42 +32,42 @@ body {
 .card-header,
 .card-footer {
   background-color: #000;
-  padding: 10px;
+  padding: 15px; /* Increased padding for card header and footer */
   border-bottom: 1px solid #444; /* Darker border color */
-  font-size: medium;
+  font-size: 20px; /* Increased font size for card header and footer */
 }
 
 .card-body {
-  padding: 15px;
+  padding: 20px; /* Increased padding for card body */
   background-color: #333;
 }
 
 .card-title {
-  margin-bottom: 10px;
-  font-size: 1.25rem;
+  margin-bottom: 15px; /* Increased margin bottom for card title */
+  font-size: 24px; /* Increased font size for card title */
   font-weight: bold;
 }
 
 .card-text {
-  margin-bottom: 15px;
-  font-size: medium;
+  margin-bottom: 20px; /* Increased margin bottom for card text */
+  font-size: 18px; /* Increased font size for card text */
 }
 
 .posted-date {
-  font-size: 0.85rem;
+  font-size: 14px; /* Decreased font size for posted date */
   color: #ccc; /* Lighter text color for date */
 }
 
 .icon-link {
   color: #ccc; /* Lighter text color for icon links */
-  margin-left: 10px;
+  margin-left: 15px; /* Increased margin left for icon links */
 }
 
 .footer {
   background-color: #000;
   color: #ccc; /* Lighter text color for footer */
   text-align: center;
-  padding: 10px;
+  padding: 15px; /* Increased padding for footer */
   position: fixed;
   left: 0;
   bottom: 0;
@@ -74,6 +76,7 @@ body {
 
 .jumbotron {
   background-color: #222426; /* Dark background color for jumbotron */
-  padding: 10px;
+  padding: 20px; /* Increased padding for jumbotron */
   margin-bottom: 20px;
+  font-size: 20px; /* Increased font size for jumbotron */
 }
