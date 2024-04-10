@@ -58,10 +58,10 @@
                 <div class="card-footer d-flex justify-content-between align-items-center">
                     <span class="posted-date">Blog posted on {{ blog.createdOn | date:'mediumDate' }}</span>
                     </div>
-                            <a ng-href="/blogEdit/{{ blog._id }}" class="icon-link" title="Edit">
+                            <a ng-href="/blogEdit/{{ blog._id }}" class="icon-link" title="Edit" ng-show="vm.isLoggedIn()">
                                 <i class="fas fa-edit"></i>
                             </a>
-                            <a ng-href="/blogDelete/{{ blog._id }}" class="icon-link" title="Delete">
+                            <a ng-href="/blogDelete/{{ blog._id }}" class="icon-link" title="Delete" ng-show="vm.isLoggedIn()">
                                 <i class="fas fa-trash-alt"></i>
                             </a>
                 </div> 
@@ -69,7 +69,9 @@
         </div>
     </div>
 </script>
-    <!-- Blog Add -->
+
+
+<!-- Blog Add -->
     <script type="text/ng-template" id="/blogAdd.html">
         <div class="container edit-blog-container" ng-controller="AddController as vm">
             <h1 class="edit-blog-header">Add Blog Post</h1>
@@ -138,6 +140,29 @@
     </div>
 </script>
 
+<!-- Register -->
+
+<script type="text/ng-template" id="/register.html">
+    <div class="container mt-5" ng-controller="RegisterController as vm">
+        <div class="form-container">
+            <h1 class="form-header">Register</h1>
+            <form ng-submit="vm.register()" class="form-body">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input class="form-control" id="email" ng-model="vm.user.email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" ng-model="vm.user.password">
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Register</button>
+                    <a ng-href="/login" class="btn btn-secondary">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</script>
     <script src="bloggerApp.js"></script>
 </body>
 </html>

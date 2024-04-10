@@ -31,6 +31,18 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', functio
             templateUrl: '/blogDelete.html',
             controller: 'DeleteController',
             controllerAs: 'vm'
+        })  
+        .state('register', {
+            url: '/register',
+            templateUrl: '/register.html',
+            controller: 'RegisterController',
+            controllerAs: 'vm'
+        })
+        .state('login', {
+            url: '/login',
+            templateUrl: '/login.html',
+            controller: 'LoginController',
+            controllerAs: 'vm'
         });
     // Default fallback for unmatched urls
     $urlRouterProvider.otherwise('/');
@@ -41,15 +53,21 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', functio
     });
 }]);
 //Service for API calls
-app.service('BlogService', ['$http', function($http) {
+app.service('BlogService', ['$http', 'authentication', function($http, authentication) {
     var apiBaseUrl = '/api/blogs';
+
+    var makeAuthHeader = function() {
+        var token = authentication.getToken();
+        return { headers: { 
+            Authorization: 'Bearer ' + token } };
+    };
 
     this.listBlogs = function() {
         return $http.get(apiBaseUrl);
     };
 
     this.addBlog = function(blog) {
-        return $http.post(apiBaseUrl, blog);
+        return $http.post(apiBaseUrl, blog,  makeAuthHeader());
     };
 
     this.getBlog = function(blogId) {
@@ -57,13 +75,15 @@ app.service('BlogService', ['$http', function($http) {
     };
 
     this.updateBlog = function(blogId, blog) {
-        return $http.put(apiBaseUrl + '/' + blogId, blog);
+        return $http.put(apiBaseUrl + '/' + blogId, blog,  makeAuthHeader());
     };
 
     this.deleteBlog = function(blogId) {
-        return $http.delete(apiBaseUrl + '/' + blogId);
+        return $http.delete(apiBaseUrl + '/' + blogId,  makeAuthHeader());
     };
 }]);
+
+
 //Controller for navigation
 app.controller('NavController', ['$location', 
     function NavigationController($location){
@@ -79,10 +99,19 @@ app.controller('HomeController', [function() {
 }]);
 
 //Controller for listing blogs
-app.controller('ListController', ['BlogService', function(BlogService) {
+app.controller('ListController', ['BlogService','authentication', 
+    function ListController(BlogService, authentication) {
     var vm = this;
     vm.blogs = [];
     vm.title = 'Blog List';
+
+    vm.isLoggedIn = function() {
+        return authentication.isLoggedIn();
+    };
+
+    vm.logout = function() {
+        authentication.logout();
+    };
 
     BlogService.listBlogs().then(function(response) {
         vm.blogs = response.data;
@@ -94,7 +123,8 @@ app.controller('ListController', ['BlogService', function(BlogService) {
 
 
 // Add a controller for the Add Blog page
-app.controller('AddController', ['BlogService', '$location', function(BlogService, $location) {
+app.controller('AddController', ['$location', 'BlogService', 'authentication', 
+    function AddController($location, BlogService, authentication) {
     var vm = this;
     vm.blog = {};
     vm.title = 'Add Blog';
@@ -109,8 +139,8 @@ app.controller('AddController', ['BlogService', '$location', function(BlogServic
 }]);
 
 // Controller for editing blogs
-app.controller('blogEditController', ['$stateParams', '$location', 'BlogService', 
-    function blogEditContoller($stateParams, $location, BlogService) {
+app.controller('EditController', ['$stateParams', '$location', 'BlogService', 'authentication', 
+    function EditController($stateParams, $location, BlogService, authentication) {
         var vm = this;
         var blogId = $stateParams.blogid;
         vm.blog = {};
@@ -133,9 +163,8 @@ app.controller('blogEditController', ['$stateParams', '$location', 'BlogService'
 
 
 
-// Controller for deleting blogs
-app.controller('DeleteController', ['$stateParams', '$location', 'BlogService', 
-    function DeleteController($stateParams, $location, BlogService) {
+app.controller('DeleteController', ['$stateParams', '$location', 'BlogService', 'authentication', 
+    function DeleteController($stateParams, $location, BlogService, authentication)  {
         var vm = this;
         vm.blog = {};
         var blogId = $stateParams.blogid;
