@@ -1,11 +1,12 @@
 var express = require('express');
 var router = express.Router();
-var ctrlBlog = require('../controllers/blog')
-var jwt = require('express-jwt'); 
-var auth = jwt({   // Lab 6
-  secret: process.env.JWT_SECRET,
-  userProperty: 'payload'
+ 
+var jwt = require('express-jwt');
+var auth = jwt({
+	secret: process.env.JWT_SECRET,
+	userProperty: 'payload'
 });
+var ctrlBlog = require('../controllers/blog')
 var ctrlAuth = require('../controllers/authentication');  // Lab 6
 
 // Define routes for blog operations
