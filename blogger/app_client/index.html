@@ -39,7 +39,7 @@
 <!-- Blog List -->
 <script type="text/ng-template" id="/blogList.html">
     <p></p>
-    <div ng-repeat="blog in vm.blogs track by blog._id">
+    <div ng-repeat="blog in vm.blogs">
         <div class="container">
             <div class="card mt-3">
                 <div class="card-body">
@@ -50,10 +50,10 @@
                     <div class="col-sm">
                         <ul class="nav justify-content-end nav-pills card-header-pills">
                             <li class="nav-item">
-                                <a ng-href="/blogEdit/{{id: blog._id}}"> <i class="fas fa-edit"></i></a>
+                                <a class="nav-link" ui-sref="blogEdit({id: blog._id})"> <i class="fas fa-edit"></i></a>
                             </li>
                             <li class="nav-item">
-                                <a ng-href="/blogDelete/({id: blog._id})"> <i class="fas fa-trash-alt"></i></a>
+                                <a class="nav-link" ui-sref="blogDelete({id: blog._id})"> <i class="fas fa-trash-alt"></i></a>
                             </li>
                         </ul>
                     </div>
