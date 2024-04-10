@@ -124,23 +124,25 @@ app.controller('blogEditController', function BlogEditController($location, $rou
 
 
 // Controller for deleting blogs
-app.controller('DeleteController', ['$stateParams', '$location', 'BlogService', function($stateParams, $location, BlogService) {
-    var vm = this;
-    vm.blog = {};
-    var blogId = $stateParams.blogid;
-    vm.title = 'Delete Blog';
+app.controller('DeleteController', ['$stateParams', '$location', 'BlogService', 
+    function DeleteController($stateParams, $location, BlogService) {
+        var vm = this;
+        vm.blog = {};
+        var blogId = $stateParams.blogid;
+        vm.title = 'Delete Blog';
 
-    BlogService.getBlog(blogId).then(function(response) {
-        vm.blog = response.data;
-    }, function(error) {
-        console.error('Error fetching blog for deletion:', error);
-    });
-
-    vm.deleteBlog = function() {
-        BlogService.deleteBlog(blogId).then(function(response) {
-            $location.path('/blogList');
+        BlogService.getBlog(blogId).then(function(response) {
+            vm.blog = response.data;
+            vm.message = "Blog found";
         }, function(error) {
-            console.error('Error deleting blog:', error);
+            vm.message = 'Error fetching blog' + vm.blogId + 'for deletion';
         });
-    };
+
+        vm.deleteBlog = function() {
+            BlogService.deleteBlog(blogId).then(function(response) {
+                $location.path('/blogList');
+            }, function(error) {
+                vm.message = 'Error deleting blog ' + vm.blogId;
+            });
+        };
 }]);
