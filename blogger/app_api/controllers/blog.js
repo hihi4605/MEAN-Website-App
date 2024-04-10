@@ -120,26 +120,24 @@ module.exports.blogUpdateOne = async function(req, res) {
             }
         );
 };
-
-module.exports.blogDelete = async function(req, res) {
-    var blogid = req.params.id; // Use req.params.id to get the blog ID
-    if (blogid) {
-        Blog.findByIdAndDelete(blogid)
-            .then(blog => {
-                if (!blog) {
-                    return res.status(404).json({ message: "Blog not found" });
-                }
-                // Redirect to the blog list page
-                module.exports.blogList(req, res);
-            })
-            .catch(err => {
-                console.error(err);
-                res.status(500).json({ message: "Internal server error" });
-            });
-    } else {
-        res.status(400).json({ message: "Missing blog ID" }); // Send 400 Bad Request if ID is missing
+module.exports.blogDeleteOne = async function (req, res) {
+    const blogId = req.params.blogid;
+    console.log("Deleting blog: " + blogId);
+    try {
+        const blog = await Blog.findByIdAndDelete(blogId).exec();
+        if (!blog) {
+            console.log("Blog not found: " + blogId);
+            sendJSONresponse(res, 404, { "message": "Blog not found" });
+            return;
+        }
+        console.log("Blog id " + blogId + " deleted");
+        sendJSONresponse(res, 204, null);
+    } catch (err) {
+        console.log(err);
+        sendJSONresponse(res, 404, err);
     }
 };
+
 
 // a put function that updates blog when given an ID //
 
