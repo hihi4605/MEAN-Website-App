@@ -74,7 +74,7 @@ app.controller('NavController', ['$location',
 //Controllers
 app.controller('HomeController', [function() {
     var vm = this;
-    vm.title = 'Christians Blogsite';
+    vm.title = 'Christian Michel Blog';
     vm.message = 'Welcome to my blogsite!';
 }]);
 
