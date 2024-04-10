@@ -23,7 +23,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', functio
         .state('/blogEdit/:blogid', {
             url: '/blogEdit/:blogid',
             templateUrl: '/blogEdit.html',
-            controller: 'EditController',
+            controller: 'blogEditController',
             controllerAs: 'vm'
         })
         .state('blogDelete/:blogid', {
