@@ -83,14 +83,6 @@ app.service('BlogService', ['$http', 'authentication', function($http, authentic
     };
 }]);
 
-
-//Controller for navigation
-app.controller('NavController', ['$location', 
-    function NavigationController($location){
-        var vm = this;
-        vm.currentPath = $location.path();
-}]);
-
 //Controllers
 app.controller('HomeController', [function() {
     var vm = this;
