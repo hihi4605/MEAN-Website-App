@@ -69,6 +69,8 @@ a {
 
 .card-body {
   padding: 15px; /* Add padding */
+  background-color: black;
+
 }
 
 .card-title {
@@ -79,6 +81,7 @@ a {
 
 .card-text {
   margin-bottom: 15px; /* Add spacing below text */
+  color: white;
 }
 
 .posted-date {
@@ -87,13 +90,13 @@ a {
 }
 
 .icon-link {
-  color: #007bff; /* Blue color for icon links */
+  color: #000000; /* Blue color for icon links */
   margin-left: 10px; /* Add spacing between icon links */
 }
  
 .footer {
   background-color: #000000;
-  color: #ffffff;
+  color: #000000;
   text-align: center;
   padding: 10px;
   position: fixed;
