@@ -1,70 +1,68 @@
 body {
   height: 100vh;
   background-image: linear-gradient(to left bottom, #051937, #004d7a, #008793, #00bf72, #a8eb12);
-}
-.navbar
-{
-  padding: 0px;
-  background-color: rgb(0, 0, 0)
-  
+  color: #fff; /* Default text color */
 }
 
-a:hover
-{
-  color: #b75d09;
+.navbar {
+  padding: 10px; /* Add padding to navbar */
+  background-color: #000; /* Dark background color for navbar */
 }
 
-  
-a {
-  color: #ffd000;
+.navbar a {
+  color: #ffd000; /* Navbar link color */
+}
+
+.navbar a:hover {
+  color: #b75d09; /* Navbar link color on hover */
 }
 
 .card {
-  border: 1px solid #ccc; /* Add border */
-  border-radius: 5px; /* Add border radius */
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Add shadow effect */
-  margin-bottom: 20px; /* Add spacing between boxes */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  background-color: #333; /* Dark background color for cards */
+  color: #fff; /* Text color for cards */
 }
 
 .card-header,
 .card-footer {
-  background-color: black; /* Light background color for header and footer */
-  padding: 10px; /* Add padding */
-  border-bottom: 1px black; /* Add border at bottom of header and footer */
+  background-color: #000;
+  padding: 10px;
+  border-bottom: 1px solid #444; /* Darker border color */
   font-size: medium;
 }
 
 .card-body {
-  padding: 15px; /* Add padding */
-  background-color: black;
-
+  padding: 15px;
+  background-color: #333;
 }
 
 .card-title {
-  margin-bottom: 10px; /* Add spacing below title */
-  font-size: 1.25rem; /* Increase title font size */
-  font-weight: bold; /* Make title bold */
+  margin-bottom: 10px;
+  font-size: 1.25rem;
+  font-weight: bold;
 }
 
 .card-text {
-  margin-bottom: 15px; /* Add spacing below text */
-  color: white;
+  margin-bottom: 15px;
   font-size: medium;
 }
 
 .posted-date {
-  font-size: 0.85rem; /* Decrease font size for date */
-  color: #666; /* Dim date text */
+  font-size: 0.85rem;
+  color: #ccc; /* Lighter text color for date */
 }
 
 .icon-link {
-  color: #000000; /* Blue color for icon links */
-  margin-left: 10px; /* Add spacing between icon links */
+  color: #ccc; /* Lighter text color for icon links */
+  margin-left: 10px;
 }
- 
+
 .footer {
-  background-color: #000000;
-  color: #000000;
+  background-color: #000;
+  color: #ccc; /* Lighter text color for footer */
   text-align: center;
   padding: 10px;
   position: fixed;
@@ -72,5 +70,3 @@ a {
   bottom: 0;
   width: 100%;
 }
-
- 
