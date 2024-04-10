@@ -1,27 +1,28 @@
+ 
+
 body {
-  height: 100vh;
-  
+	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	height: 100vh;
   color: #fff; /* Default text color */
   font-family: 'Courier New', monospace;
   font-size: 16px; /* Increased font size for body text */
 }
-.gradient-background {
-  background: linear-gradient(165deg,#37ad8f,#dabaf0,#384bf7,#591033,#318450);
-  background-size: 300% 300%;
-  animation: gradient-animation 30s ease infinite;
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
 
-@keyframes gradient-animation {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
+
 .navbar {
   padding: 15px; /* Increased padding to navbar */
   background-color: #000; /* Dark background color for navbar */
