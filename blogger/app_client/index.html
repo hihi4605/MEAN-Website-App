@@ -10,36 +10,10 @@
     <script src="/lib/angular.min.js"></script>
     <script src="/lib/angular-ui-router.min.js"></script> 
 </head>
-
    <!-- Navigation -->
    <div ng-controller="NavigationController"><navigation></navigation></div>  	
 
-    <nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-primary">
-        <a class="navbar-brand" href="/">My Blog</a>
-        <a class="navbar-brand" href="blogList">List Blogs</a>
-        <a class="navbar-brand" href="blogAdd">Add Blogs</a>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a ng-show="vm.isLoggedIn()" class="nav-item nav-link active" href="blogAdd">Add Blog</a>
-                <a ng-show="!vm.isLoggedIn()" class="nav-item nav-link active" href="login">Sign In</a>
-                <a ng-show="vm.isLoggedIn()" class="nav-item nav-link active" href="" ng-click="vm.logout()">Logout <small>({{ vm.currentUser().email }})</small></a>
-            </div>
-        </div>
-    </nav>
-
-
 <body ng-controller="HomeController">
-    <!-- Navigation -->  
-    <nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-primary">
-        <a class="navbar-brand" href="/">My Blog</a>
-        <a class="navbar-brand" href="blogList">List Blogs</a>
-        <a class="navbar-brand" href="blogAdd">Add Blogs</a>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-            </div>
-        </div>
-    </nav> 
-
     <div ui-view></div>
 
     <script type="text/ng-template" id="/home.html">
