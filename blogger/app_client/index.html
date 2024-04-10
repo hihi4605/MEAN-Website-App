@@ -10,12 +10,20 @@
     <script src="/lib/angular.min.js"></script>
     <script src="/lib/angular-ui-router.min.js"></script> 
 </head>
-   <!-- Navigation -->
-   <div ng-controller="NavigationController"><navigation>
-    
-   </navigation></div>  	
+<div ng-controller="NavigationController"><navigation></navigation></div>
 
 <body ng-controller="HomeController">
+    <!-- Navigation -->  
+    <nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-primary">
+        <a class="navbar-brand" href="/">My Blog</a>
+        <a class="navbar-brand" href="blogList">List Blogs</a>
+        <a class="navbar-brand" href="blogAdd">Add Blogs</a>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+            </div>
+        </div>
+    </nav> 
+
     <div ui-view></div>
 
     <script type="text/ng-template" id="/home.html">
