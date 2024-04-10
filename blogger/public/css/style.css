@@ -1,7 +1,6 @@
 body {
   height: 100vh;
   background-image: linear-gradient(to left bottom, #051937, #004d7a, #008793, #00bf72, #a8eb12);
-  color: #fff; /* Default text color */
   font-family: 'Courier New', monospace;
 }
 
@@ -11,20 +10,20 @@ body {
 }
 
 .navbar a {
-  color: #ffd000; /* Navbar link color */
+  color: #00bf72; /* Navbar link color */
 }
 
 .navbar a:hover {
-  color: #b75d09; /* Navbar link color on hover */
+  color: #10794f; /* Navbar link color on hover */
 }
 
 .card {
-  border: 1px solid #ccc;
+
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
   background-color: #333; /* Dark background color for cards */
-  color: #fff; /* Text color for cards */
+
 }
 
 .card-header,
