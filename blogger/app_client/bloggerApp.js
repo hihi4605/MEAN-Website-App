@@ -121,3 +121,26 @@ app.controller('blogEditController', function BlogEditController($location, $rou
         });
     };
 });
+
+
+// Controller for deleting blogs
+app.controller('DeleteController', ['$routeParams', '$location', 'BlogService', function($routeParams, $location, BlogService) {
+    var vm = this;
+    vm.blog = {};
+    var blogId = $routeParams.blogid;
+    vm.title = 'Delete Blog';
+
+    BlogService.getBlog(blogId).then(function(response) {
+        vm.blog = response.data;
+    }, function(error) {
+        console.error('Error fetching blog for deletion:', error);
+    });
+
+    vm.deleteBlog = function() {
+        BlogService.deleteBlog(blogId).then(function(response) {
+            $location.path('/blogList');
+        }, function(error) {
+            console.error('Error deleting blog:', error);
+        });
+    };
+}]);

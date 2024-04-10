@@ -83,6 +83,26 @@
         </div>
     </script>
 
+    <!-- Blog Delete-->
+    <script type="text/ng-template" id="/blogDelete.html">
+        <div class="container edit-blog-container" ng-controller="DeleteController as vm">
+            <h1 class="edit-blog-header">Delete Blog Post</h1>
+            <form ng-submit="vm.deleteBlog()" class="edit-form">
+                <div class="form-group">
+                    <label for="blogTitle">Title:</label>
+                    <input type="text" class="form-control" id="blogTitle" ng-model="vm.blog.blogTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="blogText">Body:</label>
+                    <textarea class="form-control" id="blogText" ng-model="vm.blog.blogEntry" rows="5" required></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Delete Post</button>
+                </div>
+            </form>
+        </div>
+    </script>
+    
     <script src="bloggerApp.js"></script>
 </body>
 </html>
