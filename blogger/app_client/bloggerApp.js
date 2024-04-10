@@ -108,19 +108,29 @@ app.controller('AddController', ['BlogService', '$location', function(BlogServic
     };
 }]);
 
-/* Blog Edit Controller */
-app.controller('blogEditController', function BlogEditController($location, $routeParams) {
-    var vm = this;
-    vm.pageHeader = {
-        title: 'Edit Blog'
-    };
-    vm.blog = getBlogs().get({ id: $routeParams.id });
-    vm.save = function() {
-        getBlogs().update({ id: $routeParams.id }, vm.blog, function() {
-            $location.path('/blog-list');
+// Controller for editing blogs
+app.controller('EditController', ['$stateParams', '$location', 'BlogService', 
+    function EditController($stateParams, $location, BlogService) {
+        var vm = this;
+        var blogId = $stateParams.blogid;
+        vm.blog = {};
+        vm.title = 'Edit Blog';
+
+        BlogService.getBlog(blogId).then(function(response) {
+            vm.blog = response.data;
+        }, function(error) {
+            console.error('Error fetching blog:', error);
         });
-    };
-});
+
+        vm.editBlog = function() {
+            BlogService.updateBlog(blogId, vm.blog).then(function(response) {
+                $location.path('/blogList');
+            }, function(error) {
+                vm.message = 'Error updating blog ' + vm.blogId;
+            });
+        };
+}]);
+
 
 
 // Controller for deleting blogs
