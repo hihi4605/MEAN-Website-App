@@ -124,10 +124,10 @@ app.controller('blogEditController', function BlogEditController($location, $rou
 
 
 // Controller for deleting blogs
-app.controller('DeleteController', ['$routeParams', '$location', 'BlogService', function($routeParams, $location, BlogService) {
+app.controller('DeleteController', ['$stateParams', '$location', 'BlogService', function($stateParams, $location, BlogService) {
     var vm = this;
     vm.blog = {};
-    var blogId = $routeParams.blogid;
+    var blogId = $stateParams.blogid;
     vm.title = 'Delete Blog';
 
     BlogService.getBlog(blogId).then(function(response) {
