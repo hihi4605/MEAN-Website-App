@@ -109,8 +109,8 @@ app.controller('AddController', ['BlogService', '$location', function(BlogServic
 }]);
 
 // Controller for editing blogs
-app.controller('EditController', ['$stateParams', '$location', 'BlogService', 
-    function EditController($stateParams, $location, BlogService) {
+app.controller('blogEditController', ['$stateParams', '$location', 'BlogService', 
+    function blogEditContoller($stateParams, $location, BlogService) {
         var vm = this;
         var blogId = $stateParams.blogid;
         vm.blog = {};
