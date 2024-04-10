@@ -96,26 +96,15 @@ app.controller('ListController', ['BlogService', function(BlogService) {
 // Add a controller for the Add Blog page
 app.controller('AddController', ['$http', '$location', function($http, $location) {
     var vm = this;
-    vm.pageHeader = {
-        title: 'Add Blog'
-    };
+    vm.blog = {};
+    vm.title = 'Add Blog';
 
-    vm.submitBlog = function() {
-        var newBlog = {
-            blogTitle: vm.blogTitle,
-            blogEntry: vm.blogEntry
-        };
-
-        // Use $http.post to send the new blog data to the server
-        $http.post('/api/blogs', newBlog)
-            .then(function(response) {
-                // If successful, redirect to the blog list page
-                $location.path('/blogList');
-            })
-            .catch(function(error) {
-                // Handle error if necessary
-                console.error('Error adding blog:', error);
-            });
+    vm.addBlog = function() {
+        BlogService.addBlog(vm.blog).then(function(response){
+            $location.path('/blogList');
+        }, function(error){
+            console.error('Error adding blog:', error);
+        }); 
     };
 }]);
 
