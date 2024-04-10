@@ -52,3 +52,54 @@ a {
     transform: translate3d(0,-3px,0) rotateZ(0.01deg);
   }
 }
+ 
+.card {
+  border: 1px solid #ccc; /* Add border */
+  border-radius: 5px; /* Add border radius */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+  margin-bottom: 20px; /* Add spacing between boxes */
+}
+
+.card-header,
+.card-footer {
+  background-color: #f8f9fa; /* Light background color for header and footer */
+  padding: 10px; /* Add padding */
+  border-bottom: 1px solid #ddd; /* Add border at bottom of header and footer */
+}
+
+.card-body {
+  padding: 15px; /* Add padding */
+}
+
+.card-title {
+  margin-bottom: 10px; /* Add spacing below title */
+  font-size: 1.25rem; /* Increase title font size */
+  font-weight: bold; /* Make title bold */
+}
+
+.card-text {
+  margin-bottom: 15px; /* Add spacing below text */
+}
+
+.posted-date {
+  font-size: 0.85rem; /* Decrease font size for date */
+  color: #666; /* Dim date text */
+}
+
+.icon-link {
+  color: #007bff; /* Blue color for icon links */
+  margin-left: 10px; /* Add spacing between icon links */
+}
+ 
+.footer {
+  background-color: #000000;
+  color: #ffffff;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+ 
