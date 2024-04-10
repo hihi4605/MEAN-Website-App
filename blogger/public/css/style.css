@@ -70,3 +70,9 @@ body {
   bottom: 0;
   width: 100%;
 }
+
+.jumbotron {
+  background-color: #222426; /* Dark background color for jumbotron */
+  padding: 10px;
+  margin-bottom: 20px;
+}
