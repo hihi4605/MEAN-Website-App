@@ -67,24 +67,24 @@ const renderBlogList = function(req, res, responseBody) {
 
 
 //returns a single blog when given an id //
-module.exports.blogReadOne = async function(req, res) {
-    const blogid = req.params.id;
+// Read a blog
+module.exports.blogReadOne = async function (req, res) {
+    const blogId = req.params.blogid;
+    console.log("Reading blog:", blogId);
 
-    if (!blogid) {
-        return res.status(400).json({ message: "Missing blog ID" });
+    try {
+        const blog = await Blog.findOne({_id: blogId});
+        console.log("API:", blog);
+
+        if (blog) {
+            sendJSONresponse(res, 200, blog);
+        } else {
+            sendJSONresponse(res, 404, { "message": "Blog not found" });
+        }
+    } catch (err) {
+        console.log(err);
+        sendJSONresponse(res, 400, err);
     }
-
-    Blog.findById(blogid)
-        .then(blog => {
-            if (!blog) {
-                return res.status(404).json({ message: "Blog not found" });
-            }
-            res.status(200).json(blog);
-        })
-        .catch(err => {
-            console.error(err);
-            res.status(500).json({ message: "Internal server error" });
-        });
 };
 
 
