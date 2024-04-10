@@ -88,38 +88,31 @@ module.exports.blogReadOne = async function(req, res) {
 };
 
 
-module.exports.blogUpdateOne = async function(req, res) {
-    if (!req.params.blogid) {
-        sendJSONresponse(res, 404, {
-            "message": "Not found, blogid is required"
-        });
-        return;
+//updates a blog when given an id //
+module.exports.blogUpdateOne = async function (req, res) {
+    const blogId = req.params.blogid;
+    console.log('Updating blog with ID:', blogId);
+
+    const updates = {
+        $set: {
+            blogTitle: req.body.blogTitle,
+            blogText: req.body.blogText
+        }
+    };
+
+    try {
+        const blog = await Blog.findByIdAndUpdate(blogId, updates, { new: true });
+        if (!blog) {
+            console.log(`No blog found with ID ${blogId}`);
+            return sendJSONresponse(res, 404, { "message": "Blog not found" });
+        }
+        sendJSONresponse(res, 200, blog);
+    } catch (err) {
+        console.log('Error updating blog:', err);
+        sendJSONresponse(res, 400, err);
     }
-    Blog
-        .findById(req.params.blogid)
-        .exec(
-            function(err, blog) {
-                if (!blog) {
-                    sendJSONresponse(res, 404, {
-                        "message": "blogid not found"
-                    });
-                    return;
-                } else if (err) {
-                    sendJSONresponse(res, 400, err);
-                    return;
-                }
-                blog.blogTitle = req.body.blogTitle;
-                blog.blogEntry = req.body.blogEntry;
-                blog.save(function(err, blog) {
-                    if (err) {
-                        sendJSONresponse(res, 404, err);
-                    } else {
-                        sendJSONresponse(res, 200, blog);
-                    }
-                });
-            }
-        );
 };
+
 module.exports.blogDeleteOne = async function (req, res) {
     const blogId = req.params.blogid;
     console.log("Deleting blog: " + blogId);
