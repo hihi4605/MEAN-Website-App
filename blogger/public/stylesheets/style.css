@@ -7,10 +7,71 @@ body {
   background-size: cover;
 }
 
+.title-spacing, .title-spacing-add {
+  margin-top: 50px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+.card {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: 0.3s;
+  color: #333;
+  border-radius: 10px; /* Adds rounded corners to the card */
+}
+
+.card .card-body .card-title {
+  font-size: 24px; /* Larger font size for the title */
+  font-weight: bold; /* Makes the title bold */
+  color: #cf3506; /* Dark color for better visibility */
+}
 a {
   color: #753131;
 }
+.jumbotron {
+  padding: 60px 30px; /* Increases padding */
+  margin-top: 30px; /* Adds some space at the top */
+  background-color: rgba(255, 255, 255, 0.9); /* Light background with a bit of transparency */
+  border-radius: 15px; /* Softens the corners */
+  color: #333; /* Dark text for readability */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* Subtle shadow for depth */
+}
+.jumbotron h1, .jumbotron p {
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Slight text shadow for better legibility */
+}
 
+.jumbotron .btn {
+  background-color: #00b7c3; /* Custom button color */
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px; /* Larger button padding */
+  font-size: 18px; /* Larger font size */
+  border-radius: 8px; /* Rounded button edges */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* Button shadow for depth */
+  transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transitions for hover effects */
+}
+
+.jumbotron .btn:hover, .jumbotron .btn:focus {
+  background-color: #00B7C3; /* Lighter color on hover/focus */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3); /* Slightly larger shadow on hover/focus for a "lifting" effect */
+  color: #ffffff;
+  text-decoration: none;
+  border: none;
+}
+
+.jumbotron .btn-primary:hover {
+  background-color: #0077B6; /* Custom button color */
+}
+
+/* Footer Styles */
+footer {
+  background-color: #003366;
+  color: #ffffff;
+  padding: 20px 0;
+  text-align: center;
+  font-size: 16px;
+  bottom: 0;
+  width: 100%;
+}
 /* change the background color */
 .navbar
 {
