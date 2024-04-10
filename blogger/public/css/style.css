@@ -1,11 +1,27 @@
 body {
   height: 100vh;
-  background-image: linear-gradient(to left bottom, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+  
   color: #fff; /* Default text color */
   font-family: 'Courier New', monospace;
   font-size: 16px; /* Increased font size for body text */
 }
+.gradient-background {
+  background: linear-gradient(165deg,#37ad8f,#dabaf0,#384bf7,#591033,#318450);
+  background-size: 300% 300%;
+  animation: gradient-animation 30s ease infinite;
+}
 
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
 .navbar {
   padding: 15px; /* Increased padding to navbar */
   background-color: #000; /* Dark background color for navbar */

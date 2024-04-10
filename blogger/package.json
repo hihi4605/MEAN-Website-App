@@ -20,5 +20,8 @@
     "ngx-bootstrap": "^12.0.0",
     "request": "^2.88.2",
     "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "sass": "^1.74.1"
   }
 }
