@@ -1,7 +1,6 @@
 body {
   height: 100vh;
-   background: linear-gradient(90deg,#e52e71,#ff8a00);
-
+  background-image: linear-gradient(to left bottom, #051937, #004d7a, #008793, #00bf72, #a8eb12);
 }
 .navbar
 {
@@ -20,39 +19,6 @@ a {
   color: #ffd000;
 }
 
-.slider-thumb::before {
-	position: absolute;
-	content: "";
-	left: 30%;
-	top: 20%;
-	width: 450px;
-	height: 450px;
-	background: #17141d;
-	border-radius: 62% 47% 82% 35% / 45% 45% 80% 66%;
-	will-change: border-radius, transform, opacity;
-	animation: sliderShape 5s linear infinite;
-	display: block;
-	z-index: -1;
-	-webkit-animation: sliderShape 5s linear infinite;
-}
-@keyframes sliderShape{
-  0%,100%{
-  border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
-    transform: translate3d(0,0,0) rotateZ(0.01deg);
-  }
-  34%{
-      border-radius: 70% 30% 46% 54% / 30% 29% 71% 70%;
-    transform:  translate3d(0,5px,0) rotateZ(0.01deg);
-  }
-  50%{
-    transform: translate3d(0,0,0) rotateZ(0.01deg);
-  }
-  67%{
-    border-radius: 100% 60% 60% 100% / 100% 100% 60% 60% ;
-    transform: translate3d(0,-3px,0) rotateZ(0.01deg);
-  }
-}
- 
 .card {
   border: 1px solid #ccc; /* Add border */
   border-radius: 5px; /* Add border radius */
