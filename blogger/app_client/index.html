@@ -83,26 +83,31 @@
         </div>
     </script>
 
-    <!-- Blog Delete-->
-    <script type="text/ng-template" id="/blogDelete.html">
-        <div class="container edit-blog-container" ng-controller="DeleteController as vm">
-            <h1 class="edit-blog-header">Delete Blog Post</h1>
-            <form ng-submit="vm.deleteBlog()" class="edit-form">
-                <div class="form-group">
-                    <label for="blogTitle">Title:</label>
-                    <input type="text" class="form-control" id="blogTitle" ng-model="vm.blog.blogTitle" required>
+        <!-- blogDelete.html -->
+        <script type="text/ng-template" id="/blogDelete.html">
+            <div class="container mt-5" ng-controller="DeleteController as vm">
+                <div class="form-container">
+                    <h1 class="form-header">Delete Blog</h1>
+                    <div class="delete-warning">
+                        <p>Confirm Deleting Blog</p>
+                    </div>
+                    <form ng-submit="vm.deleteBlog()" class="form-body">
+                        <div class="form-group">
+                            <label for="blogTitle">Blog Title</label>
+                            <input readonly class="form-control" id="title" ng-model="vm.blog.blogTitle">
+                        </div>
+                        <div class="form-group">
+                            <label for="blogText">Content</label>
+                            <textarea readonly class="form-control" id="entry" rows="3" ng-model="vm.blog.blogText"></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                            <a ng-href="/blogList" class="btn btn-secondary">Cancel</a>
+                        </div>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <label for="blogText">Body:</label>
-                    <textarea class="form-control" id="blogText" ng-model="vm.blog.blogEntry" rows="5" required></textarea>
-                </div>
-                <div class="form-actions">
-                    <button type="submit" class="btn btn-primary">Delete Post</button>
-                </div>
-            </form>
-        </div>
-    </script>
-    
+            </div>
+        </script>
     <script src="bloggerApp.js"></script>
 </body>
 </html>
