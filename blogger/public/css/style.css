@@ -1,13 +1,11 @@
- 
-
 body {
-	background: linear-gradient(-45deg, rgb(255, 213, 0), #230764, #1e14ab, #042e4b);
-	background-size: 400% 400%;
-	animation: gradient 15s ease infinite;
-	height: 100vh;
+  background: linear-gradient(-45deg, rgb(255, 213, 0), #230764, #1e14ab, #042e4b);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  height: 100vh;
   color: #fff; /* Default text color */
-  font-family: 'Courier New', monospace;
-  font-size: 16px; /* Increased font size for body text */
+  font-size: 18px; /* Increased font size for body text */
+  font-family: "Arial", sans-serif; /* Add your desired font here */
 }
 
 @keyframes gradient {
@@ -24,17 +22,17 @@ body {
 
 
 .navbar {
-  padding: 15px; /* Increased padding to navbar */
+ 
   background-color: #000; /* Dark background color for navbar */
 }
 
 .navbar a {
-  color: #00bf72; /* Navbar link color */
+  color: #ffbb00; /* Navbar link color */
   font-size: 18px; /* Increased font size for navbar links */
 }
 
 .navbar a:hover {
-  color: #00ff37; /* Navbar link color on hover */
+  color: #ff8c00; /* Navbar link color on hover */
 }
 
 .card {
