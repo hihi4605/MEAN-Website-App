@@ -30,6 +30,7 @@
             </div>
         </div>
     </script>
+
 <!-- Blog List -->
 <script type="text/ng-template" id="/blogList.html">
     <p></p>
@@ -38,6 +39,7 @@
             <div class="card mt-3">
                 <div class="card-body">
                     <h5 class="card-title">{{ blog.blogTitle }}</h5>
+                    <p>{{ blog.blogEntry }}</p> <!-- Add this line to print the blog content -->
                 </div>
                 <div class="card-footer">
                     <div class="col-sm">
@@ -73,7 +75,7 @@
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
-        </script>
+    </script>
 
         <!-- Register Page-->
         <script type="text/ng-template" id="register.html">
