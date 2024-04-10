@@ -58,7 +58,7 @@ const renderBlogList = function(req, res, responseBody) {
     // Use map to transform each blog into the desired format
     const blogs = responseBody.map(blog => ({
         blogTitle: blog.blogTitle,
-        blogText: blog.blogText,
+        blogEntry: blog.blogEntry,
         _id: blog._id
     }));
 
@@ -96,7 +96,7 @@ module.exports.blogUpdateOne = async function (req, res) {
     const updates = {
         $set: {
             blogTitle: req.body.blogTitle,
-            blogText: req.body.blogText
+            blogEntry: req.body.blogEntry
         }
     };
 
