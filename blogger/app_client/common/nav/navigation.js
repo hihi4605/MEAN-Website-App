@@ -1,16 +1,16 @@
 var app = angular.module('bloggerApp');
 
-/**DIRECTIVE */
+//Directives for navigation
 app.directive('navigation', function(){
-  return {
-      restrict: 'EA',
-      templateUrl: '/common/nav/navigation.html',
-      controller: 'NavigationController',
-      controllerAs: 'vm'
-  };
+    return {
+        restrict: 'EA',
+        templateUrl: '/common/nav/navigation.html',
+        controller: 'NavigationController',
+        controllerAs: 'vm'
+    };
 });
 
-/**CONTROLLER */
+//Controller for navigation
 app.controller('NavigationController', ['$location', 'authentication', 
     function NavigationController($location, authentication){
         var vm = this;
