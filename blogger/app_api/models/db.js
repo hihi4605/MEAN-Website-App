@@ -49,3 +49,4 @@ const dbURI = 'mongodb+srv://Chris:DrakeFan58949$@mydb.srmedx4.mongodb.net/';
 })();
 // Bring in Schemas and Models
 require('./blog');
+require('./users');

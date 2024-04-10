@@ -1,4 +1,5 @@
 var createError = require('http-errors');
+require('dotenv').config();
 var express = require('express');
 var path = require('path'); 
 
@@ -8,14 +9,15 @@ var logger = require('morgan');
 const { promiseHooks } = require('v8');
 require('./app_api/models/db');
 var app = express();
-
+var passport = require('passport');
+require('./app_api/config/passport');
 // view engine setup
 app.set('views', path.join(__dirname, '/app_server/views'));
 app.set('view engine', 'ejs');
 
  
 var routesApi = require('./app_api/routes/index');
- 
+app.use(passport.initialize());
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 app.use(logger('dev'));
 app.use(express.json());
