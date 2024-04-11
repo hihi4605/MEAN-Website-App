@@ -43,6 +43,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h5 class="card-title">{{ blog.blogTitle }}</h5>
+                        <p class="card-author">Author: {{ blog.author }}</p> <!-- Added author -->
                     </div>
                     <div class="card-body">
                         <p class="card-text">{{ blog.blogEntry }}</p>
@@ -50,10 +51,10 @@
                     <div class="card-footer d-flex justify-content-between align-items-center">
                         <span class="posted-date">Blog posted on {{ blog.createdOn | date:'medium' }}</span>
                     </div>
-                    <a ng-href="/blogEdit/{{ blog._id }}" class="icon-link" title="Edit" ng-show="vm.isLoggedIn()">
+                    <a ng-href="/blogEdit/{{ blog._id }}" class="icon-link" title="Edit" ng-show="vm.isLoggedIn() && vm.currentUser().email === blog.authorEmail">
                         <i class="fas fa-edit"></i>
                     </a>
-                    <a ng-href="/blogDelete/{{ blog._id }}" class="icon-link" title="Delete" ng-show="vm.isLoggedIn()">
+                    <a ng-href="/blogDelete/{{ blog._id }}" class="icon-link" title="Delete" ng-show="vm.isLoggedIn() && vm.currentUser().email === blog.authorEmail">
                         <i class="fas fa-trash-alt"></i>
                     </a>
                 </div>

@@ -1,8 +1,11 @@
 var mongoose = require('mongoose');
-
+var time = require('moment-timezone');
 var sendJSONresponse = function(res, status, content) {
     res.status(status);
     res.json(content);
+};
+var getDateTime = function() {
+    return time().tz("America/New_York").format();
 };
 
 var BlogSchema = new mongoose.Schema({
@@ -11,6 +14,16 @@ var BlogSchema = new mongoose.Schema({
     createdOn: {
         type: Date,
         default: Date.now
+    },
+
+    author: {
+        type: String,
+        required: true
+    },
+
+    authorEmail: {
+        type: String,
+        required: true
     }
 });
 console.log('BlogSchema created');
