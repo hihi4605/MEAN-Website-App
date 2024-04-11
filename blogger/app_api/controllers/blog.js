@@ -132,6 +132,6 @@ module.exports.blogDeleteOne = async function (req, res) {
 };
 
 
-// a put function that updates blog when given an ID //
+ 
 
 

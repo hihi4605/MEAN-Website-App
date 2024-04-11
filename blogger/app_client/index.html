@@ -82,8 +82,8 @@
         <script type="text/ng-template" id="/register.html">
             <div class="container">
                 <div class="card-body">
-                    <h1 class="text-center"> Register <a ng-href="/register"></h1>
-                    <form ng-submit="vm.onRegister()" novalidate>
+                    <h1 class="text-center"> Register</h1>
+                    <form ng-submit="vm.onRegister()" class="form-body">
                         <div role="alert" ng-show="vm.formError" class="alert alert-danger">
                             {{ vm.formError }}
                         </div>
@@ -103,7 +103,7 @@
                             <button type="submit" class="btn btn-primary">Register</button>
                         </div>
                         </form>
-                        <p class="text-center">Already a member? <a ng-href="/login">Sign in</a></p>
+                        <p class="text-center">Already a member? <a ui-sref="login">Sign in</a></p>
                     </div>
                 </div>
             </div>
