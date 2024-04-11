@@ -126,7 +126,7 @@ app.controller('AddController', ['$location', 'BlogService', 'authentication',
                     vm.message = 'Blog added successfully';
                     $location.path('/blogList');
             }, function(error) {
-                vm.message = 'Error adding blog ' + vm.blogId;
+                vm.message = 'Error adding blog something went wrong' + vm.blogId;
             });
         };
 }]);
