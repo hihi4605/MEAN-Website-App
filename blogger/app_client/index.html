@@ -10,6 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&amp;display=swap" rel="stylesheet" class="ng-scope">
     <script src="/lib/angular.min.js"></script>
     <script src="/lib/angular-ui-router.min.js"></script> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abel&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
 </head>
 
 <!-- Navigation -->
@@ -45,7 +48,7 @@
                         <p class="card-text">{{ blog.blogEntry }}</p>
                     </div>
                     <div class="card-footer d-flex justify-content-between align-items-center">
-                        <span class="posted-date">Blog posted on {{ blog.createdOn | date:'mediumDate' }}</span>
+                        <span class="posted-date">Blog posted on {{ blog.createdOn | date:'medium' }}</span>
                     </div>
                     <a ng-href="/blogEdit/{{ blog._id }}" class="icon-link" title="Edit" ng-show="vm.isLoggedIn()">
                         <i class="fas fa-edit"></i>
@@ -58,6 +61,7 @@
         </div>
     </div>
 </script>
+
 
     <!-- Blog Add -->
     <script type="text/ng-template" id="/blogAdd.html">
