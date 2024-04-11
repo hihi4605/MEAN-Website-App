@@ -114,20 +114,21 @@ app.controller('ListController', ['BlogService','authentication',
 
 
 
-// Add a controller for the Add Blog page
 app.controller('AddController', ['$location', 'BlogService', 'authentication', 
     function AddController($location, BlogService, authentication) {
-    var vm = this;
-    vm.blog = {};
-    vm.title = 'Add Blog';
+        var vm = this;
+        vm.blog = {};
+        vm.title = 'Add Blog';
 
-    vm.addBlog = function() {
-        BlogService.addBlog(vm.blog).then(function(response){
-            $location.path('/blogList');
-        }, function(error){
-            console.error('Error adding blog:', error);
-        }); 
-    };
+        vm.submitBlog = function() {
+            BlogService.addBlog(vm.blog)
+                .then(function(response) {
+                    vm.message = 'Blog added successfully';
+                    $location.path('/blogList');
+            }, function(error) {
+                vm.message = 'Error adding blog ' + vm.blogId;
+            });
+        };
 }]);
 
 // Controller for editing blogs
