@@ -94,7 +94,7 @@ app.controller('HomeController', [function() {
 app.controller('ListController', ['BlogService','authentication', 
     function ListController(BlogService, authentication) {
     var vm = this;
-    vm.blogs = [];
+    vm.blogs = {};
     vm.title = 'Blog List';
 
     vm.isLoggedIn = function() {
