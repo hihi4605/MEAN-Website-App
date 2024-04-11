@@ -33,27 +33,33 @@
 
 <!-- Blog List -->
 <script type="text/ng-template" id="/blogList.html">
-    <div class="container">
+    <div class="container"> 
         <h1 class="title-spacing">{{ vm.title }}</h1>
+
         <div class="row">
-            <div ng-repeat="blog in vm.blogs">
+            <div ng-repeat="blog in vm.blogs" class="col-md-4"> 
                 <div class="card">
                     <div class="card-header">
                         <h5 class="card-title">{{ blog.blogTitle }}</h5>
                     </div>
                     <div class="card-body">
-                        <p class="card-text">{{ blog.blogEntry }}</p>
+                        <p class="card-text">{{ blog.blogText }}</p>
                     </div>
                     <div class="card-footer d-flex justify-content-between align-items-center">
-                        <span class="posted-date">Blog posted on {{ blog.createdOn | date:'mediumDate' }}</span>
+                        <span class="posted-date">Posted on {{ blog.createdOn }}</span>
+                        <div>
+                            <a ui-sref="blogEdit({blogid: blog._id})" class="icon-link" title="Edit" ng-show="vm.isLoggedIn()">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a ui-sref="blogDelete({blogid: blog._id})" class="icon-link" title="Delete" ng-show="vm.isLoggedIn()">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
+                        </div>
                     </div>
-                    <a ng-href="/blogEdit/{{ blog._id }}" class="icon-link" title="Edit" ng-show="vm.isLoggedIn()">
-                        <i class="fas fa-edit"></i>
-                    </a>
-                    <a ng-href="/blogDelete/{{ blog._id }}" class="icon-link" title="Delete" ng-show="vm.isLoggedIn()">
-                        <i class="fas fa-trash-alt"></i>
-                    </a>
                 </div>
+            </div>
+            <div ng-if="!vm.blogs.length" class="col-12">
+                <p>There are no posts yet. <a ui-sref="blogAdd">Click here</a> to add a new post.</p>
             </div>
         </div>
     </div>
