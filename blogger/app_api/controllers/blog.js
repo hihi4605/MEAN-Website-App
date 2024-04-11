@@ -43,6 +43,9 @@ const buildBlogList = async function(req, res, results) {
         const blog = await Blog.create({
             blogTitle: req.body.blogTitle,
             blogEntry: req.body.blogEntry,
+            createdOn: req.body.createdOn,
+            author: req.body.author,
+            authorEmail: req.body.authorEmail
         });
         console.log(blog);
         sendJSONresponse(res, 201, blog);
@@ -52,7 +55,7 @@ const buildBlogList = async function(req, res, results) {
         
     }
 };
-
+ 
 // Render blog list
 const renderBlogList = function(req, res, responseBody) {
     //when the response body is an array of blogs, map over the array and return a new array of blog objects
