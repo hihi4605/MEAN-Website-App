@@ -20,25 +20,25 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', functio
             controller: 'AddController',
             controllerAs: 'vm'
         })
-        .state('/blogEdit/:blogid', {
+        .state('/blogEdit', {
             url: '/blogEdit/:blogid',
             templateUrl: '/blogEdit.html',
             controller: 'blogEditController',
             controllerAs: 'vm'
         })
-        .state('blogDelete/:blogid', {
+        .state('blogDelete', {
             url: '/blogDelete/:blogid',
             templateUrl: '/blogDelete.html',
             controller: 'DeleteController',
             controllerAs: 'vm'
         })  
-        .state('/register', {
+        .state('register', {
             url: '/register',
             templateUrl: '/register.html',
             controller: 'RegisterController',
             controllerAs: 'vm'
         })
-        .state('/login', {
+        .state('login', {
             url: '/login',
             templateUrl: '/login.html',
             controller: 'LoginController',
