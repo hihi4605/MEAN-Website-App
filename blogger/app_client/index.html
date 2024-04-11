@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html ng-app="bloggerApp">
+<html lang="en-US" ng-app="bloggerApp">
 <head>
+    <charset="UTF-8">
     <base href="/"/>
     <title>Christian Michels Website</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
@@ -25,18 +26,17 @@
                 <h1 class="display-4">{{ vm.title }}</h1>
                 <p class="lead">{{ vm.message }}</p>
                 <hr class="my-4">
-                <p>You can click view blogs to </p>
+                <p>You can click this button to see the blogs posted so far!</p>
                 <a class="btn btn-primary btn-lg" ng-href="blogList" role="button">View Blogs</a>
             </div>
         </div>
     </script>
-
 <!-- Blog List -->
 <script type="text/ng-template" id="/blogList.html">
     <div class="container">
         <h1 class="title-spacing">{{ vm.title }}</h1>
         <div class="row">
-            <div ng-repeat="blog in vm.blogs">
+            <div ng-repeat="blog in vm.blogs | orderBy:'-createdOn'">
                 <div class="card">
                     <div class="card-header">
                         <h5 class="card-title">{{ blog.blogTitle }}</h5>
@@ -58,7 +58,6 @@
         </div>
     </div>
 </script>
-
 
     <!-- Blog Add -->
     <script type="text/ng-template" id="/blogAdd.html">
