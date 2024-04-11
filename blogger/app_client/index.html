@@ -64,7 +64,7 @@
     <script type="text/ng-template" id="/blogAdd.html">
         <div class="container">
             <h1>Add Blog</h1>
-            <form ng-submit="submitBlog()">
+            <form ng-submit="vm.submitBlog()" ng-controller="AddController as vm" method = "POST" class="edit-form">
                 <div class="form-group">
                     <label for="blogTitle">Blog Title</label>
                     <input type="text" class="form-control" id="blogTitle" ng-model="blogTitle" placeholder="Enter title" required>
@@ -77,6 +77,25 @@
             </form>
         </div>
     </script>
+
+    <!-- Blog Edit -->
+    <script type="text/ng-template" id="/blogEdit.html">
+        <div class="container" ng-controller="EditController as vm">
+            <div class="edit-blog-container">
+                <h1 class="edit-blog-header">Edit Blog</h1>
+                <form ng-submit="vm.editBlog()" class="edit-form">
+                    <div class="form-group">
+                        <label for="blogTitle">Blog Title</label>
+                        <input class="form-control" id="title" ng-model="vm.blog.blogTitle">
+                    </div>
+                    <div class="form-group">
+                        <label for="blogText">Content</label>
+                        <textarea class="form-control" id="entry" rows="5" ng-model="vm.blog.blogEntry"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Update Blog</button>
+                </form>
+            </div>
+        </div>
 
         <!-- Register Page-->
         <script type="text/ng-template" id="/register.html">
