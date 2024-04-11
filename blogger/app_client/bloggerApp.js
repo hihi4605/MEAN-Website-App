@@ -120,7 +120,7 @@ app.controller('AddController', ['$location', 'BlogService', 'authentication',
         vm.blog = {};
         vm.title = 'Add Blog';
 
-        vm.submitBlog = function() {
+        vm.addBlog = function() {
             BlogService.addBlog(vm.blog)
                 .then(function(response) {
                     vm.message = 'Blog added successfully';

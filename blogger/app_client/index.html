@@ -64,7 +64,7 @@
     <script type="text/ng-template" id="/blogAdd.html">
         <div class="container">
             <h1>Add Blog</h1>
-            <form ng-submit="vm.submitBlog()" ng-controller="AddController as vm" method = "POST" class="edit-form">
+            <form ng-submit="vm.addBlog()" ng-controller="AddController as vm" method = "POST" class="edit-form">
                 <div class="form-group">
                     <label for="blogTitle">Blog Title</label>
                     <input type="text" class="form-control" id="blogTitle" ng-model="blogTitle" placeholder="Enter title" required>
