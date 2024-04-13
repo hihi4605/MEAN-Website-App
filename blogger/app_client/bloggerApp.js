@@ -43,6 +43,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', functio
             templateUrl: '/login.html',
             controller: 'LoginController',
             controllerAs: 'vm'
+        })
+        .state('spaceInvaders', {
+            url: '/spaceInvaders',
+            templateUrl: '/spaceInvaders.html',
+            controller: 'SpaceInvadersController',
+            controllerAs: 'vm'
         });
     // Default fallback for unmatched urls
     $urlRouterProvider.otherwise('/');
@@ -190,3 +196,8 @@ app.controller('DeleteController', ['$stateParams', '$location', 'BlogService', 
             });
         };
 }]);
+
+app.controller('spaceInvadersController', ['$scope', function($scope) {
+    $scope.title = 'Space Invaders';
+}
+]);
