@@ -8,6 +8,7 @@
   "dependencies": {
     "@uirouter/angular": "^13.0.0",
     "bootstrap": "^3.4.1",
+    "bp-space-invaders": "^0.5.10",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "dotenv": "^16.4.5",
