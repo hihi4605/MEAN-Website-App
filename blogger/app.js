@@ -29,7 +29,7 @@ app.use(express.static(path.join(__dirname, 'app_client')));
 app.use('/api',routesApi);
  
 
-module.exports = AppModule;
+ 
 // Added per Lab 5 - Angular
 
 app.use(function(req, res) {
