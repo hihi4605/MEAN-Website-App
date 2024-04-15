@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
   background: linear-gradient(-45deg, #ffea00, #b948f7, #8f46ef, #4500db);
   background-size: 500% 500%;
@@ -30,7 +34,7 @@ body {
 
 .navbar a {
   color: #ffbb00; /* Navbar link color */
-  font-size: 36px; /* Increased font size for navbar links */
+  font-size: 24px; /* Increased font size for navbar links */
   font-family: "Roboto Mono", monospace;
 }
 
