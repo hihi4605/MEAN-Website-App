@@ -43,6 +43,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', functio
             templateUrl: '/login.html',
             controller: 'LoginController',
             controllerAs: 'vm'
+        })
+        .state('spaceInvaders', {
+            url: '/spaceInvaders',
+            templateUrl: '/spaceInvaders.html',
+            controller: 'SpaceInvadersController',
+            controllerAs: 'vm'
         });
     // Default fallback for unmatched urls
     $urlRouterProvider.otherwise('/');
@@ -105,6 +111,12 @@ app.controller('ListController', ['BlogService','authentication',
         authentication.logout();
     };
 
+    vm.currentUser = function() {
+        return authentication.currentUser();
+    };
+
+    console.log('Current user is' + authentication.currentUser());
+
     BlogService.listBlogs().then(function(response) {
         vm.blogs = response.data;
     }, function(error) {
@@ -121,6 +133,12 @@ app.controller('AddController', ['$location', 'BlogService', 'authentication',
         vm.title = 'Add Blog';
 
         vm.addBlog = function() {
+            // Get the current user
+            var user = authentication.currentUser();
+            vm.blog.author = user.name;
+            vm.blog.authorEmail = user.email;
+
+
             BlogService.addBlog(vm.blog)
                 .then(function(response) {
                     vm.message = 'Blog added successfully';
@@ -155,7 +173,7 @@ app.controller('EditController', ['$stateParams', '$location', 'BlogService', 'a
 }]);
 
 
-
+// Controller for deleting blogs
 app.controller('DeleteController', ['$stateParams', '$location', 'BlogService', 'authentication', 
     function DeleteController($stateParams, $location, BlogService, authentication)  {
         var vm = this;
@@ -167,7 +185,7 @@ app.controller('DeleteController', ['$stateParams', '$location', 'BlogService', 
             vm.blog = response.data;
             vm.message = "Blog found";
         }, function(error) {
-            vm.message = 'Error fetching blog' + vm.blogId + 'for deletion';
+            vm.message = 'Error fetching blog' + vm.blogId + 'delete blog failed';
         });
 
         vm.deleteBlog = function() {
@@ -178,3 +196,8 @@ app.controller('DeleteController', ['$stateParams', '$location', 'BlogService', 
             });
         };
 }]);
+
+app.controller('spaceInvadersController', ['$scope', function($scope) {
+    $scope.title = 'Space Invaders';
+}
+]);
