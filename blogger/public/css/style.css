@@ -46,8 +46,15 @@ body {
   background-color: #333; /* Dark background color for cards */
   color: #fff; /* Text color for cards */
 }
+.card-header
+{
+  background-color: #000;
+  padding: 15px; /* Increased padding for card header and footer */
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  font-size: 20px; /* Increased font size for card header and footer */
+}
 
-.card-header,
 .card-footer {
   background-color: #000;
   padding: 15px; /* Increased padding for card header and footer */
