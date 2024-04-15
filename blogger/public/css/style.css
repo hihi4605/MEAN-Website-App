@@ -111,12 +111,12 @@ body {
 }
 
 .card {
-  background-color: #add8e5;
-  width: 200px;
-  padding: 20px;
-  color: #1b3e59;
-  border-radius: 15px;
-  box-shadow: 8px 8px 16px 2px #1b3e59
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  background-color: #333; /* Dark background color for cards */
+  color: #fff; /* Text color for cards */
 }
 
 .card-header,
