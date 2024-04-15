@@ -17,10 +17,6 @@ app.set('view engine', 'ejs');
 
  
 var routesApi = require('./app_api/routes/index');
-const { BrowserModule } = require('@angular/platform-browser');
-const { NgModule } = require('@angular/core');
-const { AppComponent } = require('./app.component');
-const { SpaceInvadersModule } = require('bp-space-invaders');
 app.use(passport.initialize());
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 app.use(logger('dev'));
@@ -32,18 +28,6 @@ app.use(express.static(path.join(__dirname, 'app_client')));
  
 app.use('/api',routesApi);
  
-
-@NgModule({
-  declarations: [AppComponent],
-  imports: [
-    BrowserModule,
-    SpaceInvadersModule.forRoot({
-      isDebug: false
-    })
-  ],
-  bootstrap: [AppComponent]
-})
-class AppModule {}
 
 module.exports = AppModule;
 // Added per Lab 5 - Angular
