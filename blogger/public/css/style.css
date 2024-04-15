@@ -39,7 +39,6 @@ body {
 }
 
 .card {
-  display: flex;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
@@ -54,7 +53,6 @@ body {
   padding: 15px; /* Increased padding for card header and footer */
   border-bottom: 1px solid #444; /* Darker border color */
   font-size: 20px; /* Increased font size for card header and footer */
-  border-radius: 5px; /* Rounded corners */
 }
 
 .card-body {
