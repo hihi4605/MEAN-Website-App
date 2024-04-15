@@ -4,7 +4,7 @@ body {
   animation: gradient 15s ease infinite;
   height: 100vh;
   color: #fff; /* Default text color */
- 
+  font-family: "Roboto Mono", monospace;
 }
 
 @keyframes gradient {
@@ -27,14 +27,10 @@ body {
 }
 
 
-.navbar {
- 
-  
-}
-
 .navbar a {
   color: #ffbb00; /* Navbar link color */
   font-size: 18px; /* Increased font size for navbar links */
+  font-family: "Roboto Mono", monospace;
 }
 
 .navbar a:hover {
