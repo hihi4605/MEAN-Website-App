@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "bootstrap": "^5.3.3"
+    "bootstrap": "^5.3.3",
+    "multiplayer-pong-game": "github:mmaksi/multiplayer-pong"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.3"
