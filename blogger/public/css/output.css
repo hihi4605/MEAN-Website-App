@@ -6,7 +6,7 @@
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
 2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
 */
-/** npx tailwindcss -i blogger\public\css\style.css -o blogger\public\css\output.css --watch **/
+
 *,
 ::before,
 ::after {
@@ -577,6 +577,13 @@ body {
   100% {
     background-position: 0% 50%;
   }
+}
+
+.list-title
+{
+  font-size: 24px;
+  /* Increased font size for list title */
+  font-weight: bold;
 }
 
 .roboto-mono-robot {

@@ -24,6 +24,13 @@ body {
 	}
 }
 
+.list-title
+{
+  font-size: 24px; /* Increased font size for list title */
+  font-weight: bold;
+
+}
+
 .roboto-mono-robot {
   font-family: "Roboto Mono", monospace;
   font-optical-sizing: auto;
