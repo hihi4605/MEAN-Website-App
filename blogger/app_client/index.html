@@ -38,7 +38,7 @@
 <!-- Blog List -->
 <script type="text/ng-template" id="/blogList.html">
     <div class="container">
-        <h1 class="title-spacing">{{ vm.title }}</h1>
+        <h1>{{ vm.title }}</h1>
         <div class="row">
             <div ng-repeat="blog in vm.blogs | orderBy:'-createdOn'">
                 <div class="card">
