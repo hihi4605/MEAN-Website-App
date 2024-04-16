@@ -653,7 +653,7 @@ body {
 }
 
 .card-text {
-  text-align: start;
+  text-align: left;
   /* Justify text alignment for card text */
   font-size: 22px;
   /* Increased font size for card text */
