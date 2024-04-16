@@ -639,8 +639,6 @@ body {
 }
 
 .card-body {
-  padding: 60px;
-  /* Increased padding for card body */
   background-color: #333;
 }
 
@@ -653,6 +651,8 @@ body {
 }
 
 .card-text {
+  text-align: left;
+  /* Align card text to the left */
   font-size: 22px;
   /* Increased font size for card text */
 }
