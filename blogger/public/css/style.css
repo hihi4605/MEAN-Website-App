@@ -74,20 +74,20 @@ body {
 }
 
 .card-body {
- 
+  padding: 60px; /* Increased padding for card body */
   background-color: #333;
 }
- 
+
 .card-title {
-    margin-bottom: 15px; /* Increased margin bottom for card title */
-    font-size: 24px; /* Increased font size for card title */
-    font-weight: bold;
+  margin-bottom: 25px; /* Increased margin bottom for card title */
+  font-size: 24px; /* Increased font size for card title */
+  font-weight: bold;
 }
 
-  .card-text {
-    text-align: left; /* Align card text to the left */
-    font-size: 22px; /* Increased font size for card text */
-  }
+.card-text {
+ 
+  font-size: 22px; /* Increased font size for card text */
+}
 
 .posted-date {
   font-size: 14px; /* Decreased font size for posted date */
