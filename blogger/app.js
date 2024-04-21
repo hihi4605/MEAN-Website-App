@@ -1,6 +1,7 @@
 var createError = require('http-errors');
 
 var express = require('express');
+
 var path = require('path'); 
 require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 var cookieParser = require('cookie-parser');
@@ -14,6 +15,15 @@ require('./app_api/config/passport');
 // view engine setup
 app.set('views', path.join(__dirname, '/app_server/views'));
 app.set('view engine', 'ejs');
+var io = require('socket.io')(app.listen(3000));
+
+io.on("connection", (socket) => {
+  console.log(`connect ${socket.id}`);
+
+  socket.on("disconnect", (reason) => {
+    console.log(`disconnect ${socket.id} due to ${reason}`);
+  });
+});
 
  
 var routesApi = require('./app_api/routes/index');
