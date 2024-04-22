@@ -1,11 +1,20 @@
 body {
-  background: linear-gradient(-45deg, #ffea00, #b948f7, #8f46ef, #4500db);
+  background: linear-gradient(-45deg, #004505e2, #000000, #000000, #00000049);
   background-size: 500% 500%;
   animation: gradient 15s ease infinite;
   min-height: 100vh;
   height: 100vh;
   color: #fff; /* Default text color */
   font-family: "Roboto Mono", monospace;
+}
+.row {
+  display: flex; /* Use flexbox to arrange items horizontally */
+  flex-wrap: wrap; /* Allow items to wrap to the next row if necessary */
+  padding: 40px; /* Increased padding for rows */
+}
+
+.card {
+  margin-right: 20px; /* Add margin between cards */
 }
 
 @keyframes gradient {
@@ -44,55 +53,55 @@ body {
 .navbar a:hover {
   color: #ff8c00; /* Navbar link color on hover */
 }
-
 .card {
   border: 1px solid #ffffff;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
-  background-color: #333; /* Dark background color for cards */
+  background-color: #352a2a; /* Dark background color for cards */
   color: #fff; /* Text color for cards */
+  padding: 20px; /* Adjusted padding for smaller cards */
 }
-.card-header
-{
+
+.card-header {
   background-color: #000;
-  padding: 15px; /* Increased padding for card header and footer */
+  padding: 10px; /* Adjusted padding for card header */
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  font-size: 20px; /* Increased font size for card header and footer */
+  font-size: 18px; /* Adjusted font size for card header */
 }
 
 .card-footer {
   background-color: #000;
-  padding: 15px; /* Increased padding for card header and footer */
+  padding: 10px; /* Adjusted padding for card footer */
   border-bottom: 1px solid #444; /* Darker border color */
-  font-size: 20px; /* Increased font size for card header and footer */
+  font-size: 18px; /* Adjusted font size for card footer */
 }
 
 .card-body {
-  padding: 60px; /* Increased padding for card body */
-  background-color: #333;
+  padding: 10px; /* Adjusted padding for card body */
+  background-color: #000000;
 }
 
 .card-title {
-  margin-bottom: 25px; /* Increased margin bottom for card title */
-  font-size: 24px; /* Increased font size for card title */
+  margin-bottom: 15px; /* Adjusted margin bottom for card title */
+  font-size: 20px; /* Adjusted font size for card title */
   font-weight: bold;
 }
 
 .card-text {
- text-align: left; /* Justify text alignment for card text */
-  font-size: 22px; /* Increased font size for card text */
+  text-align: left; /* Justify text alignment for card text */
+  font-size: 18px; /* Adjusted font size for card text */
 }
 
 .posted-date {
-  font-size: 14px; /* Decreased font size for posted date */
+  font-size: 12px; /* Decreased font size for posted date */
   color: #ccc; /* Lighter text color for date */
 }
 
 .icon-link {
   color: #ccc; /* Lighter text color for icon links */
-  margin-left: 15px; /* Increased margin left for icon links */
+  margin-left: 10px; /* Adjusted margin left for icon links */
 }
 
 .footer {
