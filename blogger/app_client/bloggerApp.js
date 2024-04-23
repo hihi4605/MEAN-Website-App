@@ -64,6 +64,8 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', functio
         requireBase: false
     });
 }]);
+
+
 //Service for API calls
 app.service('BlogService', ['$http', 'authentication', function($http, authentication) {
     var apiBaseUrl = '/api/blogs';

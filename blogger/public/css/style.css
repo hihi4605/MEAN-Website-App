@@ -1,7 +1,8 @@
 body {
-  background: linear-gradient(-45deg, rgb(255, 213, 0), #890aff, #692abc, #dcac01);
+  background: linear-gradient(-45deg,  #131e2e, #2a0570);
+  /* Complementary colors */
   background-size: 500% 500%;
-  animation: gradient 30s ease infinite;
+  animation: gradient 90s ease infinite;
   min-height: 100vh;
   height: 100vh;
   color: #fff; /* Default text color */
@@ -24,6 +25,18 @@ body {
 	}
 }
 
+.blog-text
+{
+  border: none; /* Remove the solid border */
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3); /* Add a blur effect to the border */
+  margin-bottom: 20px;
+  background-color:rgba(255, 255, 255, 0.3);
+  color: #fff;
+  padding: 20px;
+  font-size: 24px; /* Increased font size for blog text */
+}
+
 .blog-view-container {
   margin-top: 50px;
   color: #000; /* Change text color */
@@ -34,8 +47,8 @@ body {
 }
 
 .blog-title {
-  font-size: 32px;
-  font-weight: bold;
+  font-size: 48px;
+  font-weight: bolder;
 }
 
 .blog-metadata {
@@ -49,10 +62,13 @@ body {
 }
 
 .comment-item {
+  border: none; /* Remove the solid border */
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3); /* Add a blur effect to the border */
   margin-bottom: 20px;
-  border: 1px solid #ccc; /* Add border around each comment */
-  border-radius: 5px; /* Add border radius */
-  padding: 15px; /* Add padding to each comment */
+  background-color:rgba(255, 255, 255, 0.3);
+  color: #fff;
+  padding: 20px;
 }
 
 .comment-item {
@@ -118,32 +134,70 @@ body {
   cursor: pointer;
 }
 
-.reply-link {
-  margin-left: 10px;
-  color: #007bff;
+.reactions:hover {
+  background-color: #e0e0e0; /* Darker shade on hover */
+}
+
+.glow-on-hover {
+  width: 50px; /* Adjust width to match normal buttons */
+  height: 30px; /* Adjust height to match normal buttons */
+  border: none;
+  outline: none;
+  color: #fff;
+  background: #111;
   cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
 }
 
-.reply-form {
-  margin-top: 10px;
+.glow-on-hover:before {
+  content: '';
+  background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+  border-radius: 10px;
 }
 
-.reply-textarea {
+.glow-on-hover:active {
+  color: #000
+}
+
+.glow-on-hover:active:after {
+  background: transparent;
+}
+
+.glow-on-hover:hover:before {
+  opacity: 1;
+}
+
+.glow-on-hover:after {
+  z-index: -1;
+  content: '';
+  position: absolute;
   width: 100%;
-  margin-bottom: 10px;
+  height: 100%;
+  background: #111;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
 }
 
-.reply-list {
-  list-style-type: none;
-  padding-left: 20px;
+@keyframes glowing {
+  0% { background-position: 0 0; }
+  50% { background-position: 400% 0; }
+  100% { background-position: 0 0; }
 }
-
-.reply-item {
-  margin-bottom: 10px;
-}
-
 .btn-comment,
-.btn-reply,
 .btn-cancel {
   padding: 5px 10px;
   cursor: pointer;
@@ -215,30 +269,36 @@ body {
   border-bottom: 1px solid #444; /* Darker border color */
   font-size: 18px; /* Adjusted font size for card footer */
 }
-
 .card-body {
-  padding: 10px; /* Adjusted padding for card body */
-  background-color: #000000;
+  padding: 20px; /* Increase padding for better readability */
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background for better contrast */
 }
 
 .card-title {
-  margin-bottom: 15px; /* Adjusted margin bottom for card title */
-  font-size: 20px; /* Adjusted font size for card title */
+  margin-bottom: 10px; /* Reduce margin bottom for better spacing */
+  font-size: 24px; /* Increase font size for better readability */
   font-weight: bold;
+  color: #fff; /* Change text color to white for better contrast */
 }
 
 .card-text {
-  text-align: left; /* Justify text alignment for card text */
-  font-size: 18px; /* Adjusted font size for card text */
+  text-align: justify; /* Justify text alignment for better readability */
+  font-size: 24px; /* Keep font size readable */
+  color: #f0f0f0; /* Slightly lighter text color for better contrast */
 }
+
+
 
 .posted-date {
-  font-size: 12px; /* Decreased font size for posted date */
-  color: #ccc; /* Lighter text color for date */
+  font-size: 14px; /* Decrease font size for less emphasis */
+  color: #ccc; /* Keep light text color */
 }
-
-.icon-link {
-  color: #ccc; /* Lighter text color for icon links */
+.fas.fa-edit{
+  color: #00ff55; /* Lighter text color for icon links */
+  margin-left: 10px; /* Adjusted margin left for icon links */
+}
+.fas.fa-trash-alt{
+  color: #ff0000; /* Lighter text color for icon links */
   margin-left: 10px; /* Adjusted margin left for icon links */
 }
 
@@ -253,10 +313,11 @@ body {
   width: 100%;
 }
 .jumbotron {
-  background-color: #222426;
-  padding: 40px;
-  margin-bottom: 40px;
-  font-size: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); /* Add a blur effect to the jumbotron */
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.095); /* Add a blur effect to the border */
+  margin-bottom: 20px;
+  background-color:rgba(255, 255, 255, 0.3);
+  color: #fff;
+  font-size: 24px; /* Increased font size for jumbotron text */
 }
+
+
