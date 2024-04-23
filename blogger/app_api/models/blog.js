@@ -21,8 +21,7 @@ var userReactionSchema = new mongoose.Schema({
     }
 }, {_id: false});
 
-
-var replySchema = new mongoose.Schema({
+var commentSchema = new mongoose.Schema({
     commentText: {
         type: String,
         required: true
@@ -50,35 +49,6 @@ var replySchema = new mongoose.Schema({
     userReactions: [userReactionSchema]
 });
 
-var commentSchema = new mongoose.Schema({
-    commentText: {
-        type: String,
-        required: true
-    },
-    author: {
-        type: String,
-        required: true
-    },
-    authorEmail: {
-        type: String,
-        required: true
-    },
-    createdOn: {
-        type: Date,
-        default: Date.now
-    },
-    likes: {
-        type: Number,
-        default: 0
-    },
-    dislikes: {
-        type: Number,
-        default: 0
-    },
-    userReactions: [userReactionSchema],
-    replies: [replySchema] // Nested replies
-});
-
 
 var BlogSchema = new mongoose.Schema({
     blogTitle: {type: String},
@@ -98,7 +68,5 @@ var BlogSchema = new mongoose.Schema({
     },
     comments: [commentSchema]
 });
-
-
 
 module.exports = mongoose.model('Blog', BlogSchema);

@@ -102,9 +102,6 @@ app.service('BlogService', ['$http', 'authentication', function($http, authentic
         return $http.get(apiBaseUrl + '/' + blogId + '/comments');
     };
 
-    this.addReply = function (blogId, commentId, reply) {
-        return $http.post(apiBaseUrl + '/' + blogId + '/comments/' + commentId + '/replies', reply, makeAuthHeader());
-    };
 
     this.likeComment = function (blogId, commentId) {
         return $http.post(apiBaseUrl + '/' + blogId + '/comments/' + commentId + '/like', {}, makeAuthHeader());
@@ -304,31 +301,6 @@ app.controller('ViewController', ['$stateParams', 'BlogService', 'authentication
             });
         }, function (error) {
             console.error('Error adding comment:', error);
-        });
-    };
-
-    // Function to add a reply
-    vm.addReply = function (commentId) {
-        if (!vm.newReplyTexts[commentId].trim()) {
-            alert("Reply cannot be empty.");
-            return;
-        }
-        var reply = {
-            commentText: vm.newReplyTexts[commentId],
-            author: authentication.currentUser().name,
-            authorEmail: authentication.currentUser().email
-        };
-        BlogService.addReply($stateParams.blogid, commentId, reply).then(function (response) {
-            var comment = vm.blog.comments.find(c => c._id === commentId);
-            if (comment) {
-                comment.replies.push(response.data);
-                $timeout(function () {
-                    vm.newReplyTexts[commentId] = '';
-                    vm.replyVisibility[commentId] = false;
-                });
-            }
-        }, function (error) {
-            console.error('Error adding reply:', error);
         });
     };
 
