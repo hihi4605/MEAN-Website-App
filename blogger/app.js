@@ -15,17 +15,8 @@ require('./app_api/config/passport');
 // view engine setup
 app.set('views', path.join(__dirname, '/app_server/views'));
 app.set('view engine', 'ejs');
-var io = require('socket.io')(app.listen(3000));
-
-io.on("connection", (socket) => {
-  console.log(`connect ${socket.id}`);
-
-  socket.on("disconnect", (reason) => {
-    console.log(`disconnect ${socket.id} due to ${reason}`);
-  });
-});
-
- 
+const http = require("http");
+app.listen(3000);
 var routesApi = require('./app_api/routes/index');
 app.use(passport.initialize());
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
@@ -37,8 +28,29 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'app_client'))); 
  
 app.use('/api',routesApi);
- 
 
+//Socket IO and room
+const socketIO = require("socket.io");
+const { Server } = require("socket.io");
+const Room = require("./room");
+const room = new Room();
+const server = http.createServer(app);
+const io = socketIO(server);
+io.on("connection", async (socket) => {
+  const roomID = await room.joinRoom();
+  socket.join(roomID);
+
+  socket.on("send-message", (message) => {
+    socket.to(roomID).emit("receive-message", message);
+  });
+
+  socket.on("disconnect", () => {
+    room.leaveRoom();
+  });
+});
+server.listen(0, () => {
+  console.log(`Server working on port ${server.address().port}`);
+});
  
 // Added per Lab 5 - Angular
 

@@ -44,12 +44,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', functio
             controller: 'LoginController',
             controllerAs: 'vm'
         })
-        .state('spaceInvaders', {
-            url: '/spaceInvaders',
-            templateUrl: '/spaceInvaders.html',
-            controller: 'SpaceInvadersController',
+        .state('chatRoom', {
+            url: '/chatRoom',
+            templateUrl: '/chatRoom.html',
+            controller: 'ChatRoomController',
             controllerAs: 'vm'
-        });
+        })
     // Default fallback for unmatched urls
     $urlRouterProvider.otherwise('/');
 
@@ -197,7 +197,27 @@ app.controller('DeleteController', ['$stateParams', '$location', 'BlogService', 
         };
 }]);
 
-app.controller('spaceInvadersController', ['$scope', function($scope) {
-    $scope.title = 'Space Invaders';
-}
-]);
+app.controller('ChatRoomController', ['$stateParams', '$location', 'BlogService', 'authentication', function ChatRoomController($stateParams, $location, BlogService, authentication) {
+    var vm = this;
+    vm.title = 'Chat Room';
+    vm.message = 'Welcome to the chat room';
+    vm.messages = [];
+    vm.messageText = '';
+    var socket = io();
+
+    socket.on('connection', function(socket) {
+        console.log(socket.id);
+    });
+
+    socket.on('receive-message', function(message) {
+        vm.messages.push(message);
+    });
+
+    vm.sendMessage = function() {
+        if (vm.messageText != '') {
+            socket.emit('send-message', vm.messageText);
+            vm.messages.push(vm.messageText);
+            vm.messageText = '';
+        }
+    };
+}]);
