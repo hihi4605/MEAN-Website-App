@@ -8,6 +8,78 @@ var getDateTime = function() {
     return time().tz("America/New_York").format();
 };
 
+var userReactionSchema = new mongoose.Schema({
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: 'User ID is required',
+        ref: 'User' 
+    },
+    reaction: {
+        type: String,
+        required: 'Reaction is required',
+        enum: ['like', 'dislike']
+    }
+}, {_id: false});
+
+
+var replySchema = new mongoose.Schema({
+    commentText: {
+        type: String,
+        required: true
+    },
+    author: {
+        type: String,
+        required: true
+    },
+    authorEmail: {
+        type: String,
+        required: true
+    },
+    createdOn: {
+        type: Date,
+        default: Date.now
+    },
+    likes: {
+        type: Number,
+        default: 0
+    },
+    dislikes: {
+        type: Number,
+        default: 0
+    },
+    userReactions: [userReactionSchema]
+});
+
+var commentSchema = new mongoose.Schema({
+    commentText: {
+        type: String,
+        required: true
+    },
+    author: {
+        type: String,
+        required: true
+    },
+    authorEmail: {
+        type: String,
+        required: true
+    },
+    createdOn: {
+        type: Date,
+        default: Date.now
+    },
+    likes: {
+        type: Number,
+        default: 0
+    },
+    dislikes: {
+        type: Number,
+        default: 0
+    },
+    userReactions: [userReactionSchema],
+    replies: [replySchema] // Nested replies
+});
+
+
 var BlogSchema = new mongoose.Schema({
     blogTitle: {type: String},
     blogEntry: {type: String,},
@@ -15,7 +87,6 @@ var BlogSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-
     author: {
         type: String,
         required: true
@@ -24,7 +95,10 @@ var BlogSchema = new mongoose.Schema({
     authorEmail: {
         type: String,
         required: true
-    }
+    },
+    comments: [commentSchema]
 });
-console.log('BlogSchema created');
-module.exports =  mongoose.model('Blog', BlogSchema);
+
+
+
+module.exports = mongoose.model('Blog', BlogSchema);

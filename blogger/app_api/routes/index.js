@@ -18,4 +18,12 @@ router.delete('/blogs/:blogid', auth,ctrlBlog.blogDeleteOne);    // DELETE /api/
 router.post('/register', ctrlAuth.register);  // Lab 6
 router.post('/login', ctrlAuth.login);  // Lab 6
 
+// Lab 8 Comment Routes
+router.post('/blogs/:blogid/comments', auth, ctrlBlog.commentsCreate);
+router.get('/blogs/:blogid/comments', ctrlBlog.commentsReadOne);
+router.post('/blogs/:blogid/comments/:commentid/replies', auth, ctrlBlog.repliesCreate);
+
+router.post('/blogs/:blogid/comments/:commentid/like', auth, ctrlBlog.likeComment);
+router.post('/blogs/:blogid/comments/:commentid/dislike', auth, ctrlBlog.dislikeComment);
+
 module.exports = router;

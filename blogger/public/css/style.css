@@ -7,11 +7,6 @@ body {
   color: #fff; /* Default text color */
   font-family: "Roboto Mono", monospace;
 }
-.row {
-  display: flex; /* Use flexbox to arrange items horizontally */
-  flex-wrap: wrap; /* Allow items to wrap to the next row if necessary */
-  padding: 40px; /* Increased padding for rows */
-}
 
 .card {
   margin-right: 20px; /* Add margin between cards */
@@ -27,6 +22,125 @@ body {
 	100% {
 		background-position: 0% 50%;
 	}
+}
+
+.blog-view-container {
+  margin-top: 50px;
+  color: #000; /* Change text color */
+}
+
+.blog-header {
+  margin-bottom: 20px;
+}
+
+.blog-title {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.blog-metadata {
+  display: flex;
+  align-items: center;
+}
+
+.author-name,
+.publish-date {
+  margin-right: 10px;
+}
+
+.comment-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.comment-item {
+  margin-bottom: 20px;
+}
+
+.comment-author-info {
+  display: flex;
+  align-items: center;
+}
+
+.comment-author-avatar {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+.comment-author {
+  font-weight: bold;
+}
+
+.comment-date {
+  margin-left: 10px;
+  font-size: 14px;
+  color: #888;
+}
+
+.comment-text {
+  margin-top: 5px;
+}
+
+.comment-actions {
+  margin-top: 10px;
+}
+
+.reactions {
+  margin-right: 10px;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.reply-link {
+  margin-left: 10px;
+  color: #007bff;
+  cursor: pointer;
+}
+
+.reply-form {
+  margin-top: 10px;
+}
+
+.reply-textarea {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.reply-list {
+  list-style-type: none;
+  padding-left: 20px;
+}
+
+.reply-item {
+  margin-bottom: 10px;
+}
+
+.btn-comment,
+.btn-reply,
+.btn-cancel {
+  padding: 5px 10px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.btn-primary-outline {
+  background-color: transparent;
+  border: 1px solid #007bff;
+  color: #007bff;
+}
+
+.unclickable {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .list-title
