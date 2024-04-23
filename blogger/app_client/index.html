@@ -14,6 +14,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
     <link href="https://fonts.googleapis.com/css2?family=Abel&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
 <!-- Navigation -->
@@ -35,6 +36,7 @@
             </div>
         </div>
     </script>
+
 <!-- Blog List -->
 <script type="text/ng-template" id="/blogList.html">
     <div class="container">
@@ -43,8 +45,7 @@
             <div ng-repeat="blog in vm.blogs | orderBy:'-createdOn'">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="card-title">{{ blog.blogTitle }}</h5>
-                        <a ui-sref="blogView({blogid: blog._id})">{{ blog.blogTitle }}</a>
+                   <a class= "card-title" ui-sref="blogView({blogid: blog._id})">{{ blog.blogTitle }}</a>
                         <p class="card-author">Author: {{ blog.author }}</p> <!-- Added author -->
                     </div>
                     <div class="card-body">
@@ -64,13 +65,15 @@
         </div>
     </div>
 </script>
+
+<!-- Blog View-->
 <script type="text/ng-template" id="/blogView.html">
     <div class="container mt-5 blog-view-container" ng-controller="ViewController as vm">
         <div class="blog-header">
             <h1 class="blog-title">{{ vm.blog.blogTitle }}</h1>
             <div class="blog-metadata">
-                <span class="author-name"><i class="material-icons">person</i> {{ vm.blog.author }}</span>
-                <span class="publish-date"><i class="material-icons">date_range</i> {{ vm.blog.createdOn | date:'mediumDate' }}</span>
+                <span class="author-name"><i class="fas fa-user"></i> {{ vm.blog.author }}</span>
+                <span class="publish-date"><i class="fas fa-calendar-alt"></i> {{ vm.blog.createdOn | date:'mediumDate' }}</span>
             </div>
         </div>
         <p class="blog-text">{{ vm.blog.blogEntry }}</p>
@@ -78,33 +81,20 @@
         <ul class="comment-list">
             <li class="comment-item" ng-repeat="comment in vm.blog.comments">
                 <div class="comment-author-info">
-                    <i class="material-icons comment-author-avatar">account_circle</i>
+                    <i class="fas fa-user-square comment-author-avatar"></i>
                     <strong class="comment-author">{{ comment.author }}</strong>
                     <span class="comment-date">{{ comment.createdOn | date:'mediumDate' }}</span>
                 </div>
                 <p class="comment-text">{{ comment.commentText }}</p>
                 <div class="comment-actions flex-actions">
                     <button class="reactions" ng-click="vm.likeComment(comment)" ng-disabled="vm.hasLiked(comment)">
-                        <i class="material-icons">thumb_up</i>
+                        <i class="fas fa-thumbs-up"></i>
                         <span>{{ comment.likes }}</span>
                     </button>
                     <button class="reactions" ng-click="vm.dislikeComment(comment)" ng-disabled="vm.hasDisliked(comment)">
-                        <i class="material-icons">thumb_down</i>
+                        <i class="fas fa-thumbs-down"></i>
                         <span>{{ comment.dislikes }}</span>
                     </button>
-                    <span class="reply-link" ng-class="{'unclickable': !vm.isLoggedIn()}" ng-click="vm.isLoggedIn() && (comment.showReply = !comment.showReply)">
-                        Reply
-                    </span>
-                </div>
-                <div ng-show="comment.showReply" class="reply-form">
-                    <textarea ng-model="vm.newReplyTexts[comment._id]" placeholder="Write a reply..." class="reply-textarea" required minlength="1"></textarea>
-                    <button ng-click="vm.addReply(comment._id)" class="btn btn-secondary btn-reply">Reply</button>
-                    <button ng-click="vm.cancelReply(comment._id)" class="btn btn-primary-outline btn-cancel">Cancel</button>
-                </div>
-                <ul class="reply-list">
-                    <li class="reply-item" ng-repeat="reply in comment.replies">
-                        <strong>{{ reply.author }}</strong>: {{ reply.commentText }}
-                        <span class="reply-date">{{ reply.createdOn | date:'mediumDate' }}</span>
                     </li>
                 </ul>
             </li>
@@ -124,7 +114,6 @@
         </div>
     </div>
 </script>
-
     <!-- Blog Add -->
     <script type="text/ng-template" id="/blogAdd.html">
         <div class="container">

@@ -1,5 +1,5 @@
 body {
-  background: linear-gradient(-45deg, #eca204, #000000, #000000, #fe8801);
+  background: linear-gradient(-45deg, rgb(255, 213, 0), #890aff, #692abc, #dcac01);
   background-size: 500% 500%;
   animation: gradient 30s ease infinite;
   min-height: 100vh;
@@ -48,9 +48,11 @@ body {
   margin-right: 10px;
 }
 
-.comment-list {
-  list-style-type: none;
-  padding: 0;
+.comment-item {
+  margin-bottom: 20px;
+  border: 1px solid #ccc; /* Add border around each comment */
+  border-radius: 5px; /* Add border radius */
+  padding: 15px; /* Add padding to each comment */
 }
 
 .comment-item {
@@ -168,13 +170,13 @@ body {
   color: #ff8c00; /* Navbar link color on hover */
 }
 .card {
-  border: 1px solid #ffffff;
+  border: none; /* Remove the solid border */
   border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3); /* Add a blur effect to the border */
   margin-bottom: 20px;
-  background-color: #352a2a; /* Dark background color for cards */
-  color: #fff; /* Text color for cards */
-  padding: 20px; /* Adjusted padding for smaller cards */
+  background-color:rgba(255, 255, 255, 0.3);
+  color: #fff;
+  padding: 20px;
 }
 
 .card-header {
@@ -228,10 +230,11 @@ body {
   bottom: 0;
   width: 100%;
 }
-
 .jumbotron {
-  background-color: #222426; /* Dark background color for jumbotron */
-  padding: 40px; /* Increased padding for jumbotron */
+  background-color: #222426;
+  padding: 40px;
   margin-bottom: 40px;
-  font-size: 20px; /* Increased font size for jumbotron */
+  font-size: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); /* Add a blur effect to the jumbotron */
 }
