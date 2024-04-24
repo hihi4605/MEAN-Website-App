@@ -50,9 +50,9 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', functio
             controller: 'ChatRoomController',
             controllerAs: 'vm'
         })
-        .state('blogView', {
-            url: '/blogView/:blogid',
-            templateUrl: '/blogView.html',
+        .state('blogPost', {
+            url: '/blogPost/:blogid',
+            templateUrl: '/blogPost.html',
             controller: 'ViewController',
             controllerAs: 'vm'
         })

@@ -45,7 +45,7 @@
             <div ng-repeat="blog in vm.blogs | orderBy:'-createdOn'">
                 <div class="card">
                     <div class="card-header">
-                   <a class= "card-title" ui-sref="blogView({blogid: blog._id})">{{ blog.blogTitle }}</a>
+                   <a class= "card-title" ui-sref="blogPost({blogid: blog._id})">{{ blog.blogTitle }}</a>
                         <p class="card-author">Author: {{ blog.author }}</p> <!-- Added author -->
                     </div>
                     <div class="card-body">
@@ -67,7 +67,7 @@
 </script>
 
 <!-- Blog View-->
-<script type="text/ng-template" id="/blogView.html">
+<script type="text/ng-template" id="/blogPost.html">
     <div class="container mt-5 blog-view-container" ng-controller="ViewController as vm">
         <div class="blog-header">
             <h1 class="blog-title">{{ vm.blog.blogTitle }}</h1>
@@ -111,7 +111,7 @@
             </form>
         </div>
         <div ng-if="!vm.isLoggedIn()">
-            <p>To post comments, please <a ui-sref="login">login</a>.</p>
+            <p>You must <a ui-sref="login">login</a> to post comments.</p>
         </div>
     </div>
 </script>

@@ -1,5 +1,5 @@
 body {
-  background: linear-gradient(-45deg,  #9c2c7c, #2a0570);
+  background: linear-gradient(-45deg,  #372e3c, #2a0570);
   /* Complementary colors */
   background-size: 500% 500%;
   animation: gradient 90s ease infinite;
@@ -97,6 +97,7 @@ body {
 
 .comment-text {
   margin-top: 5px;
+  font-size: 20px;
 }
 
 .comment-actions {
