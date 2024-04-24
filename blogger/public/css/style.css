@@ -1,5 +1,5 @@
 body {
-  background: linear-gradient(-45deg,  #372e3c, #2a0570);
+  background: linear-gradient(-45deg,  #372e3c, #2a0570, #ff8c00);
   /* Complementary colors */
   background-size: 500% 500%;
   animation: gradient 90s ease infinite;
@@ -48,12 +48,14 @@ body {
 
 .blog-title {
   font-size: 48px;
-  font-weight: bolder;
+  font-weight: bold;
+  color: white;
 }
 
 .blog-metadata {
   display: flex;
   align-items: center;
+  color: white;
 }
 
 .author-name,
@@ -69,8 +71,15 @@ body {
   background-color:rgba(255, 255, 255, 0.3);
   color: #fff;
   padding: 20px;
+  transition: transform 0.3s ease; /* Add a smooth hover effect */
+}
+.card:hover {
+  transform: scale(1.02); /* Scale up the card on hover */
 }
 
+.comment-item:hover {
+  transform: scale(1.02); /* Scale up the card on hover */
+}
 .comment-item {
   margin-bottom: 20px;
 }
@@ -137,6 +146,61 @@ body {
 
 .reactions:hover {
   background-color: #e0e0e0; /* Darker shade on hover */
+}
+
+
+.glow-on-hover-medium{
+  width: 150px; /* Adjust width to match normal buttons */
+  height: 50px; /* Adjust height to match normal buttons */
+  border: none;
+  outline: none;
+  color: #fff;
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+}
+
+.glow-on-hover-medium:before {
+  content: '';
+  background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+  border-radius: 10px;
+}
+
+.glow-on-hover-medium:active {
+  color: #000
+}
+
+.glow-on-hover-medium:active:after {
+  background: transparent;
+}
+
+.glow-on-hover-medium:hover:before {
+  opacity: 1;
+}
+
+.glow-on-hover:after {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #111;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
 }
 
 .glow-on-hover {
@@ -254,6 +318,7 @@ body {
   background-color:rgba(255, 255, 255, 0.3);
   color: #fff;
   padding: 20px;
+  transition: transform 0.3s ease; /* Add a smooth hover effect */
 }
 
 .card-header {

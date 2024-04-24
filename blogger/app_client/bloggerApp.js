@@ -227,10 +227,13 @@ app.controller('ViewController', ['$stateParams', 'BlogService', 'authentication
     var vm = this;
     vm.blog = { comments: [] };
     vm.newCommentText = '';
-    vm.newReplyTexts = {};  // Object to hold replies for different comments
+    vm.newReplyTexts = {};  
     vm.showButtons = false;
-    vm.replyVisibility = {};  // Added to track visibility state of each reply form
+    vm.replyVisibility = {};  
 
+    /**
+     * Refreshes the blog data by making a request to the server and updating the UI accordingly.
+     */
     function refreshBlog() {
         BlogService.getBlog($stateParams.blogid).then(function (response) {
             let newData = response.data;
@@ -255,8 +258,8 @@ app.controller('ViewController', ['$stateParams', 'BlogService', 'authentication
                 }
             });
 
-            // Remove comments that no longer exist in the new data
-            vm.blog.comments = vm.blog.comments.filter(c => newData.comments.some(nc => nc._id === c._id));
+           
+            vm.blog.comments = vm.blog.comments.filter(com => newData.comments.some(nc => nc._id === com._id));
         }, function (error) {
             console.error('Error fetching blog:', error);
         });
@@ -325,7 +328,7 @@ app.controller('ViewController', ['$stateParams', 'BlogService', 'authentication
                     }
                 }
                 // Update the user reactions list to reflect this change
-                updateReactions(comment, 'like', hasAlreadyLiked);
+                refreshReactions(comment, 'like', hasAlreadyLiked);
             })
             .catch(function (error) {
                 console.error('Error processing like:', error);
@@ -351,7 +354,7 @@ app.controller('ViewController', ['$stateParams', 'BlogService', 'authentication
                     }
                 }
                 // Update the user reactions list to reflect this change
-                updateReactions(comment, 'dislike', hasAlreadyDisliked);
+                refreshReactions(comment, 'dislike', hasAlreadyDisliked);
             })
             .catch(function (error) {
                 console.error('Error processing dislike:', error);
@@ -361,7 +364,7 @@ app.controller('ViewController', ['$stateParams', 'BlogService', 'authentication
     // Function to check if the user has liked a comment
     vm.hasLiked = function (comment) {
         var userId = authentication.currentUser()._id;
-        return comment.userReactions && comment.userReactions.some(function (reaction) {
+        return comment.reactions && comment.reactions.some(function (reaction) {
             return reaction.userId === userId && reaction.reaction === 'like';
         });
     };
@@ -369,28 +372,28 @@ app.controller('ViewController', ['$stateParams', 'BlogService', 'authentication
     // Function to check if the user has disliked a comment
     vm.hasDisliked = function (comment) {
         var userId = authentication.currentUser()._id;
-        return comment.userReactions && comment.userReactions.some(function (reaction) {
+        return comment.reactions && comment.reactions.some(function (reaction) {
             return reaction.userId === userId && reaction.reaction === 'dislike';
         });
     };
 
     // Utility function to update the reactions array
-    function updateReactions(comment, reactionType, hasAlreadyReacted) {
+    function refreshReactions(comment, reactionType, hasAlreadyReacted) {
         var userId = authentication.currentUser()._id;
         if (hasAlreadyReacted) {
-            // Remove the reaction from the userReactions array
-            comment.userReactions = comment.userReactions.filter(function (reaction) {
+            // Remove the reaction from the reactions array
+            comment.reactions = comment.reactions.filter(function (reaction) {
                 return reaction.userId !== userId;
             });
         } else {
-            // Add or change the reaction in the userReactions array
-            var existingReaction = comment.userReactions.find(function (reaction) {
+            // Add or change the reaction in the reactions array
+            var existingReaction = comment.reactions.find(function (reaction) {
                 return reaction.userId === userId;
             });
             if (existingReaction) {
                 existingReaction.reaction = reactionType;
             } else {
-                comment.userReactions.push({
+                comment.reactions.push({
                     userId: userId,
                     reaction: reactionType
                 });

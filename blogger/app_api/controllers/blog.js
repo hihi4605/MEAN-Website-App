@@ -203,18 +203,18 @@ const handleReaction = async function (req, res, reactionType) {
         }
 
         // Find if the user has already reacted
-        const reactionIndex = comment.userReactions.findIndex(reaction => reaction.userId.equals(userId));
+        const reactionIndex = comment.reactions.findIndex(reaction => reaction.userId.equals(userId));
 
         // Reaction logic
         if (reactionIndex !== -1) {
             // User has already reacted
-            if (comment.userReactions[reactionIndex].reaction === reactionType) {
+            if (comment.reactions[reactionIndex].reaction === reactionType) {
                 // Same reaction - toggle off
-                comment.userReactions.splice(reactionIndex, 1);
+                comment.reactions.splice(reactionIndex, 1);
                 reactionType === 'like' ? comment.likes-- : comment.dislikes--;
             } else {
                 // Different reaction - switch from like to dislike or vice versa
-                comment.userReactions[reactionIndex].reaction = reactionType;
+                comment.reactions[reactionIndex].reaction = reactionType;
                 if (reactionType === 'like') {
                     comment.likes++;
                     comment.dislikes--;
@@ -225,7 +225,7 @@ const handleReaction = async function (req, res, reactionType) {
             }
         } else {
             // New reaction - add it
-            comment.userReactions.push({ userId: userId, reaction: reactionType });
+            comment.reactions.push({ userId: userId, reaction: reactionType });
             reactionType === 'like' ? comment.likes++ : comment.dislikes++;
         }
 
@@ -233,7 +233,7 @@ const handleReaction = async function (req, res, reactionType) {
         sendJSONresponse(res, 200, {
             likes: comment.likes,
             dislikes: comment.dislikes,
-            userReactions: comment.userReactions
+            reactions: comment.reactions
         });
     } catch (err) {
         sendJSONresponse(res, 400, err);

@@ -66,7 +66,7 @@
     </div>
 </script>
 
-<!-- Blog View-->
+<!-- Blog Post View-->
 <script type="text/ng-template" id="/blogPost.html">
     <div class="container mt-5 blog-view-container" ng-controller="ViewController as vm">
         <div class="blog-header">
@@ -77,7 +77,7 @@
             </div>
         </div>
         <p class="blog-text">{{ vm.blog.blogEntry }}</p>
-        <h3 class="comments-title">Comments {{ vm.blog.comments.length }}</h3>
+        <h3 class="comments-title">Comments: {{ vm.blog.comments.length }}</h3>
         <ul class="comment-list">
             <li class="comment-item" ng-repeat="comment in vm.blog.comments">
                 <div class="comment-author-info">
@@ -101,11 +101,11 @@
         </ul>
         <div ng-if="vm.isLoggedIn()" class="comment-form">
             <form ng-submit="vm.addComment()">
-                <textarea ng-model="vm.newCommentText" placeholder="Write a comment..."
+                <textarea ng-model="vm.newCommentText" placeholder="Say something..."
                         ng-focus="vm.showButtons = true" ng-blur="vm.checkBlur()" required minlength="1"></textarea>
                   
                 <div ng-show="vm.showButtons">
-                    <button type="submit" class="btn btn-primary btn-comment">Comment</button>
+                    <button type="submit" class="glow-on-hover-medium">Comment</button>
                     <button type="button" class="btn btn-primary-outline btn-cancel" ng-click="vm.cancelComment()">Cancel</button>
                 </div>
             </form>

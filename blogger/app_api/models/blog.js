@@ -8,7 +8,7 @@ var getDateTime = function() {
     return time().tz("America/New_York").format();
 };
 
-var userReactionSchema = new mongoose.Schema({
+var reactionschema = new mongoose.Schema({
     userId: {
         type: mongoose.Schema.Types.ObjectId,
         required: 'User ID is required',
@@ -46,7 +46,7 @@ var commentSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
-    userReactions: [userReactionSchema]
+    reactions: [reactionschema]
 });
 
 
