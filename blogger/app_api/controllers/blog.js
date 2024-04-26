@@ -6,6 +6,100 @@ var sendJSONresponse = function(res, status, content) {
     res.status(status);
     res.json(content);
 };
+
+
+// Get Reactions for a blog
+module.exports.blogReacts = async function(req, res) {
+    console.log('Getting comments from blog with ID:', req.params.blogid);
+
+    try {
+        const blog = await Blog.findById(req.params.blogid).select('userReactions');
+        if (!blog) {
+            sendJSONresponse(res, 404, { "message": "Blog not found" });
+            return;
+        }
+        sendJSONresponse(res, 200, blog.userReactions);
+    } catch (err) {
+        sendJSONresponse(res, 400, err);
+    }
+};
+
+
+// Get comments for a blog
+module.exports.commentsReadOne = async function(req, res) {
+    console.log('Getting comments from blog with ID:', req.params.blogid);
+
+    try {
+        const blog = await Blog.findById(req.params.blogid).select('comments');
+        if (!blog) {
+            sendJSONresponse(res, 404, { "message": "Blog not found" });
+            return;
+        }
+        sendJSONresponse(res, 200, blog.comments);
+    } catch (err) {
+        sendJSONresponse(res, 400, err);
+    }
+};
+
+
+// Function to handle a like or dislike action
+/**
+ * Handles the reaction logic for a blog post comment.
+ *
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ * @param {string} reactionType - The type of reaction ('like' or 'dislike').
+ * @returns {Promise<void>} - A promise that resolves when the reaction logic is completed.
+ */
+const blogReaction = async function (req, res, reactionType) {
+    const blogId = req.params.blogid;
+    const commentId = req.params.commentid;
+    const userId = req.payload._id;
+
+    try {
+        const blog = await Blog.findById(blogId);
+        if (!blog) {
+            return sendJSONresponse(res, 404, { "message": "Blog not found" });
+        }
+
+        // The user cant react if they already reacted
+        const reactionIndex = blog.userReactions.findIndex(reaction => reaction.userId.equals(userId));
+
+        // Reaction logic
+        if (reactionIndex !== -1) {
+            // User has already reacted
+            if (blog.userReactions[reactionIndex].reaction === reactionType) {
+                // Same reaction - toggle off
+                blog.userReactions.splice(reactionIndex, 1);
+                reactionType === 'like' ? blog.likes-- : blog.dislikes--;
+            } else {
+                // Different reaction - If they liked before and now dislike etc.
+                blog.userReactions[reactionIndex].reaction = reactionType;
+                if (reactionType === 'like') {
+                    blog.likes++;
+                    blog.dislikes--;
+                } else {
+                    blog.dislikes++;
+                    blog.likes--;
+                }
+            }
+        } else {
+            // New reaction - add it
+            blog.userReactions.push({ userId: userId, reaction: reactionType });
+            reactionType === 'like' ? blog.likes++ : blog.dislikes++;
+        }
+
+        await blog.save();
+        sendJSONresponse(res, 200, {
+            likes: blog.likes,
+            dislikes: blog.dislikes,
+            userReactions: blog.userReactions
+        });
+    } catch (err) {
+        sendJSONresponse(res, 400, err);
+    }
+};
+
 // GET /api/blogs
 module.exports.blogList = async function (req, res) {
     console.log("Getting blogList");
@@ -185,7 +279,15 @@ module.exports.commentsReadOne = async function(req, res) {
 };
 
 
-// Function to handle a like or dislike action
+ 
+/**
+ * Handles the reaction for a blog comment.
+ *
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ * @param {string} reactionType - The type of reaction ('like' or 'dislike').
+ * @returns {Promise<void>} - A promise that resolves when the reaction is handled.
+ */
 const handleReaction = async function (req, res, reactionType) {
     const blogId = req.params.blogid;
     const commentId = req.params.commentid;
@@ -202,18 +304,18 @@ const handleReaction = async function (req, res, reactionType) {
             return sendJSONresponse(res, 404, { "message": "Comment not found" });
         }
 
-        // Find if the user has already reacted
+    
         const reactionIndex = comment.reactions.findIndex(reaction => reaction.userId.equals(userId));
 
-        // Reaction logic
+    
         if (reactionIndex !== -1) {
-            // User has already reacted
+        
             if (comment.reactions[reactionIndex].reaction === reactionType) {
-                // Same reaction - toggle off
+          
                 comment.reactions.splice(reactionIndex, 1);
                 reactionType === 'like' ? comment.likes-- : comment.dislikes--;
             } else {
-                // Different reaction - switch from like to dislike or vice versa
+              
                 comment.reactions[reactionIndex].reaction = reactionType;
                 if (reactionType === 'like') {
                     comment.likes++;
@@ -224,7 +326,7 @@ const handleReaction = async function (req, res, reactionType) {
                 }
             }
         } else {
-            // New reaction - add it
+          
             comment.reactions.push({ userId: userId, reaction: reactionType });
             reactionType === 'like' ? comment.likes++ : comment.dislikes++;
         }
@@ -239,6 +341,14 @@ const handleReaction = async function (req, res, reactionType) {
         sendJSONresponse(res, 400, err);
     }
 };
+
+module.exports.likeBlog = function (req, res) {
+    blogReaction(req, res, 'like');
+};
+
+module.exports.dislikeBlog = function (req, res) {
+    blogReaction(req, res, 'dislike');
+}
 
 module.exports.likeComment = function (req, res) {
     handleReaction(req, res, 'like');
