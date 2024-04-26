@@ -103,7 +103,14 @@ app.service('BlogService', ['$http', 'authentication', function($http, authentic
     this.getComments = function (blogId) {
         return $http.get(apiBaseUrl + '/' + blogId + '/comments');
     };
+     
+    this.likeBlog = function (blogId) {
+        return $http.post(apiBaseUrl + '/' + blogId + '/likes', {}, makeAuthHeader());   
+    };
 
+    this.dislikeBlog = function (blogId) {
+        return $http.post(apiBaseUrl + '/' + blogId + '/dislikes', {}, makeAuthHeader());
+    };
 
     this.likeComment = function (blogId, commentId) {
         return $http.post(apiBaseUrl + '/' + blogId + '/comments/' + commentId + '/like', {}, makeAuthHeader());
@@ -400,6 +407,49 @@ app.controller('ViewController', ['$stateParams', 'BlogService', 'authentication
             }
         }
     }
+        // Function to like a blog
+        vm.likeBlog = function (blog) {
+            console.log('Blog liked');
+        BlogService.likeBlog($stateParams.blogid)
+            .then(function (response) {
+                blog.likes++;
+            
+            })
+            .catch(function (error) {
+                console.error('Error processing like:', error);
+            });
+    };
+
+    // Function to dislike a blog
+    vm.dislikeBlog = function (blog) {
+        BlogService.dislikeBlog($stateParams.blogid)
+            .then(function (response) {
+                blog.dislikes++;
+
+            }
+            )
+            .catch(function (error) {
+                console.error('Error processing dislike:', error);
+            }
+            );
+    };
+       
+    
+        // Function to check if the user has liked a blog
+        vm.hasLikedBlog = function (blog) {
+            var userId = authentication.currentUser()._id;
+            return blog.userReactions && blog.userReactions.some(function (reaction) {
+                return reaction.userId === userId && reaction.reaction === 'like';
+            });
+        };
+
+        // Function to check if the user has disliked a blog
+        vm.hasDislikedBlog = function (blog) {
+            var userId = authentication.currentUser()._id;
+            return blog.userReactions && blog.userReactions.some(function (reaction) {
+                return reaction.userId === userId && reaction.reaction === 'dislike';
+            });
+        }
 
     // Function to show the buttons
     vm.cancelComment = function () {

@@ -8,11 +8,15 @@ var sendJSONresponse = function(res, status, content) {
 };
 
 
-// Get Reactions for a blog
+/**Represents a blog post.
+* @typedef {Object} Blog
+* @property {string} userReactions - The reactions from users on the blog post.
+*/
 module.exports.blogReacts = async function(req, res) {
     console.log('Getting comments from blog with ID:', req.params.blogid);
 
     try {
+     
         const blog = await Blog.findById(req.params.blogid).select('userReactions');
         if (!blog) {
             sendJSONresponse(res, 404, { "message": "Blog not found" });
@@ -122,15 +126,6 @@ module.exports.blogList = async function (req, res) {
 };
 
 
-const buildBlogList = async function(req, res, results) {
-    return results.map(obj => ({
-        blogTitle: obj.blogTitle,
-        blogEntry: obj.blogEntry,
-        createdOn: obj.createdOn,
-        _id: obj._id
-    }));
-};
-
   module.exports.blogCreate = async function(req, res) {
     try {
         console.log(req.body);
@@ -150,21 +145,6 @@ const buildBlogList = async function(req, res, results) {
     }
 };
  
-// Render blog list
-const renderBlogList = function(req, res, responseBody) {
-    //when the response body is an array of blogs, map over the array and return a new array of blog objects
-    const blogs = responseBody.map(blog => ({
-        blogTitle: blog.blogTitle,
-        blogEntry: blog.blogEntry,
-        createdOn: blog.createdOn,
-        author: blog.author,
-        authorMail: blog.authorMail,
-        _id: blog._id
-    }));
-
-    return blogs;
-};
-
 
 //returns a single blog when given an id //
 // Read a blog
