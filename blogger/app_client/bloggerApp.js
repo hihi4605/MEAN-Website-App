@@ -413,7 +413,6 @@ app.controller('ViewController', ['$stateParams', 'BlogService', 'authentication
         BlogService.likeBlog($stateParams.blogid)
             .then(function (response) {
                 blog.likes++;
-            
             })
             .catch(function (error) {
                 console.error('Error processing like:', error);
@@ -425,7 +424,6 @@ app.controller('ViewController', ['$stateParams', 'BlogService', 'authentication
         BlogService.dislikeBlog($stateParams.blogid)
             .then(function (response) {
                 blog.dislikes++;
-
             }
             )
             .catch(function (error) {

@@ -49,7 +49,6 @@ var commentSchema = new mongoose.Schema({
     reactions: [reactionschema]
 });
 
-
 var BlogSchema = new mongoose.Schema({
     blogTitle: {type: String},
     blogEntry: {type: String,},
@@ -66,7 +65,16 @@ var BlogSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    comments: [commentSchema]
+    likes: {
+        type: Number,
+        default: 0
+    },
+    dislikes: {
+        type: Number,
+        default: 0
+    },
+    comments: [commentSchema],
+    reactions: [reactionschema]
 });
 
 module.exports = mongoose.model('Blog', BlogSchema);
