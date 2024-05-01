@@ -4,9 +4,6 @@ var sendJSONresponse = function(res, status, content) {
     res.status(status);
     res.json(content);
 };
-var getDateTime = function() {
-    return time().tz("America/New_York").format();
-};
 
 var reactionschema = new mongoose.Schema({
     userId: {
