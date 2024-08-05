@@ -28,29 +28,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'app_client'))); 
  
 app.use('/api',routesApi);
-
-//Socket IO and room
-const socketIO = require("socket.io");
-const { Server } = require("socket.io");
-const Room = require("./room");
-const room = new Room();
-const server = http.createServer(app);
-const io = socketIO(server);
-io.on("connection", async (socket) => {
-  const roomID = await room.joinRoom();
-  socket.join(roomID);
-
-  socket.on("send-message", (message) => {
-    socket.to(roomID).emit("receive-message", message);
-  });
-
-  socket.on("disconnect", () => {
-    room.leaveRoom();
-  });
-});
-server.listen(0, () => {
-  console.log(`Server working on port ${server.address().port}`);
-});
  
 // Added per Lab 5 - Angular
 
